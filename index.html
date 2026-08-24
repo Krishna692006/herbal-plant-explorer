@@ -92,6 +92,14 @@
             border-radius: 10px;
             display:none;
         }
+        #extra-info-turmeric{
+            border:2px solid green;
+            padding:15px;
+            margin:15px auto;
+            max-width:500px;
+            border-radius:10px;
+            display:none;
+        }
         .plant-data {
             margin-top:25px;
             display:grid;
@@ -109,6 +117,10 @@
 
         .data-box b {
             color:darkgreen;
+        }
+        .medicine-name b {
+            color:blue;
+            font-size:18px;
         }
 
         .add-more {
@@ -157,6 +169,24 @@
             more.style.display="none";
         }
     }
+    function showInfoTurmeric() {
+    let info = document.getElementById("extra-info-turmeric");
+
+    if (info.innerHTML === "") {
+        info.style.display = "block";
+        info.innerHTML = `
+            <h3>Useful Parts of Haridra</h3>
+
+            <p><b>A - Rhizome:</b> Haridra rhizome</p>
+            <p><b>B - Leaves:</b> Haridra leaves</p>
+            <p><b>C - Flowers:</b> Haridra flowers</p>
+            <p><b>D - Whole Plant:</b> Haridra plant</p>
+        `;
+    } else {
+        info.innerHTML = "";
+        info.style.display = "none";
+    }
+}
     function showMoreTurmeric() {
         let more = document.getElementById("more-data-turmeric");
 
@@ -213,7 +243,7 @@
     </h2>
     <h3> 1) निम्ब (Nimba)</h3> 
     <div class="plant-card">
-    <img src="neem.jpg" alt="neem plant">
+    <img src="images.jpg" alt="neem plant">
     <button onclick="showInfo()">learn more</button> 
     <p id="extra-info"></p>
     <div class="plant-data">
@@ -275,12 +305,51 @@
     </div>
 </div>
 
+<!-- Neem Medicines - Always Visible -->
+
+<div class="medicine-list">
+
+    <p class="medicine-name"><b>1. Nimba Taila</b></p>
+    <p>→ <b>Main Effect:</b> Skin-supporting, antimicrobial</p>
+    <p>→ <b>Neem Part:</b> Neem seed oil</p>
+    <p>→ <b>Other Ingredients:</b> Sesame oil</p>
+    <p>→ <b>Why Neem is Used:</b> Traditional antimicrobial and skin-supporting properties.</p>
+
+    <p class="medicine-name"><b>2. Nimba Ghrita</b></p>
+    <p>→ <b>Main Effect:</b> Skin-supporting</p>
+    <p>→ <b>Neem Part:</b> Neem</p>
+    <p>→ <b>Other Ingredients:</b> Go-ghrita</p>
+    <p>→ <b>Why Neem is Used:</b> Traditional use in skin-related Ayurvedic preparations.</p>
+    
+    <p class="medicine-name"><b>3. Nimbadi Kwatha</b></p>
+    <p>→ <b>Main Effect:</b> Traditional support for skin and fever-related conditions</p>
+    <p>→ <b>Neem Part:</b> Neem</p>
+    <p>→ <b>Other Ingredients:</b> Formulation-specific herbs</p>
+    <p>→ <b>Why Neem is Used:</b> Neem is traditionally included for its bitter and skin-supporting properties.</p>
+
+    <p class="medicine-name"><b>4. Panchatikta Ghrita</b></p>
+    <p>→ <b>Main Effect:</b> Traditional support for skin and inflammatory conditions</p>
+    <p>→ <b>Neem Part:</b> Stem and bark</p>
+    <p>→ <b>Other Ingredients:</b> Patola, Guduchi, Vasa, Ghrita</p>
+    <p>→ <b>Why Neem is Used:</b> Neem is one of the principal bitter herbs in the Panchatikta group.</p>
+
+    <p class="medicine-name"><b>5. Nimbamritadi Taila</b></p>
+    <p>→ <b>Main Effect:</b> Traditional skin-supporting use</p>
+    <p>→ <b>Neem Part:</b> Neem</p>
+    <p>→ <b>Other Ingredients:</b> Guduchi, Patola, oil base</p>
+    <p>→ <b>Why Neem is Used:</b> Neem is included as a key herb in this traditional medicated-oil formulation.</p>
+
+</div>
 
 </div>
 <h3>2) हरिद्रा (Haridra)</h3>
 
 <div class="plant-card">
     <img src="haldi.jpg" alt="turmeric plant">
+
+    <button onclick="showInfoTurmeric()">learn more</button>
+    <p id="extra-info-turmeric"></p>
+
     <div class="plant-data">
 
     <div class="data-box">
@@ -329,7 +398,7 @@
         <div class="data-box">
             <b>Write Heading</b><br>
             <input type="text" placeholder="Type here...">
-        </div>
+                </div>
 
         <div class="data-box">
             <b>Write Information</b><br>
@@ -338,9 +407,43 @@
 
     </div>
 </div>
+<!-- Turmeric Medicines - Always Visible -->
+
+<div class="medicine-list">
+
+    <p class="medicine-name"><b>1. Haridra Khanda</b></p>
+    <p>→ <b>Main Effect:</b> Traditional support for skin and allergy-related conditions</p>
+    <p>→ <b>Turmeric Part:</b> Haridra rhizome</p>
+    <p>→ <b>Other Ingredients:</b> Formulation-specific herbs and spices</p>
+    <p>→ <b>Why Turmeric is Used:</b> Haridra is traditionally valued for skin-supporting properties.</p>
+
+    <p class="medicine-name"><b>2. Haridra Churna</b></p>
+    <p>→ <b>Main Effect:</b> Traditional digestive and skin-supporting use</p>
+    <p>→ <b>Turmeric Part:</b> Haridra rhizome</p>
+    <p>→ <b>Other Ingredients:</b> Depends on the preparation</p>
+    <p>→ <b>Why Turmeric is Used:</b> The rhizome is the principal medicinal part of Haridra.</p>
+
+    <p class="medicine-name"><b>3. Nisha Amalaki</b></p>
+    <p>→ <b>Main Effect:</b> Traditional support for metabolic health</p>
+    <p>→ <b>Turmeric Part:</b> Haridra rhizome</p>
+    <p>→ <b>Other Ingredients:</b> Amalaki</p>
+    <p>→ <b>Why Turmeric is Used:</b> Haridra is traditionally combined with Amalaki in this preparation.</p>
+
+    <p class="medicine-name"><b>4. Haridra Taila</b></p>
+    <p>→ <b>Main Effect:</b> Traditional skin-supporting use</p>
+    <p>→ <b>Turmeric Part:</b> Haridra rhizome</p>
+    <p>→ <b>Other Ingredients:</b> Oil base and formulation-specific ingredients</p>
+    <p>→ <b>Why Turmeric is Used:</b> Traditionally used in external preparations for skin care.</p>
+
+    <p class="medicine-name"><b>5. Haridra-based Preparations</b></p>
+    <p>→ <b>Main Effect:</b> Traditional digestive and skin-supporting use</p>
+    <p>→ <b>Turmeric Part:</b> Haridra rhizome</p>
+    <p>→ <b>Other Ingredients:</b> Depends on the formulation</p>
+    <p>→ <b>Why Turmeric is Used:</b> Haridra is an important traditional Ayurvedic herb.</p>
 
 </div>
 
+</div>
 <h3>3) गुडूची (Guduchi)</h3>
 
 <div class="plant-card">
@@ -407,6 +510,41 @@
         </div>
 
     </div>
+
+</div>
+<!-- Giloy Medicines - Always Visible -->
+
+<div class="medicine-list">
+
+    <p class="medicine-name"><b>1. Guduchi Satva</b></p>
+    <p>→ <b>Main Effect:</b> Traditional support for general wellness and fever-related conditions</p>
+    <p>→ <b>Giloy Part:</b> Giloy stem</p>
+    <p>→ <b>Other Ingredients:</b> Prepared primarily from Guduchi</p>
+    <p>→ <b>Why Giloy is Used:</b> Guduchi is traditionally valued for its bitter and supportive properties.</p>
+
+    <p class="medicine-name"><b>2. Guduchyadi Churna</b></p>
+    <p>→ <b>Main Effect:</b> Traditional digestive and wellness support</p>
+    <p>→ <b>Giloy Part:</b> Giloy stem</p>
+    <p>→ <b>Other Ingredients:</b> Formulation-specific herbs</p>
+    <p>→ <b>Why Giloy is Used:</b> Guduchi is traditionally included as an important herb in the formulation.</p>
+
+    <p class="medicine-name"><b>3. Amritarishta</b></p>
+    <p>→ <b>Main Effect:</b> Traditional support for fever-related conditions</p>
+    <p>→ <b>Giloy Part:</b> Giloy stem</p>
+    <p>→ <b>Other Ingredients:</b> Dashamoola, Trikatu and other formulation-specific ingredients</p>
+    <p>→ <b>Why Giloy is Used:</b> Guduchi is traditionally used as an important ingredient in this preparation.</p>
+
+    <p class="medicine-name"><b>4. Guduchi Ghrita</b></p>
+    <p>→ <b>Main Effect:</b> Traditional general wellness support</p>
+    <p>→ <b>Giloy Part:</b> Giloy stem</p>
+    <p>→ <b>Other Ingredients:</b> Ghrita and formulation-specific ingredients</p>
+    <p>→ <b>Why Giloy is Used:</b> Guduchi is traditionally used in ghrita-based Ayurvedic preparations.</p>
+
+    <p class="medicine-name"><b>5. Guduchi Taila</b></p>
+    <p>→ <b>Main Effect:</b> Traditional external-use preparation</p>
+    <p>→ <b>Giloy Part:</b> Giloy stem</p>
+    <p>→ <b>Other Ingredients:</b> Oil base and formulation-specific ingredients</p>
+    <p>→ <b>Why Giloy is Used:</b> Guduchi is traditionally included in selected medicated-oil preparations.</p>
 
 </div>
 
