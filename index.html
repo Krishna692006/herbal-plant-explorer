@@ -3,7 +3,7 @@
 <head>
     <title>HERBAL PLANT EXPLORER</title>
     <meta name="description" content="Herbal Plant Explorer - Explore medicinal plants, their scientific names, traditional uses, benefits and detailed information.">
-
+    
     <style>
         body {
             font-family: Arial;
@@ -31,6 +31,56 @@
             letter-spacing:2px;
             margin-top:-15px;
             margin-bottom:25px;
+        }
+        .menu-container {
+            position:relative;
+            text-align:left;
+            margin:10px -40px 25px -40px;
+            padding:8px 0;
+            background:darkgreen
+        }
+
+        .menu-button {
+            background:#e8f5e9;
+            color:darkgreen;
+            border:2px solid green;
+            padding:10px 18px;
+            font-size:17px;
+            font-weight:bold;
+            border-radius:8px;
+            cursor:pointer;
+            margin:0;
+        }
+
+        .menu-list {
+            display:none;
+            position:absolute;
+            left:0;
+            top:48px;
+            background:#f4fff4;
+            border:2px solid green;
+            border-radius:10px;
+            padding:8px;
+            width:230px;
+            z-index:1000;
+            box-shadow:0 4px 10px gray;
+        }
+
+        .menu-list a {
+            display:block;
+            padding:10px;
+            text-decoration:none;
+            color:darkgreen;
+            font-weight:bold;
+            border-radius:6px;
+        }
+
+        .menu-list a:hover {
+            background:#dff0df;
+        }
+
+        .menu-container:hover .menu-list {
+            display:block;
         }
 
         h2 {
@@ -135,6 +185,72 @@
             display:none;
             margin-top:15px;
         }
+                .hero-header {
+            position:relative;
+            background:#87CEEB;
+            margin:-40px -40px 0 -40px;
+            padding:35px 20px 30px 20px;
+            overflow:hidden;
+        }
+
+        .hero-header h1,
+        .hero-header .subtitle {
+            position:relative;
+            z-index:2;
+        }
+        .cloud {
+            position:absolute;
+            color:white;
+            opacity:0.9;
+            z-index:1;
+            filter:blur(0.5px);
+        }
+
+        .cloud1 {
+            top:-35px;
+            left:5%;
+            font-size:110px;
+            transform:rotate(-8deg);
+        }
+
+        .cloud2 {
+            top:-30px;
+            right:5%;
+            font-size:120px;
+            transform:rotate(8deg);
+        }
+
+        .cloud3 {
+            bottom:-45px;
+            left:30%;
+            font-size:105px;
+            transform:rotate(10deg);
+        }
+
+        .cloud4 {
+            bottom:-40px;
+            right:28%;
+            font-size:95px;
+            transform:rotate(-10deg);
+        }
+
+        .title-leaf {
+            width:55px;
+            height:55px;
+            vertical-align:middle;
+        }
+
+        .title-left {
+            position:absolute;
+            left:26%;
+            top:48px;
+        }
+
+        .title-right {
+            position:absolute;
+            right:26%;
+            top:48px;
+        }
     </style>
 </head>   
 <script>
@@ -231,13 +347,39 @@
 </script>
 <body>
     
-    <h1>
-        <img src="leaftransparent.png" class="title-leaf">
-        HERBAL PLANT EXPLORER
-        <img src="leaftransparent.png" class="title-leaf">
+       <div class="hero-header">
 
-    </h1>
-    <p class="subtitle">EXPLORER MEDICINAL AND HERBAL PLANT</p>
+        <div class="cloud cloud1">☁</div>
+        <div class="cloud cloud2">☁</div>
+        <div class="cloud cloud3">☁</div>
+        <div class="cloud cloud4">☁</div>
+
+        <h1>
+            HERBAL PLANT EXPLORER
+        </h1>    
+            <img src="leaftransparent.png" class="title-leaf">
+            <img src="leaftransparent.png" class="title-leaf">
+        
+
+        <p class="subtitle">EXPLORER MEDICINAL AND HERBAL PLANT</p>
+
+    </div>
+    <div class="menu-container">
+
+    <button class="menu-button">☰ MENU</button>
+
+    <div class="menu-list">
+        <a href="#home">HOME</a>
+        <a href="#plant-information">PLANT INFORMATION</a>
+        <a href="#medicinal-formulations">MEDICINAL FORMULATIONS</a>
+        <a href="#ayurveda">AYURVEDA</a>
+        <a href="#herbal-knowledge">HERBAL KNOWLEDGE</a>
+        <a href="#diseases">DISEASES</a>
+        <a href="#about">ABOUT</a>
+        <a href="#contact">CONTACT</a>
+    </div>
+
+</div>
     <h2 class="plant-info-title">
         <span>PLANT</span> <span>INFORMATION</span>
     </h2>
