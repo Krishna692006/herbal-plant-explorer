@@ -2,429 +2,563 @@
 <html>
 <head>
     <title>HERBAL PLANT EXPLORER</title>
+
     <meta name="description" content="Herbal Plant Explorer - Explore medicinal plants, their scientific names, traditional uses, benefits and detailed information.">
-    
-    <style>
-        body {
-            font-family: Arial;
-            margin: 40px;
-        }
 
-        h1 {
-            text-align: center;
-            font-size:42px;
-            letter-spacing:3px;
-            text-transform:uppercase;
-            color:darkgreen;
-            text-shadow:2px 2px 5px  greenyellow;
-        }
-        .title-leaf{
-            width:45px;
-            height:45px;
-            vertical-align:middle;
-        }
-        .subtitle{
-            text-align:center;
-            color:seagreen;
-            font-size:18px;
-            font-weight:bold;
-            letter-spacing:2px;
-            margin-top:-15px;
-            margin-bottom:25px;
-        }
-        .menu-container {
-            position:sticky;
-            top:0;
-            z-index:2000;
-            text-align:left;
-            margin:10px -40px 25px -40px;
-            padding:8px 0;
-            background:darkgreen
-        }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        .menu-button {
-            background:#e8f5e9;
-            color:darkgreen;
-            border:2px solid green;
-            padding:10px 18px;
-            font-size:17px;
-            font-weight:bold;
-            border-radius:8px;
-            cursor:pointer;
-            margin:0;
-        }
+<style>
 
-        .menu-list {
-            display:none;
-            position:absolute;
-            left:0;
-            top:48px;
-            background:#f4fff4;
-            border:2px solid green;
-            border-radius:10px;
-            padding:8px;
-            width:230px;
-            z-index:2000;
-            box-shadow:0 4px 10px gray;
-            max-height:70vh;
-            overflow-y:auto;
-        }
-        .medicine-name{
-            scroll-margin-top:80px;
-        }
+body {
+    font-family: Arial;
+    margin: 40px;
+}
 
-        .menu-list a {
-            display:block;
-            padding:10px;
-            text-decoration:none;
-            color:darkgreen;
-            font-weight:bold;
-            border-radius:6px;
-        }
+/* ================= HEADER ================= */
 
-        .menu-list a:hover {
-            background:#dff0df;
-        }
+.hero-header {
+    position: relative;
+    background: #87CEEB;
+    margin: -40px -40px 0 -40px;
+    padding: 35px 20px 30px 20px;
+    overflow: hidden;
+}
 
-        h2 {
-            margin-top: 30px;
-        }
-        h3{
-            text-align:center;
-            font-size:24px;
-        }
-        .plant-info-title{
-            color:purple;
-            font-size:30px;
-            text-decoration:underline;
-            text-underline-offset:8px;
-        }
-        .plant-info-title span{
-            font-weight:400;
-            background:linear-gradient(
-                to bottom,
-                purple 0%,
-                purple 50%,
-                transparent 50%,
-                transparent 100%
-            );
-            -webkit-background-clip: text;
-            background-clip: text;
-            color:transparent;
-            position:relative;
-        }
-        .plant-info-title span{
-            font-weight:bold;
-            color:purple;
-            text-shadow:0 0 0 purple;
-        }    
-        .plant-card {
-            border: 2px solid green;
-            padding: 20px;
-            margin-top: 20px;
-            border-radius:15px;
-            box-shadow:0 4px 10px gray;
-        }
-        .plant-card img {
-            width:300px;
-            display:block;
-            margin:0 auto;
-        }   
-        button{
-            display:block;
-            margin:15px auto;
-            padding:10px 20px;
-            font-size: 16px;;
-            cursor:pointer;
-        } 
-        #extra-info{
-            border:2px solid green;
-            padding:15px;
-            margin:15px auto;
-            max-width:500px;
-            border-radius: 10px;
-            display:none;
-        }
-        #extra-info-turmeric{
-            border:2px solid green;
-            padding:15px;
-            margin:15px auto;
-            max-width:500px;
-            border-radius:10px;
-            display:none;
-        }
-        .plant-data {
-            margin-top:25px;
-            display:grid;
-            grid-template-columns:1fr 1fr;
-            gap:12px;
-        }
+.hero-header h1,
+.hero-header .subtitle {
+    position: relative;
+    z-index: 2;
+}
 
-        .data-box {
-            background:#f4fff4;
-            border-left:5px solid green;
-            padding:12px 15px;
-            border-radius:8px;
-            box-shadow:0 2px 5px #ccc;
-        }
+h1 {
+    text-align: center;
+    font-size: 42px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: darkgreen;
+    text-shadow: 2px 2px 5px greenyellow;
+}
 
-        .data-box b {
-            color:darkgreen;
-        }
-        .medicine-name b {
-            color:blue;
-            font-size:18px;
-        }
+.subtitle {
+    text-align: center;
+    color: seagreen;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-top: -15px;
+    margin-bottom: 25px;
+}
 
-        .add-more {
-            margin-top:25px;
-            color:red;
-            font-weight:bold;
-            font-size:18px;
-            cursor:pointer;
-            text-align:left;
-        }
-        .more-data {
-            display:none;
-            margin-top:15px;
-        }
-                .hero-header {
-            position:relative;
-            background:#87CEEB;
-            margin:-40px -40px 0 -40px;
-            padding:35px 20px 30px 20px;
-            overflow:hidden;
-        }
+.title-leaf {
+    width: 55px;
+    height: 55px;
+    vertical-align: middle;
+}
 
-        .hero-header h1,
-        .hero-header .subtitle {
-            position:relative;
-            z-index:2;
-        }
-        .cloud {
-            position:absolute;
-            color:white;
-            opacity:0.9;
-            z-index:1;
-            filter:blur(0.5px);
-        }
+.cloud {
+    position: absolute;
+    color: white;
+    opacity: 0.9;
+    z-index: 1;
+    filter: blur(0.5px);
+}
 
-        .cloud1 {
-            top:-35px;
-            left:5%;
-            font-size:110px;
-            transform:rotate(-8deg);
-        }
+.cloud1 {
+    top: -35px;
+    left: 5%;
+    font-size: 110px;
+    transform: rotate(-8deg);
+}
 
-        .cloud2 {
-            top:-30px;
-            right:5%;
-            font-size:120px;
-            transform:rotate(8deg);
-        }
+.cloud2 {
+    top: -30px;
+    right: 5%;
+    font-size: 120px;
+    transform: rotate(8deg);
+}
 
-        .cloud3 {
-            bottom:-45px;
-            left:30%;
-            font-size:105px;
-            transform:rotate(10deg);
-        }
+.cloud3 {
+    bottom: -45px;
+    left: 30%;
+    font-size: 105px;
+    transform: rotate(10deg);
+}
 
-        .cloud4 {
-            bottom:-40px;
-            right:28%;
-            font-size:95px;
-            transform:rotate(-10deg);
-        }
+.cloud4 {
+    bottom: -40px;
+    right: 28%;
+    font-size: 95px;
+    transform: rotate(-10deg);
+}
 
-        .title-leaf {
-            width:55px;
-            height:55px;
-            vertical-align:middle;
-        }
+/* ================= MENU ================= */
 
-        .title-left {
-            position:absolute;
-            left:26%;
-            top:48px;
-        }
+.menu-container {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 2000;
 
-        .title-right {
-            position:absolute;
-            right:26%;
-            top:48px;
-        }
-        .menu-parent {
-            display:block;
-            padding:10px;
-            color:darkgreen;
-            font-weight:bold;
-            border-radius:6px;
-            cursor:pointer;
-        }
+    text-align: left;
 
-        .menu-parent:hover {
-            background:#dff0df;
-        }
+    margin: 0 -40px 25px -40px;
+    padding: 8px 0;
 
-        .submenu {
-            display:none;
-            padding-left:10px;
-        }
+    background: darkgreen;
+}
 
-        .submenu a {
-            font-size:15px;
-            padding:8px;
-        }
+.menu-button {
+    background: #e8f5e9;
+    color: darkgreen;
+    border: 2px solid green;
 
-        .medicine-plant {
-            padding:8px;
-            color:blue;
-            font-weight:bold;
-            border-top:1px solid #ccc;
-        }
-       /* Mobile Responsive */
-        @media (max-width: 600px) {
+    padding: 10px 18px;
+    font-size: 17px;
+    font-weight: bold;
+
+    border-radius: 8px;
+    cursor: pointer;
+
+    margin: 0;
+}
+
+.menu-list {
+    display: none;
+
+    position: absolute;
+    left: 0;
+    top: 56px;
+
+    background: #f4fff4;
+
+    border: 2px solid green;
+    border-radius: 10px;
+
+    padding: 8px;
+    width: 230px;
+
+    z-index: 2000;
+
+    box-shadow: 0 4px 10px gray;
+
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.menu-list a {
+    display: block;
+
+    padding: 10px;
+
+    text-decoration: none;
+
+    color: darkgreen;
+
+    font-weight: bold;
+
+    border-radius: 6px;
+}
+
+.menu-list a:hover {
+    background: #dff0df;
+}
+
+.menu-parent {
+    display: block;
+
+    padding: 10px;
+
+    color: darkgreen;
+
+    font-weight: bold;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+}
+
+.menu-parent:hover {
+    background: #dff0df;
+}
+
+.submenu {
+    display: none;
+    padding-left: 10px;
+}
+
+.submenu a {
+    font-size: 15px;
+    padding: 8px;
+}
+
+.medicine-plant {
+    padding: 8px;
+
+    color: blue;
+
+    font-weight: bold;
+
+    border-top: 1px solid #ccc;
+
+    cursor: pointer;
+}
+
+/* ================= PLANT INFORMATION TITLE ================= */
+
+h2 {
+    margin-top: 30px;
+}
+
+.plant-info-title {
+    color: purple;
+
+    font-size: 30px;
+
+    text-decoration: underline;
+
+    text-underline-offset: 8px;
+}
+
+.plant-info-title span {
+    font-weight: bold;
+    color: purple;
+    text-shadow: 0 0 0 purple;
+}
+
+/* ================= PLANTS ROW ================= */
+
+.plants-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.plants-row .plant-section {
+    width: calc(50% - 10px);
+}
+
+.plants-row .plant-section:nth-child(3) {
+    width: 100%;
+}
+
+/* ================= PLANT HEADING ================= */
+
+h3 {
+    text-align: center;
+    font-size: 24px;
+}
+
+/* ================= PLANT CARD ================= */
+
+.plant-card {
+    border: 2px solid green;
+
+    padding: 20px;
+
+    margin-top: 20px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 4px 10px gray;
+}
+
+/* ================= PLANT MAIN CONTENT ================= */
+
+.plant-main-content {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 30px;
+}
+
+.plant-photo {
+    width: 300px;
+
+    flex-shrink: 0;
+}
+
+.plant-photo img {
+    width: 300px;
+
+    display: block;
+
+    margin: 0 auto;
+}
+
+.plant-right-data {
+    flex: 1;
+}
+
+/* ================= PLANT DATA ================= */
+
+.plant-data {
+    margin-top: 10px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.data-box {
+    background: #f4fff4;
+
+    border-left: 4px solid green;
+
+    padding: 5px 10px;
+
+    border-radius: 6px;
+
+    box-shadow: 0 1px 3px #ccc;
+
+    font-size: 14px;
+
+    line-height: 1.15;
+}
+
+.data-box b {
+    color: darkgreen;
+}
+
+/* ================= MEDICINES ================= */
+
+/* Medicines are visible normally */
+
+.medicine-list {
+    width: 100%;
+
+    margin-top: 15px;
+}
+
+.medicine-name {
+    scroll-margin-top: 80px;
+}
+
+.medicine-name b {
+    color: blue;
+
+    font-size: 18px;
+}
+
+/* ================= BUTTON ================= */
+
+button {
+    display: block;
+
+    margin: 15px auto;
+
+    padding: 10px 20px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+/* ================= LEARN MORE ================= */
+
+#extra-info {
+    border: 2px solid green;
+
+    padding: 15px;
+
+    margin: 15px auto;
+
+    max-width: 500px;
+
+    border-radius: 10px;
+
+    display: none;
+}
+
+#extra-info-turmeric {
+    border: 2px solid green;
+
+    padding: 15px;
+
+    margin: 15px auto;
+
+    max-width: 500px;
+
+    border-radius: 10px;
+
+    display: none;
+}
+
+#extra-info-giloy {
+    border: 2px solid green;
+
+    padding: 15px;
+
+    margin: 15px auto;
+
+    max-width: 500px;
+
+    border-radius: 10px;
+
+    display: none;
+}
+
+/* ================= ADD MORE ================= */
+
+.add-more {
+    margin-top: 25px;
+
+    color: red;
+
+    font-weight: bold;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    text-align: left;
+}
+
+.more-data {
+    display: none;
+
+    margin-top: 15px;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 700px) {
 
     body {
-        margin: 8px;
-        font-size: 18px;
-    }
-
-    h1 {
-        font-size: 36px;
-        letter-spacing: 2px;
-    }
-
-    .subtitle {
-        font-size: 17px;
-        letter-spacing: 1px;
+        margin: 15px;
     }
 
     .hero-header {
-        margin: -8px -8px 0 -8px;
-        padding: 30px 8px 30px 8px;
+        margin: -15px -15px 0 -15px;
+        padding: 30px 10px;
     }
 
-    .title-leaf {
-        width: 50px;
-        height: 50px;
+    h1 {
+        font-size: 30px;
+        letter-spacing: 1px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+        letter-spacing: 1px;
     }
 
     .menu-container {
-        margin: 10px -8px 25px -8px;
+        margin: 0 -15px 25px -15px;
     }
 
-    .menu-button {
-        font-size: 20px;
-        padding: 12px 20px;
+    .plants-row {
+        flex-direction: column;
     }
 
-    .menu-list {
-        width: 280px;
-        max-height: 75vh;
-        overflow-y: auto;
-        font-size: 18px;
+    .plants-row .plant-section {
+        width: 100%;
     }
 
-    .menu-list a {
-        padding: 12px;
+    .plants-row .plant-section:nth-child(3) {
+        width: 100%;
     }
 
-    .menu-parent {
-        padding: 12px;
+    .plant-main-content {
+        flex-direction: column;
+
+        align-items: center;
     }
 
-    .submenu a {
-        font-size: 17px;
-        padding: 10px;
+    .plant-photo {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .plant-photo img {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .plant-right-data {
+        width: 100%;
     }
 
     .plant-card {
         padding: 15px;
     }
 
-    .plant-card img {
+    .medicine-list {
         width: 100%;
-        max-width: 330px;
-        height: auto;
     }
 
-    .plant-data {
-        grid-template-columns: 1fr;
-        gap: 14px;
-    }
+}
 
-    .data-box {
-        font-size: 18px;
-        padding: 15px;
-    }
+/* ================= JAVASCRIPT STYLE HELP ================= */
 
-    .plant-info-title {
-        font-size: 30px;
-    }
+.medicine-name {
+    scroll-margin-top: 80px;
+}
 
-    h3 {
-        font-size: 26px;
-    }
+</style>
 
-    button {
-        font-size: 19px;
-        padding: 12px 24px;
-    }
+<script>
 
-    .medicine-name b {
-        font-size: 20px;
-    }
+/* ================= LEARN MORE NEEM ================= */
 
-    .medicine-list p {
-        font-size: 18px;
-        line-height: 1.5;
-    }
+function showInfo() {
 
-    .add-more {
-        font-size: 20px;
+    let info = document.getElementById("extra-info");
+
+    if (info.innerHTML === "") {
+
+        info.style.display = "block";
+
+        info.innerHTML = `
+            <h3>Useful Parts of Neem</h3>
+
+            <p><b>A - Whole plant:</b> Neem tree</p>
+            <p><b>B - Leaves:</b> Neem leaves</p>
+            <p><b>C - Flowers:</b> Neem flowers</p>
+            <p><b>D - Gum:</b> Neem gum / exudate</p>
+            <p><b>E - Bark:</b> Neem bark</p>
+            <p><b>F - Roots:</b> Neem roots</p>
+            <p><b>G - Seeds:</b> Neem seeds</p>
+            <p><b>H - Fruits:</b> Neem fruits</p>
+            <p><b>I - Stem:</b> Neem stem / trunk</p>
+        `;
+
+    } else {
+
+        info.innerHTML = "";
+
+        info.style.display = "none";
     }
 }
-    </style>
-</head>   
-<script>
-    function showInfo() {
-        let info = document.getElementById("extra-info");
 
-        if (info.innerHTML === "") {
-            info.style.display="block";
-            info.innerHTML = `
-                <h3>Useful Parts of Neem</h3>
+/* ================= ADD MORE NEEM ================= */
 
-                <p><b>A - Whole plant:</b> Neem tree</p>
-                <p><b>B - Leaves:</b> Neem leaves</p>
-                <p><b>C - Flowers:</b> Neem flowers</p>
-                <p><b>D - Gum:</b> Neem gum / exudate</p>
-                <p><b>E - Bark:</b> Neem bark</p>
-                <p><b>F - Roots:</b> Neem roots</p>
-                <p><b>G - Seeds:</b> Neem seeds</p>
-                <p><b>H - Fruits:</b> Neem fruits</p>
-                <p><b>I - Stem:</b> Neem stem / trunk</p>
-            `;
-        } else {
-            info.innerHTML = "";
-            info.style.display="none";
-        }
+function showMoreneem() {
+
+    let more = document.getElementById("more-data-neem");
+
+    if (more.style.display === "none" || more.style.display === "") {
+
+        more.style.display = "block";
+
+    } else {
+
+        more.style.display = "none";
     }
-    function showMoreneem() {
-        let more=document.getElementById("more-data-neem");
-        if (more.style.display==="none"|| more.style.display==="") {
-            more.style.display="block";
-        } else {
-            more.style.display="none";
-        }
-    }
-    function showInfoTurmeric() {
+}
+
+/* ================= LEARN MORE TURMERIC ================= */
+
+function showInfoTurmeric() {
+
     let info = document.getElementById("extra-info-turmeric");
 
     if (info.innerHTML === "") {
+
         info.style.display = "block";
+
         info.innerHTML = `
             <h3>Useful Parts of Haridra</h3>
 
@@ -433,482 +567,891 @@
             <p><b>C - Flowers:</b> Haridra flowers</p>
             <p><b>D - Whole Plant:</b> Haridra plant</p>
         `;
+
     } else {
+
         info.innerHTML = "";
+
         info.style.display = "none";
     }
 }
-    function showMoreTurmeric() {
-        let more = document.getElementById("more-data-turmeric");
 
-        if (more.style.display === "none" || more.style.display === "") {
-            more.style.display = "block";
-        } else {
-            more.style.display = "none";
-        }
+/* ================= ADD MORE TURMERIC ================= */
+
+function showMoreTurmeric() {
+
+    let more = document.getElementById("more-data-turmeric");
+
+    if (more.style.display === "none" || more.style.display === "") {
+
+        more.style.display = "block";
+
+    } else {
+
+        more.style.display = "none";
     }
-    function showInfoGiloy() {
-        let info = document.getElementById("extra-info-giloy");
+}
 
-        if (info.innerHTML === "") {
-            info.style.display = "block";
-            info.innerHTML = `
-                <h3>Useful Parts of Giloy</h3>
+/* ================= LEARN MORE GILOY ================= */
 
-                <p><b>A - Whole Plant:</b> Traditionally used in Ayurveda for general wellness and fever support.</p>
+function showInfoGiloy() {
 
-                <p><b>B - Stem:</b> The main medicinal part; traditionally used for fever support and digestive wellness.</p>
+    let info = document.getElementById("extra-info-giloy");
 
-                <p><b>C - Leaves:</b> Traditionally used in herbal preparations for general wellness and digestive support.</p>
+    if (info.innerHTML === "") {
 
-                <p><b>D - Flowers:</b> Traditionally used in some Ayurvedic preparations and studied for antioxidant activity.</p>
+        info.style.display = "block";
 
-                <p><b>E - Fruits:</b> Traditionally used in herbal preparations and studied for antioxidant properties.</p>
-                `;
-        } else {
-            info.innerHTML = "";
-            info.style.display = "none";
-        }
+        info.innerHTML = `
+            <h3>Useful Parts of Giloy</h3>
+
+            <p><b>A - Whole Plant:</b> Traditionally used in Ayurveda for general wellness and fever support.</p>
+
+            <p><b>B - Stem:</b> The main medicinal part; traditionally used for fever support and digestive wellness.</p>
+
+            <p><b>C - Leaves:</b> Traditionally used in herbal preparations for general wellness and digestive support.</p>
+
+            <p><b>D - Flowers:</b> Traditionally used in some Ayurvedic preparations and studied for antioxidant activity.</p>
+
+            <p><b>E - Fruits:</b> Traditionally used in herbal preparations and studied for antioxidant properties.</p>
+        `;
+
+    } else {
+
+        info.innerHTML = "";
+
+        info.style.display = "none";
     }
-    function showMoreGiloy() {
-        let more = document.getElementById("more-data-giloy");
+}
 
-        if (more.style.display === "none" || more.style.display === "") {
-            more.style.display = "block";
-        } else {
-            more.style.display = "none";
-        }
+/* ================= ADD MORE GILOY ================= */
+
+function showMoreGiloy() {
+
+    let more = document.getElementById("more-data-giloy");
+
+    if (more.style.display === "none" || more.style.display === "") {
+
+        more.style.display = "block";
+
+    } else {
+
+        more.style.display = "none";
     }
-    function toggleSection(id) {
+}
+
+/* ================= MENU OPEN / CLOSE ================= */
+
+function toggleSection(id) {
+
     let section = document.getElementById(id);
 
     if (section.style.display === "block") {
+
         section.style.display = "none";
+
     } else {
+
         section.style.display = "block";
     }
 }
-     function showMedicine(groupId, medicineId) {
+
+/* ================= MEDICINE MENU ================= */
+
+function showMedicineGroup(groupId) {
+
     let group = document.getElementById(groupId);
 
-    if (group.style.display === "none" || group.style.display === "") {
+    if (group.style.display === "none") {
+
         group.style.display = "block";
-    }
 
-    setTimeout(function() {
-        document.getElementById(medicineId).scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-    }, 100);
-}
-
-    function showMedicineGroup(groupId) {
-    let group = document.getElementById(groupId);
-
-    if (group.style.display === "none" || group.style.display === "") {
-        group.style.display = "block";
     } else {
+
         group.style.display = "none";
     }
 }
 
+/* ================= MEDICINE CLICK ================= */
+
+function showMedicine(groupId, medicineId) {
+
+    let medicine = document.getElementById(medicineId);
+
+    if (medicine) {
+
+        medicine.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }
+}
 
 </script>
+
+</head>
+
 <body>
-    
-       <div class="hero-header">
 
-        <div class="cloud cloud1">☁</div>
-        <div class="cloud cloud2">☁</div>
-        <div class="cloud cloud3">☁</div>
-        <div class="cloud cloud4">☁</div>
+<!-- ================= HEADER ================= -->
 
-        <h1>
-            HERBAL PLANT EXPLORER
-        </h1>   
-            <img src="leaftransparent.png" class="title-leaf">
-            <img src="leaftransparent.png" class="title-leaf">
-        
+<div class="hero-header">
 
-        <p class="subtitle">EXPLORER MEDICINAL AND HERBAL PLANT</p>
+    <div class="cloud cloud1">☁</div>
+    <div class="cloud cloud2">☁</div>
+    <div class="cloud cloud3">☁</div>
+    <div class="cloud cloud4">☁</div>
 
-    </div>
-    <div class="menu-container">
+    <h1>
+        HERBAL PLANT EXPLORER
+    </h1>
 
-    <button class="menu-button" onclick="toggleSection('main-menu')">☰ MENU</button>
+    <img src="leaftransparent.png" class="title-leaf">
+    <img src="leaftransparent.png" class="title-leaf">
+
+    <p class="subtitle">
+        EXPLORER MEDICINAL AND HERBAL PLANT
+    </p>
+
+</div>
+
+
+<!-- ================= MENU ================= -->
+
+<div class="menu-container">
+
+    <button class="menu-button" onclick="toggleSection('main-menu')">
+        ☰ MENU
+    </button>
 
     <div id="main-menu" class="menu-list">
 
-    <a href="#plant-information">HOME</a>
+        <a href="#plant-information">HOME</a>
 
-    <div class="menu-parent" onclick="toggleSection('plant-menu')">
-        PLANT INFORMATION ▾
-    </div>
+        <div class="menu-parent" onclick="toggleSection('plant-menu')">
+            PLANT INFORMATION ▾
+        </div>
 
-    <div id="plant-menu" class="submenu">
-        <a href="#neem">1) Nimba (Neem)</a>
-        <a href="#haridra">2) Haridra (Turmeric)</a>
-        <a href="#guduchi">3) Guduchi (Giloy)</a>
-    </div>
+        <div id="plant-menu" class="submenu">
 
-    <div class="menu-parent" onclick="toggleSection('medicine-menu')">
-        MEDICINAL FORMULATIONS ▾
-    </div>
+            <a href="#neem">1) Nimba (Neem)</a>
 
-    <div id="medicine-menu" class="submenu">
-        <div class="medicine-plant" onclick="showMedicineGroup('neem-medicine')">Neem</div>
-        <a href="javascript:void(0)" onclick="showMedicine('neem-medicine','nimba-taila')">Nimba Taila</a>
+            <a href="#haridra">2) Haridra (Turmeric)</a>
 
-<a href="javascript:void(0)" onclick="showMedicine('neem-medicine','nimba-ghrita')">Nimba Ghrita</a>
+            <a href="#guduchi">3) Guduchi (Giloy)</a>
 
-<a href="javascript:void(0)" onclick="showMedicine('neem-medicine','nimbadi-kwatha')">Nimbadi Kwatha</a>
-
-<a href="javascript:void(0)" onclick="showMedicine('neem-medicine','panchatikta-ghrita')">Panchatikta Ghrita</a>
-
-<a href="javascript:void(0)" onclick="showMedicine('neem-medicine','nimbamritadi-taila')">Nimbamritadi Taila</a>
-
-       <div class="medicine-plant" onclick="showMedicineGroup('haridra-medicine')">Haridra</div>
-        <a href="javascript:void(0)" onclick="showMedicine('haridra-medicine','haridra-khanda')">Haridra Khanda</a>
-
-<a href="javascript:void(0)" onclick="showMedicine('haridra-medicine','haridra-churna')">Haridra Churna</a>
-
-<a href="javascript:void(0)" onclick="showMedicine('haridra-medicine','nisha-amalaki')">Nisha Amalaki</a>
-
-<a href="javascript:void(0)" onclick="showMedicine('haridra-medicine','haridra-taila')">Haridra Taila</a>
-<a href="javascript:void(0)" onclick="showMedicine('haridra-medicine','haridra-based')">Haridra-based Preparations</a>
+        </div>
 
 
-        <div class="medicine-plant" onclick="showMedicineGroup('guduchi-medicine')">Guduchi</div>
-        <a href="javascript:void(0)" onclick="showMedicine('guduchi-medicine','guduchi-satva')">Guduchi Satva</a>
+        <div class="menu-parent" onclick="toggleSection('medicine-menu')">
+            MEDICINAL FORMULATIONS ▾
+        </div>
 
-<a href="javascript:void(0)" onclick="showMedicine('guduchi-medicine','guduchyadi-churna')">Guduchyadi Churna</a>
+        <div id="medicine-menu" class="submenu">
 
-<a href="javascript:void(0)" onclick="showMedicine('guduchi-medicine','amritarishta')">Amritarishta</a>
+            <div class="medicine-plant"
+                 onclick="showMedicineGroup('neem-menu-medicines')">
+                Neem
+            </div>
 
-<a href="javascript:void(0)" onclick="showMedicine('guduchi-medicine','guduchi-ghrita')">Guduchi Ghrita</a>
+            <div id="neem-menu-medicines">
 
-<a href="javascript:void(0)" onclick="showMedicine('guduchi-medicine','guduchi-taila')">Guduchi Taila</a>
-    </div>
+                <a href="javascript:void(0)"
+                   onclick="showMedicine('neem-medicine','nimba-taila')">
+                    Nimba Taila
+                </a>
 
-    <a href="#ayurveda">AYURVEDA</a>
-    <a href="#herbal-knowledge">HERBAL KNOWLEDGE</a>
-    <a href="#diseases">DISEASES</a>
-    <a href="#about">ABOUT</a>
-    <a href="#contact">CONTACT</a>
+                <a href="javascript:void(0)"
+                   onclick="showMedicine('neem-medicine','nimba-ghrita')">
+                    Nimba Ghrita
+                </a>
+
+                <a href="javascript:void(0)"
+                   onclick="showMedicine('neem-medicine','nimbadi-kwatha')">
+                    Nimbadi Kwatha
+                </a>
+
+                <a href="javascript:void(0)"
+                   onclick="showMedicine('neem-medicine','panchatikta-ghrita')">
+                    Panchatikta Ghrita
+                </a>
+
+                <a href="javascript:void(0)"
+                   onclick="showMedicine('neem-medicine','nimbamritadi-taila')">
+                    Nimbamritadi Taila
+                </a>
+
+            </div>
+
+
+            <div class="medicine-plant"
+                 onclick="showMedicineGroup('haridra-menu-medicines')">
+                Haridra
+            </div>
+
+            <div id="haridra-menu-medicines">
+
+                <a href="javascript:void(0)"
+                   onclick="showMedicine('haridra-medicine','haridra-khanda')">
+                    Haridra Khanda
+                </a>
+
+                <a href="javascript:void(0)"
+                   onclick="showMedicine('haridra-medicine','haridra-churna')">
+                    Haridra Churna
+                </a>
+
+                <a href="javascript:void(0)"
+                   onclick="showMedicine('haridra-medicine','nisha-amalaki')">
+                    Nisha Amalaki
+                </a>
+
+                <a href="javascript:void(0)"
+                   onclick="showMedicine('haridra-medicine','haridra-taila')">
+                    Haridra Taila
+                </a>
+
+                <a href="javascript:void(0)"
+                   onclick="showMedicine('haridra-medicine','haridra-based')">
+                    Haridra-based Preparations
+                </a>
+
+            </div>
+
+
+            <div class="medicine-plant"
+                 onclick="showMedicineGroup('guduchi-menu-medicines')">
+                Guduchi
+            </div>
+
+            <div id="guduchi-menu-medicines">
+
+                <a href="javascript:void(0)"
+                   onclick="showMedicine('guduchi-medicine','guduchi-satva')">
+                    Guduchi Satva
+                </a>
+
+                <a href="javascript:void(0)"
+                   onclick="showMedicine('guduchi-medicine','guduchyadi-churna')">
+                    Guduchyadi Churna
+                </a>
+
+                <a href="javascript:void(0)"
+                   onclick="showMedicine('guduchi-medicine','amritarishta')">
+                    Amritarishta
+                </a>
+
+                <a href="javascript:void(0)"
+                   onclick="showMedicine('guduchi-medicine','guduchi-ghrita')">
+                    Guduchi Ghrita
+                </a>
+
+                <a href="javascript:void(0)"
+                   onclick="showMedicine('guduchi-medicine','guduchi-taila')">
+                    Guduchi Taila
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <a href="#ayurveda">AYURVEDA</a>
+
+        <a href="#herbal-knowledge">HERBAL KNOWLEDGE</a>
+
+        <a href="#diseases">DISEASES</a>
+
+        <a href="#about">ABOUT</a>
+
+        <a href="#contact">CONTACT</a>
 
     </div>
 
 </div>
-    <h2 id="plant-information" class="plant-info-title">
-        <span>PLANT</span> <span>INFORMATION</span>
-    </h2>
-    <h3 id="neem"> 1) निम्ब (Nimba)</h3> 
+
+
+<!-- ================= PLANT INFORMATION ================= -->
+
+<h2 id="plant-information" class="plant-info-title">
+
+    <span>PLANT</span>
+    <span>INFORMATION</span>
+
+</h2>
+
+
+<div class="plants-row">
+
+
+<!-- ================= NEEM ================= -->
+
+<div class="plant-section">
+
+    <h3 id="neem">
+        1) निम्ब (Nimba)
+    </h3>
+
     <div class="plant-card">
-    <img src="images.jpg" alt="neem plant">
-    <button onclick="showInfo()">learn more</button> 
-    <p id="extra-info"></p>
-    <div class="plant-data">
 
-    <div class="data-box">
-        <b>Plant Name</b><br>
-        Neem
-    </div>
+        <div class="plant-main-content">
 
-    <div class="data-box">
-        <b>Botanical Name</b><br>
-        Azadirachta indica
-    </div>
 
-    <div class="data-box">
-        <b>Family</b><br>
-        Meliaceae
-    </div>
+            <!-- LEFT SIDE -->
 
-    <div class="data-box">
-        <b>Parts Used</b><br>
-        Leaves, Bark, Seeds
-    </div>
+            <div class="plant-photo">
 
-    <div class="data-box">
-        <b>Medicinal Effect</b><br>
-        Antimicrobial
-    </div>
+                <img src="images.jpg" alt="neem plant">
 
-    <div class="data-box">
-        <b>Active Compounds</b><br>
-        Azadirachtin, Nimbin
-    </div>
+                <button onclick="showInfo()">
+                    learn more
+                </button>
 
-    <div class="data-box">
-        <b>Traditional Use</b><br>
-        Skin care, Wound care
-    </div>
+                <p id="extra-info"></p>
 
-</div>
 
-<div class="add-more" onclick="showMoreneem()">
-    + ADD MORE
-</div>
+                <!-- NEEM MEDICINES -->
 
-<div id="more-data-neem" class="more-data">
-    <div class="plant-data">
+                <div id="neem-medicine" class="medicine-list">
 
-        <div class="data-box">
-            <b>Write Heading</b><br>
-            <input type="text" placeholder="Type here...">
-        </div>
+                    <p id="nimba-taila" class="medicine-name">
+                        <b>1. Nimba Taila</b>
+                    </p>
 
-        <div class="data-box">
-            <b>Write Information</b><br>
-            <input type="text" placeholder="Type here...">
-        </div>
+                    <p>→ <b>Main Effect:</b> Skin-supporting, antimicrobial</p>
 
-    </div>
-</div>
+                    <p>→ <b>Neem Part:</b> Neem seed oil</p>
 
-<!-- Neem Medicines - Always Visible -->
+                    <p>→ <b>Other Ingredients:</b> Sesame oil</p>
 
-<div id="neem-medicine" class="medicine-list" style ="display: block;">
+                    <p>→ <b>Why Neem is Used:</b> Traditional antimicrobial and skin-supporting properties.</p>
 
-    <p id="nimba-taila" class="medicine-name"><b>1. Nimba Taila</b></p>
-    <p>→ <b>Main Effect:</b> Skin-supporting, antimicrobial</p>
-    <p>→ <b>Neem Part:</b> Neem seed oil</p>
-    <p>→ <b>Other Ingredients:</b> Sesame oil</p>
-    <p>→ <b>Why Neem is Used:</b> Traditional antimicrobial and skin-supporting properties.</p>
 
-    <p id="nimba-ghrita" class="medicine-name"><b>2. Nimba Ghrita</b></p>
-    <p>→ <b>Main Effect:</b> Skin-supporting</p>
-    <p>→ <b>Neem Part:</b> Neem</p>
-    <p>→ <b>Other Ingredients:</b> Go-ghrita</p>
-    <p>→ <b>Why Neem is Used:</b> Traditional use in skin-related Ayurvedic preparations.</p>
-    
-    <p id="nimbadi-kwatha" class="medicine-name"><b>3. Nimbadi Kwatha</b></p>
-    <p>→ <b>Main Effect:</b> Traditional support for skin and fever-related conditions</p>
-    <p>→ <b>Neem Part:</b> Neem</p>
-    <p>→ <b>Other Ingredients:</b> Formulation-specific herbs</p>
-    <p>→ <b>Why Neem is Used:</b> Neem is traditionally included for its bitter and skin-supporting properties.</p>
+                    <p id="nimba-ghrita" class="medicine-name">
+                        <b>2. Nimba Ghrita</b>
+                    </p>
 
-    <p id="panchatikta-ghrita" class="medicine-name"><b>4. Panchatikta Ghrita</b></p>
-    <p>→ <b>Main Effect:</b> Traditional support for skin and inflammatory conditions</p>
-    <p>→ <b>Neem Part:</b> Stem and bark</p>
-    <p>→ <b>Other Ingredients:</b> Patola, Guduchi, Vasa, Ghrita</p>
-    <p>→ <b>Why Neem is Used:</b> Neem is one of the principal bitter herbs in the Panchatikta group.</p>
+                    <p>→ <b>Main Effect:</b> Skin-supporting</p>
 
-    <p id="nimbamritadi-taila" class="medicine-name"><b>5. Nimbamritadi Taila</b></p>
-    <p>→ <b>Main Effect:</b> Traditional skin-supporting use</p>
-    <p>→ <b>Neem Part:</b> Neem</p>
-    <p>→ <b>Other Ingredients:</b> Guduchi, Patola, oil base</p>
-    <p>→ <b>Why Neem is Used:</b> Neem is included as a key herb in this traditional medicated-oil formulation.</p>
+                    <p>→ <b>Neem Part:</b> Neem</p>
 
-</div>
+                    <p>→ <b>Other Ingredients:</b> Go-ghrita</p>
 
-</div>
-<h3 id="haridra">2) हरिद्रा (Haridra)</h3>
+                    <p>→ <b>Why Neem is Used:</b> Traditional use in skin-related Ayurvedic preparations.</p>
 
-<div class="plant-card">
-    <img src="haldi.jpg" alt="turmeric plant">
 
-    <button onclick="showInfoTurmeric()">learn more</button>
-    <p id="extra-info-turmeric"></p>
+                    <p id="nimbadi-kwatha" class="medicine-name">
+                        <b>3. Nimbadi Kwatha</b>
+                    </p>
 
-    <div class="plant-data">
+                    <p>→ <b>Main Effect:</b> Traditional support for skin and fever-related conditions</p>
 
-    <div class="data-box">
-        <b>Plant Name</b><br>
-        Turmeric
-    </div>
+                    <p>→ <b>Neem Part:</b> Neem</p>
 
-    <div class="data-box">
-        <b>Botanical Name</b><br>
-        Curcuma longa
-    </div>
+                    <p>→ <b>Other Ingredients:</b> Formulation-specific herbs</p>
 
-    <div class="data-box">
-        <b>Family</b><br>
-        Zingiberaceae
-    </div>
+                    <p>→ <b>Why Neem is Used:</b> Neem is traditionally included for its bitter and skin-supporting properties.</p>
 
-    <div class="data-box">
-        <b>Parts Used</b><br>
-        Rhizome
-    </div>
 
-    <div class="data-box">
-        <b>Medicinal Effect</b><br>
-        Antioxidant, Antimicrobial
-    </div>
+                    <p id="panchatikta-ghrita" class="medicine-name">
+                        <b>4. Panchatikta Ghrita</b>
+                    </p>
 
-    <div class="data-box">
-        <b>Active Compounds</b><br>
-        Curcumin
-    </div>
+                    <p>→ <b>Main Effect:</b> Traditional support for skin and inflammatory conditions</p>
 
-    <div class="data-box">
-        <b>Traditional Use</b><br>
-        Digestive support, Skin care
-    </div>
+                    <p>→ <b>Neem Part:</b> Stem and bark</p>
 
-</div>
-<div class="add-more" onclick="showMoreTurmeric()">
-    + ADD MORE
-</div>
+                    <p>→ <b>Other Ingredients:</b> Patola, Guduchi, Vasa, Ghrita</p>
 
-<div id="more-data-turmeric" class="more-data">
-    <div class="plant-data">
+                    <p>→ <b>Why Neem is Used:</b> Neem is one of the principal bitter herbs in the Panchatikta group.</p>
 
-        <div class="data-box">
-            <b>Write Heading</b><br>
-            <input type="text" placeholder="Type here...">
+
+                    <p id="nimbamritadi-taila" class="medicine-name">
+                        <b>5. Nimbamritadi Taila</b>
+                    </p>
+
+                    <p>→ <b>Main Effect:</b> Traditional skin-supporting use</p>
+
+                    <p>→ <b>Neem Part:</b> Neem</p>
+
+                    <p>→ <b>Other Ingredients:</b> Guduchi, Patola, oil base</p>
+
+                    <p>→ <b>Why Neem is Used:</b> Neem is included as a key herb in this traditional medicated-oil formulation.</p>
+
                 </div>
 
-        <div class="data-box">
-            <b>Write Information</b><br>
-            <input type="text" placeholder="Type here...">
-        </div>
+            </div>
 
-    </div>
-</div>
-<!-- Turmeric Medicines - Always Visible -->
 
-<div id="haridra-medicine" class="medicine-list" style="display:block;">
+            <!-- RIGHT SIDE -->
 
-    <p id="haridra-khanda" class="medicine-name"><b>1. Haridra Khanda</b></p>
-    <p>→ <b>Main Effect:</b> Traditional support for skin and allergy-related conditions</p>
-    <p>→ <b>Turmeric Part:</b> Haridra rhizome</p>
-    <p>→ <b>Other Ingredients:</b> Formulation-specific herbs and spices</p>
-    <p>→ <b>Why Turmeric is Used:</b> Haridra is traditionally valued for skin-supporting properties.</p>
+            <div class="plant-right-data">
 
-    <p id="haridra-churna" class="medicine-name"><b>2. Haridra Churna</b></p>
-    <p>→ <b>Main Effect:</b> Traditional digestive and skin-supporting use</p>
-    <p>→ <b>Turmeric Part:</b> Haridra rhizome</p>
-    <p>→ <b>Other Ingredients:</b> Depends on the preparation</p>
-    <p>→ <b>Why Turmeric is Used:</b> The rhizome is the principal medicinal part of Haridra.</p>
+                <div class="plant-data">
 
-    <p id="nisha-amalaki" class="medicine-name"><b>3. Nisha Amalaki</b></p>
-    <p>→ <b>Main Effect:</b> Traditional support for metabolic health</p>
-    <p>→ <b>Turmeric Part:</b> Haridra rhizome</p>
-    <p>→ <b>Other Ingredients:</b> Amalaki</p>
-    <p>→ <b>Why Turmeric is Used:</b> Haridra is traditionally combined with Amalaki in this preparation.</p>
+                    <div class="data-box">
+                        <b>Plant Name</b><br>
+                        Neem
+                    </div>
 
-    <p id="haridra-taila" class="medicine-name"><b>4. Haridra Taila</b></p>
-    <p>→ <b>Main Effect:</b> Traditional skin-supporting use</p>
-    <p>→ <b>Turmeric Part:</b> Haridra rhizome</p>
-    <p>→ <b>Other Ingredients:</b> Oil base and formulation-specific ingredients</p>
-    <p>→ <b>Why Turmeric is Used:</b> Traditionally used in external preparations for skin care.</p>
+                    <div class="data-box">
+                        <b>Botanical Name</b><br>
+                        Azadirachta indica
+                    </div>
 
-    <p id="haridra-based" class="medicine-name"><b>5. Haridra-based Preparations</b></p>
-    <p>→ <b>Main Effect:</b> Traditional digestive and skin-supporting use</p>
-    <p>→ <b>Turmeric Part:</b> Haridra rhizome</p>
-    <p>→ <b>Other Ingredients:</b> Depends on the formulation</p>
-    <p>→ <b>Why Turmeric is Used:</b> Haridra is an important traditional Ayurvedic herb.</p>
+                    <div class="data-box">
+                        <b>Family</b><br>
+                        Meliaceae
+                    </div>
 
-</div>
+                    <div class="data-box">
+                        <b>Parts Used</b><br>
+                        Leaves, Bark, Seeds
+                    </div>
 
-</div>
-<h3 id="guduchi">3) गुडूची (Guduchi)</h3>
+                    <div class="data-box">
+                        <b>Medicinal Effect</b><br>
+                        Antimicrobial
+                    </div>
 
-<div class="plant-card">
-    <img src="gloe.jpg" alt="giloy plant">
-    <button onclick="showInfoGiloy()">learn more</button>
+                    <div class="data-box">
+                        <b>Active Compounds</b><br>
+                        Azadirachtin, Nimbin
+                    </div>
 
-    <p id="extra-info-giloy"></p>
+                    <div class="data-box">
+                        <b>Traditional Use</b><br>
+                        Skin care, Wound care
+                    </div>
 
-    <div class="plant-data">
+                </div>
 
-        <div class="data-box">
-            <b>Plant Name</b><br>
-            Giloy
-        </div>
 
-        <div class="data-box">
-            <b>Botanical Name</b><br>
-            Tinospora cordifolia
-        </div>
+                <div class="add-more"
+                     onclick="showMoreneem()">
+                    + ADD MORE
+                </div>
 
-        <div class="data-box">
-            <b>Family</b><br>
-            Menispermaceae
-        </div>
 
-        <div class="data-box">
-            <b>Parts Used</b><br>
-            Stem
-        </div>
+                <div id="more-data-neem"
+                     class="more-data">
 
-        <div class="data-box">
-            <b>Medicinal Effect</b><br>
-            Immunomodulatory, Antioxidant
-        </div>
+                    <div class="plant-data">
 
-        <div class="data-box">
-            <b>Active Compounds</b><br>
-            Tinosporin, Berberine
-        </div>
+                        <div class="data-box">
 
-        <div class="data-box">
-            <b>Traditional Use</b><br>
-            Fever support, Digestive support
-        </div>
+                            <b>Write Heading</b><br>
 
-    </div>
+                            <input type="text"
+                                   placeholder="Type here...">
 
-    <div class="add-more" onclick="showMoreGiloy()">
-    + ADD MORE
-</div>
+                        </div>
 
-<div id="more-data-giloy" class="more-data">
+                        <div class="data-box">
 
-    <div class="plant-data">
+                            <b>Write Information</b><br>
 
-        <div class="data-box">
-            <b>Write Heading</b><br>
-            <input type="text" placeholder="Type here...">
-        </div>
+                            <input type="text"
+                                   placeholder="Type here...">
 
-        <div class="data-box">
-            <b>Write Information</b><br>
-            <input type="text" placeholder="Type here...">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
     </div>
 
 </div>
-<!-- Giloy Medicines - Always Visible -->
 
-<div id="guduchi-medicine" class="medicine-list" style="display:block;">
 
-    <p id="guduchi-satva" class="medicine-name"><b>1. Guduchi Satva</b></p>
-    <p>→ <b>Main Effect:</b> Traditional support for general wellness and fever-related conditions</p>
-    <p>→ <b>Giloy Part:</b> Giloy stem</p>
-    <p>→ <b>Other Ingredients:</b> Prepared primarily from Guduchi</p>
-    <p>→ <b>Why Giloy is Used:</b> Guduchi is traditionally valued for its bitter and supportive properties.</p>
+<!-- ================= HARIDRA ================= -->
 
-    <p id="guduchyadi-churna" class="medicine-name"><b>2. Guduchyadi Churna</b></p>
-    <p>→ <b>Main Effect:</b> Traditional digestive and wellness support</p>
-    <p>→ <b>Giloy Part:</b> Giloy stem</p>
-    <p>→ <b>Other Ingredients:</b> Formulation-specific herbs</p>
-    <p>→ <b>Why Giloy is Used:</b> Guduchi is traditionally included as an important herb in the formulation.</p>
+<div class="plant-section">
 
-    <p id="amritarishta" class="medicine-name"><b>3. Amritarishta</b></p>
-    <p>→ <b>Main Effect:</b> Traditional support for fever-related conditions</p>
-    <p>→ <b>Giloy Part:</b> Giloy stem</p>
-    <p>→ <b>Other Ingredients:</b> Dashamoola, Trikatu and other formulation-specific ingredients</p>
-    <p>→ <b>Why Giloy is Used:</b> Guduchi is traditionally used as an important ingredient in this preparation.</p>
+    <h3 id="haridra">
+        2) हरिद्रा (Haridra)
+    </h3>
 
-    <p id="guduchi-ghrita" class="medicine-name"><b>4. Guduchi Ghrita</b></p>
-    <p>→ <b>Main Effect:</b> Traditional general wellness support</p>
-    <p>→ <b>Giloy Part:</b> Giloy stem</p>
-    <p>→ <b>Other Ingredients:</b> Ghrita and formulation-specific ingredients</p>
-    <p>→ <b>Why Giloy is Used:</b> Guduchi is traditionally used in ghrita-based Ayurvedic preparations.</p>
+    <div class="plant-card">
 
-    <p id="guduchi-taila" class="medicine-name"><b>5. Guduchi Taila</b></p>
-    <p>→ <b>Main Effect:</b> Traditional external-use preparation</p>
-    <p>→ <b>Giloy Part:</b> Giloy stem</p>
-    <p>→ <b>Other Ingredients:</b> Oil base and formulation-specific ingredients</p>
-    <p>→ <b>Why Giloy is Used:</b> Guduchi is traditionally included in selected medicated-oil preparations.</p>
+        <div class="plant-main-content">
+
+
+            <!-- LEFT SIDE -->
+
+            <div class="plant-photo">
+
+                <img src="haldi.jpg"
+                     alt="turmeric plant">
+
+                <button onclick="showInfoTurmeric()">
+                    learn more
+                </button>
+
+                <p id="extra-info-turmeric"></p>
+
+
+                <!-- HARIDRA MEDICINES -->
+
+                <div id="haridra-medicine"
+                     class="medicine-list">
+
+                    <p id="haridra-khanda"
+                       class="medicine-name">
+                        <b>1. Haridra Khanda</b>
+                    </p>
+
+                    <p>→ <b>Main Effect:</b> Traditional support for skin and allergy-related conditions</p>
+
+                    <p>→ <b>Turmeric Part:</b> Haridra rhizome</p>
+
+                    <p>→ <b>Other Ingredients:</b> Formulation-specific herbs and spices</p>
+
+                    <p>→ <b>Why Turmeric is Used:</b> Haridra is traditionally valued for skin-supporting properties.</p>
+
+
+                    <p id="haridra-churna"
+                       class="medicine-name">
+                        <b>2. Haridra Churna</b>
+                    </p>
+
+                    <p>→ <b>Main Effect:</b> Traditional digestive and skin-supporting use</p>
+
+                    <p>→ <b>Turmeric Part:</b> Haridra rhizome</p>
+
+                    <p>→ <b>Other Ingredients:</b> Depends on the preparation</p>
+
+                    <p>→ <b>Why Turmeric is Used:</b> The rhizome is the principal medicinal part of Haridra.</p>
+
+
+                    <p id="nisha-amalaki"
+                       class="medicine-name">
+                        <b>3. Nisha Amalaki</b>
+                    </p>
+
+                    <p>→ <b>Main Effect:</b> Traditional support for metabolic health</p>
+
+                    <p>→ <b>Turmeric Part:</b> Haridra rhizome</p>
+
+                    <p>→ <b>Other Ingredients:</b> Amalaki</p>
+
+                    <p>→ <b>Why Turmeric is Used:</b> Haridra is traditionally combined with Amalaki in this preparation.</p>
+
+
+                    <p id="haridra-taila"
+                       class="medicine-name">
+                        <b>4. Haridra Taila</b>
+                    </p>
+
+                    <p>→ <b>Main Effect:</b> Traditional skin-supporting use</p>
+
+                    <p>→ <b>Turmeric Part:</b> Haridra rhizome</p>
+
+                    <p>→ <b>Other Ingredients:</b> Oil base and formulation-specific ingredients</p>
+
+                    <p>→ <b>Why Turmeric is Used:</b> Traditionally used in external preparations for skin care.</p>
+
+
+                    <p id="haridra-based"
+                       class="medicine-name">
+                        <b>5. Haridra-based Preparations</b>
+                    </p>
+
+                    <p>→ <b>Main Effect:</b> Traditional digestive and skin-supporting use</p>
+
+                    <p>→ <b>Turmeric Part:</b> Haridra rhizome</p>
+
+                    <p>→ <b>Other Ingredients:</b> Depends on the formulation</p>
+
+                    <p>→ <b>Why Turmeric is Used:</b> Haridra is an important traditional Ayurvedic herb.</p>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT SIDE -->
+
+            <div class="plant-right-data">
+
+                <div class="plant-data">
+
+                    <div class="data-box">
+                        <b>Plant Name</b><br>
+                        Turmeric
+                    </div>
+
+                    <div class="data-box">
+                        <b>Botanical Name</b><br>
+                        Curcuma longa
+                    </div>
+
+                    <div class="data-box">
+                        <b>Family</b><br>
+                        Zingiberaceae
+                    </div>
+
+                    <div class="data-box">
+                        <b>Parts Used</b><br>
+                        Rhizome
+                    </div>
+
+                    <div class="data-box">
+                        <b>Medicinal Effect</b><br>
+                        Antioxidant, Antimicrobial
+                    </div>
+
+                    <div class="data-box">
+                        <b>Active Compounds</b><br>
+                        Curcumin
+                    </div>
+
+                    <div class="data-box">
+                        <b>Traditional Use</b><br>
+                        Digestive support, Skin care
+                    </div>
+
+                </div>
+
+
+                <div class="add-more"
+                     onclick="showMoreTurmeric()">
+                    + ADD MORE
+                </div>
+
+
+                <div id="more-data-turmeric"
+                     class="more-data">
+
+                    <div class="plant-data">
+
+                        <div class="data-box">
+
+                            <b>Write Heading</b><br>
+
+                            <input type="text"
+                                   placeholder="Type here...">
+
+                        </div>
+
+                        <div class="data-box">
+
+                            <b>Write Information</b><br>
+
+                            <input type="text"
+                                   placeholder="Type here...">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
+
+
+<!-- ================= GUDUCHI ================= -->
+
+<div class="plant-section">
+
+    <h3 id="guduchi">
+        3) गुडूची (Guduchi)
+    </h3>
+
+    <div class="plant-card">
+
+        <div class="plant-main-content">
+
+
+            <!-- LEFT SIDE -->
+
+            <div class="plant-photo">
+
+                <img src="gloe.jpg"
+                     alt="giloy plant">
+
+                <button onclick="showInfoGiloy()">
+                    learn more
+                </button>
+
+                <p id="extra-info-giloy"></p>
+
+
+                <!-- GUDUCHI MEDICINES -->
+
+                <div id="guduchi-medicine"
+                     class="medicine-list">
+
+                    <p id="guduchi-satva"
+                       class="medicine-name">
+                        <b>1. Guduchi Satva</b>
+                    </p>
+
+                    <p>→ <b>Main Effect:</b> Traditional support for general wellness and fever-related conditions</p>
+
+                    <p>→ <b>Giloy Part:</b> Giloy stem</p>
+
+                    <p>→ <b>Other Ingredients:</b> Prepared primarily from Guduchi</p>
+
+                    <p>→ <b>Why Giloy is Used:</b> Guduchi is traditionally valued for its bitter and supportive properties.</p>
+
+
+                    <p id="guduchyadi-churna"
+                       class="medicine-name">
+                        <b>2. Guduchyadi Churna</b>
+                    </p>
+
+                    <p>→ <b>Main Effect:</b> Traditional digestive and wellness support</p>
+
+                    <p>→ <b>Giloy Part:</b> Giloy stem</p>
+
+                    <p>→ <b>Other Ingredients:</b> Formulation-specific herbs</p>
+
+                    <p>→ <b>Why Giloy is Used:</b> Guduchi is traditionally included as an important herb in the formulation.</p>
+
+
+                    <p id="amritarishta"
+                       class="medicine-name">
+                        <b>3. Amritarishta</b>
+                    </p>
+
+                    <p>→ <b>Main Effect:</b> Traditional support for fever-related conditions</p>
+
+                    <p>→ <b>Giloy Part:</b> Giloy stem</p>
+
+                    <p>→ <b>Other Ingredients:</b> Dashamoola, Trikatu and other formulation-specific ingredients</p>
+
+                    <p>→ <b>Why Giloy is Used:</b> Guduchi is traditionally used as an important ingredient in this preparation.</p>
+
+
+                    <p id="guduchi-ghrita"
+                       class="medicine-name">
+                        <b>4. Guduchi Ghrita</b>
+                    </p>
+
+                    <p>→ <b>Main Effect:</b> Traditional general wellness support</p>
+
+                    <p>→ <b>Giloy Part:</b> Giloy stem</p>
+
+                    <p>→ <b>Other Ingredients:</b> Ghrita and formulation-specific ingredients</p>
+
+                    <p>→ <b>Why Giloy is Used:</b> Guduchi is traditionally used in ghrita-based Ayurvedic preparations.</p>
+
+
+                    <p id="guduchi-taila"
+                       class="medicine-name">
+                        <b>5. Guduchi Taila</b>
+                    </p>
+
+                    <p>→ <b>Main Effect:</b> Traditional external-use preparation</p>
+
+                    <p>→ <b>Giloy Part:</b> Giloy stem</p>
+
+                    <p>→ <b>Other Ingredients:</b> Oil base and formulation-specific ingredients</p>
+
+                    <p>→ <b>Why Giloy is Used:</b> Guduchi is traditionally included in selected medicated-oil preparations.</p>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT SIDE -->
+
+            <div class="plant-right-data">
+
+                <div class="plant-data">
+
+                    <div class="data-box">
+                        <b>Plant Name</b><br>
+                        Giloy
+                    </div>
+
+                    <div class="data-box">
+                        <b>Botanical Name</b><br>
+                        Tinospora cordifolia
+                    </div>
+
+                    <div class="data-box">
+                        <b>Family</b><br>
+                        Menispermaceae
+                    </div>
+
+                    <div class="data-box">
+                        <b>Parts Used</b><br>
+                        Stem
+                    </div>
+
+                    <div class="data-box">
+                        <b>Medicinal Effect</b><br>
+                        Immunomodulatory, Antioxidant
+                    </div>
+
+                    <div class="data-box">
+                        <b>Active Compounds</b><br>
+                        Tinosporin, Berberine
+                    </div>
+
+                    <div class="data-box">
+                        <b>Traditional Use</b><br>
+                        Fever support, Digestive support
+                    </div>
+
+                </div>
+
+
+                <div class="add-more"
+                     onclick="showMoreGiloy()">
+                    + ADD MORE
+                </div>
+
+
+                <div id="more-data-giloy"
+                     class="more-data">
+
+                    <div class="plant-data">
+
+                        <div class="data-box">
+
+                            <b>Write Heading</b><br>
+
+                            <input type="text"
+                                   placeholder="Type here...">
+
+                        </div>
+
+                        <div class="data-box">
+
+                            <b>Write Information</b><br>
+
+                            <input type="text"
+                                   placeholder="Type here...">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
 
 </div>
 
