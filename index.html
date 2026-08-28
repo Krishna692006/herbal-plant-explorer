@@ -1,27 +1,19 @@
 <!DOCTYPE html>
-
 <html>
 <head>
 
-```
 <title>HERBAL PLANT EXPLORER</title>
 
 <meta name="description" content="Herbal Plant Explorer - Explore medicinal plants, their scientific names, traditional uses, benefits and detailed information.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-```
 
 <style>
-
-/* ================= BODY ================= */
 
 body {
     font-family: Arial;
     margin: 40px;
 }
-
-
-/* ================= HEADER ================= */
 
 .hero-header {
     position: relative;
@@ -62,9 +54,6 @@ h1 {
     vertical-align: middle;
 }
 
-
-/* ================= CLOUDS ================= */
-
 .cloud {
     position: absolute;
     color: white;
@@ -101,7 +90,6 @@ h1 {
     transform: rotate(-10deg);
 }
 
-
 /* ================= MENU ================= */
 
 .menu-container {
@@ -109,69 +97,46 @@ h1 {
     top: 0;
     left: 0;
     z-index: 2000;
-
     text-align: left;
-
     margin: 0 -40px 25px -40px;
     padding: 8px 0;
-
     background: darkgreen;
 }
 
 .menu-button {
     background: #e8f5e9;
     color: darkgreen;
-
     border: 2px solid green;
     border-radius: 8px;
-
     padding: 10px 18px;
-
     font-size: 17px;
     font-weight: bold;
-
     cursor: pointer;
-
     margin: 0;
 }
 
 .menu-list {
     display: none;
-
     position: absolute;
-
     left: 0;
     top: 56px;
-
     background: #f4fff4;
-
     border: 2px solid green;
     border-radius: 10px;
-
     padding: 8px;
-
     width: 230px;
-
     z-index: 2000;
-
     box-shadow: 0 4px 10px gray;
-
     max-height: 60vh;
-
     overflow-y: auto;
 }
 
 .menu-list a {
     display: block;
-
     padding: 10px;
-
     text-decoration: none;
-
     color: darkgreen;
-
     font-weight: bold;
-
     border-radius: 6px;
 }
 
@@ -181,15 +146,10 @@ h1 {
 
 .menu-parent {
     display: block;
-
     padding: 10px;
-
     color: darkgreen;
-
     font-weight: bold;
-
     border-radius: 6px;
-
     cursor: pointer;
 }
 
@@ -199,37 +159,28 @@ h1 {
 
 .submenu {
     display: none;
-
     padding-left: 10px;
 }
 
 .submenu a {
     font-size: 15px;
-
     padding: 8px;
 }
 
 .medicine-plant {
+    display: block;
     padding: 8px;
-
     color: blue;
-
     font-weight: bold;
-
     border-top: 1px solid #ccc;
-
     cursor: pointer;
 }
-
-
-/* ================= MEDICINE MENU GROUP ================= */
 
 .medicine-group {
     display: none;
 }
 
-
-/* ================= PLANT INFORMATION TITLE ================= */
+/* ================= TITLES ================= */
 
 h2 {
     margin-top: 30px;
@@ -237,30 +188,22 @@ h2 {
 
 .plant-info-title {
     color: purple;
-
     font-size: 30px;
-
     text-decoration: underline;
-
     text-underline-offset: 8px;
 }
 
 .plant-info-title span {
     font-weight: bold;
-
     color: purple;
-
     text-shadow: 0 0 0 purple;
 }
 
-
-/* ================= PLANTS ROW ================= */
+/* ================= PLANTS ================= */
 
 .plants-row {
     display: flex;
-
     flex-wrap: wrap;
-
     gap: 20px;
 }
 
@@ -268,89 +211,58 @@ h2 {
     width: calc(50% - 10px);
 }
 
-.plants-row .plant-section:nth-child(3) {
-    width: 100%;
-}
-
-
-/* ================= PLANT HEADING ================= */
-
 h3 {
     text-align: center;
-
     font-size: 24px;
 }
 
-
-/* ================= PLANT CARD ================= */
-
 .plant-card {
     border: 2px solid green;
-
     padding: 20px;
-
     margin-top: 20px;
-
     border-radius: 15px;
-
     box-shadow: 0 4px 10px gray;
+
+    /* IMPORTANT: prevents one plant from covering another */
+    overflow: hidden;
 }
-
-
-/* ================= PLANT MAIN CONTENT ================= */
 
 .plant-main-content {
     display: flex;
-
     align-items: flex-start;
-
     gap: 30px;
 }
 
 .plant-photo {
     width: 300px;
-
     flex-shrink: 0;
 }
 
 .plant-photo img {
     width: 300px;
-
     display: block;
-
     margin: 0 auto;
 }
 
 .plant-right-data {
     flex: 1;
+    min-width: 0;
 }
-
-
-/* ================= PLANT DATA ================= */
 
 .plant-data {
     margin-top: 10px;
-
     display: flex;
-
     flex-direction: column;
-
     gap: 5px;
 }
 
 .data-box {
     background: #f4fff4;
-
     border-left: 4px solid green;
-
     padding: 5px 10px;
-
     border-radius: 6px;
-
     box-shadow: 0 1px 3px #ccc;
-
     font-size: 14px;
-
     line-height: 1.15;
 }
 
@@ -358,107 +270,76 @@ h3 {
     color: darkgreen;
 }
 
-
-/* ================= MEDICINE DETAILS ================= */
+/* ================= MEDICINES ================= */
 
 .medicine-list {
     width: 100%;
-
     margin-top: 25px;
-
     padding-top: 12px;
-
     border-top: 2px solid #ddd;
+    clear: both;
 }
 
 .medicine-name {
     scroll-margin-top: 80px;
-
-    margin-top: 18px;
-
+    margin-top: 22px;
     margin-bottom: 8px;
+    padding-top: 5px;
 }
 
 .medicine-name b {
     color: blue;
-
     font-size: 18px;
-
     font-weight: 600;
 }
 
 .medicine-list p {
     font-size: 15px;
-
     font-weight: normal;
-
     line-height: 1.4;
-
-    margin: 8px 0;
+    margin: 7px 0;
 }
 
-.medicine-list p b {
-    font-weight: normal;
+.special-effect {
+    background: #fffde7;
+    border-left: 4px solid orange;
+    padding: 7px 10px;
+    border-radius: 6px;
 }
 
-
-/* ================= BUTTON ================= */
-
-button {
-    display: block;
-
-    margin: 15px auto;
-
-    padding: 10px 20px;
-
-    font-size: 16px;
-
-    cursor: pointer;
+.special-effect b {
+    color: #b35a00;
 }
-
 
 /* ================= LEARN MORE ================= */
 
 #extra-info,
 #extra-info-turmeric,
-#extra-info-giloy {
-
+#extra-info-giloy,
+#extra-info-chakotra,
+#extra-info-sadabahar,
+#extra-info-banana {
     border: 2px solid green;
-
     padding: 15px;
-
     margin: 15px auto;
-
     max-width: 500px;
-
     border-radius: 10px;
-
     display: none;
 }
 
-
-/* ================= ADD MORE ================= */
-
 .add-more {
     margin-top: 25px;
-
     color: red;
-
     font-weight: bold;
-
     font-size: 18px;
-
     cursor: pointer;
-
     text-align: left;
 }
 
 .more-data {
     display: none;
-
     margin-top: 15px;
 }
-
 
 /* ================= MOBILE ================= */
 
@@ -470,19 +351,16 @@ button {
 
     .hero-header {
         margin: -15px -15px 0 -15px;
-
         padding: 30px 10px;
     }
 
     h1 {
         font-size: 30px;
-
         letter-spacing: 1px;
     }
 
     .subtitle {
         font-size: 14px;
-
         letter-spacing: 1px;
     }
 
@@ -492,33 +370,27 @@ button {
 
     .menu-list {
         width: 220px;
-
         max-height: 45vh;
-
         overflow-y: auto;
     }
 
     .menu-list a {
         padding: 8px;
-
         font-size: 14px;
     }
 
     .menu-parent {
         padding: 8px;
-
         font-size: 14px;
     }
 
     .medicine-plant {
         padding: 7px;
-
         font-size: 14px;
     }
 
     .submenu a {
         font-size: 14px;
-
         padding: 7px;
     }
 
@@ -530,25 +402,18 @@ button {
         width: 100%;
     }
 
-    .plants-row .plant-section:nth-child(3) {
-        width: 100%;
-    }
-
     .plant-main-content {
         flex-direction: column;
-
         align-items: center;
     }
 
     .plant-photo {
         width: 100%;
-
         max-width: 300px;
     }
 
     .plant-photo img {
         width: 100%;
-
         max-width: 300px;
     }
 
@@ -558,48 +423,47 @@ button {
 
     .plant-card {
         padding: 15px;
+        overflow: hidden;
     }
 
     .medicine-list {
         width: 100%;
-
         margin-top: 25px;
     }
 
     .medicine-list p {
         font-size: 14px;
-
         line-height: 1.4;
     }
 
     .medicine-name b {
         font-size: 17px;
-
         font-weight: 600;
     }
 
 }
 
-
-/* ================= JAVASCRIPT ================= */
-
 </style>
 
 <script>
 
-/* ================= LEARN MORE NEEM ================= */
+/* =====================================================
+   LEARN MORE FUNCTIONS
+===================================================== */
 
 function showInfo() {
 
     let info = document.getElementById("extra-info");
 
-    if (info.innerHTML === "") {
+    if (info.style.display === "block") {
+        info.innerHTML = "";
+        info.style.display = "none";
+    } else {
 
         info.style.display = "block";
 
         info.innerHTML = `
             <h3>Useful Parts of Neem</h3>
-
             <p><b>A - Whole plant:</b> Neem tree</p>
             <p><b>B - Leaves:</b> Neem leaves</p>
             <p><b>C - Flowers:</b> Neem flowers</p>
@@ -610,163 +474,188 @@ function showInfo() {
             <p><b>H - Fruits:</b> Neem fruits</p>
             <p><b>I - Stem:</b> Neem stem / trunk</p>
         `;
-
-    } else {
-
-        info.innerHTML = "";
-
-        info.style.display = "none";
     }
 }
-
-
-/* ================= ADD MORE NEEM ================= */
 
 function showMoreneem() {
-
-    let more = document.getElementById("more-data-neem");
-
-    if (more.style.display === "none" || more.style.display === "") {
-
-        more.style.display = "block";
-
-    } else {
-
-        more.style.display = "none";
-    }
+    toggleDisplay("more-data-neem");
 }
-
-
-/* ================= LEARN MORE TURMERIC ================= */
 
 function showInfoTurmeric() {
 
     let info = document.getElementById("extra-info-turmeric");
 
-    if (info.innerHTML === "") {
+    if (info.style.display === "block") {
+
+        info.innerHTML = "";
+        info.style.display = "none";
+
+    } else {
 
         info.style.display = "block";
 
         info.innerHTML = `
             <h3>Useful Parts of Haridra</h3>
-
             <p><b>A - Rhizome:</b> Haridra rhizome</p>
             <p><b>B - Leaves:</b> Haridra leaves</p>
             <p><b>C - Flowers:</b> Haridra flowers</p>
             <p><b>D - Whole Plant:</b> Haridra plant</p>
         `;
-
-    } else {
-
-        info.innerHTML = "";
-
-        info.style.display = "none";
     }
 }
-
-
-/* ================= ADD MORE TURMERIC ================= */
 
 function showMoreTurmeric() {
-
-    let more = document.getElementById("more-data-turmeric");
-
-    if (more.style.display === "none" || more.style.display === "") {
-
-        more.style.display = "block";
-
-    } else {
-
-        more.style.display = "none";
-    }
+    toggleDisplay("more-data-turmeric");
 }
-
-
-/* ================= LEARN MORE GILOY ================= */
 
 function showInfoGiloy() {
 
     let info = document.getElementById("extra-info-giloy");
 
-    if (info.innerHTML === "") {
+    if (info.style.display === "block") {
+
+        info.innerHTML = "";
+        info.style.display = "none";
+
+    } else {
 
         info.style.display = "block";
 
         info.innerHTML = `
             <h3>Useful Parts of Giloy</h3>
-
-            <p><b>A - Whole Plant:</b> Traditionally used in Ayurveda for general wellness and fever support.</p>
-
-            <p><b>B - Stem:</b> The main medicinal part; traditionally used for fever support and digestive wellness.</p>
-
-            <p><b>C - Leaves:</b> Traditionally used in herbal preparations for general wellness and digestive support.</p>
-
-            <p><b>D - Flowers:</b> Traditionally used in some Ayurvedic preparations and studied for antioxidant activity.</p>
-
-            <p><b>E - Fruits:</b> Traditionally used in herbal preparations and studied for antioxidant properties.</p>
+            <p><b>A - Whole Plant:</b> Traditionally used in Ayurvedic preparations.</p>
+            <p><b>B - Stem:</b> Main medicinal part used in many Ayurvedic preparations.</p>
+            <p><b>C - Leaves:</b> Used in selected traditional preparations.</p>
+            <p><b>D - Flowers:</b> Used in some traditional preparations.</p>
+            <p><b>E - Fruits:</b> Studied for naturally occurring compounds.</p>
         `;
-
-    } else {
-
-        info.innerHTML = "";
-
-        info.style.display = "none";
     }
 }
-
-
-/* ================= ADD MORE GILOY ================= */
 
 function showMoreGiloy() {
+    toggleDisplay("more-data-giloy");
+}
 
-    let more = document.getElementById("more-data-giloy");
+function showInfoChakotra() {
 
-    if (more.style.display === "none" || more.style.display === "") {
+    let info = document.getElementById("extra-info-chakotra");
 
-        more.style.display = "block";
+    if (info.style.display === "block") {
+
+        info.innerHTML = "";
+        info.style.display = "none";
 
     } else {
 
-        more.style.display = "none";
+        info.style.display = "block";
+
+        info.innerHTML = `
+            <h3>Useful Parts of Chakotra</h3>
+            <p><b>A - Fruit:</b> Chakotra fruit</p>
+            <p><b>B - Peel:</b> Outer peel of the fruit</p>
+            <p><b>C - Pulp:</b> Edible fruit pulp</p>
+            <p><b>D - Seeds:</b> Chakotra seeds</p>
+            <p><b>E - Leaves:</b> Chakotra leaves</p>
+        `;
     }
 }
 
+function showMoreChakotra() {
+    toggleDisplay("more-data-chakotra");
+}
 
-/* ================= MENU OPEN / CLOSE ================= */
+function showInfoSadabahar() {
+
+    let info = document.getElementById("extra-info-sadabahar");
+
+    if (info.style.display === "block") {
+
+        info.innerHTML = "";
+        info.style.display = "none";
+
+    } else {
+
+        info.style.display = "block";
+
+        info.innerHTML = `
+            <h3>Useful Parts of Sadabahar</h3>
+            <p><b>A - Leaves:</b> Sadabahar leaves</p>
+            <p><b>B - Flowers:</b> Sadabahar flowers</p>
+            <p><b>C - Roots:</b> Sadabahar roots</p>
+            <p><b>D - Whole Plant:</b> Sadabahar plant</p>
+        `;
+    }
+}
+
+function showMoreSadabahar() {
+    toggleDisplay("more-data-sadabahar");
+}
+
+function showInfoBanana() {
+
+    let info = document.getElementById("extra-info-banana");
+
+    if (info.style.display === "block") {
+
+        info.innerHTML = "";
+        info.style.display = "none";
+
+    } else {
+
+        info.style.display = "block";
+
+        info.innerHTML = `
+            <h3>Useful Parts of Kadali</h3>
+            <p><b>A - Fruit:</b> Ripe and unripe banana fruit</p>
+            <p><b>B - Flower:</b> Banana flower</p>
+            <p><b>C - Stem:</b> Banana pseudostem</p>
+            <p><b>D - Leaves:</b> Banana leaves</p>
+            <p><b>E - Rhizome:</b> Underground rhizome</p>
+            <p><b>F - Whole Plant:</b> Banana plant</p>
+        `;
+    }
+}
+
+function showMoreBanana() {
+    toggleDisplay("more-data-banana");
+}
+
+function toggleDisplay(id) {
+
+    let element = document.getElementById(id);
+
+    if (element.style.display === "block") {
+        element.style.display = "none";
+    } else {
+        element.style.display = "block";
+    }
+}
+
+/* =====================================================
+   MENU
+===================================================== */
 
 function toggleSection(id) {
 
     let section = document.getElementById(id);
 
     if (section.style.display === "block") {
-
         section.style.display = "none";
-
     } else {
-
         section.style.display = "block";
     }
 }
-
-
-/* ================= MEDICINE MENU GROUP ================= */
 
 function showMedicineGroup(groupId) {
 
     let group = document.getElementById(groupId);
 
     if (group.style.display === "block") {
-
         group.style.display = "none";
-
     } else {
-
         group.style.display = "block";
     }
 }
-
-
-/* ================= MEDICINE CLICK ================= */
 
 function showMedicine(groupId, medicineId) {
 
@@ -778,6 +667,7 @@ function showMedicine(groupId, medicineId) {
             behavior: "smooth",
             block: "start"
         });
+
     }
 }
 
@@ -787,947 +677,1964 @@ function showMedicine(groupId, medicineId) {
 
 <body>
 
-<!-- ================= HEADER ================= -->
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
 <div class="hero-header">
 
-```
 <div class="cloud cloud1">☁</div>
-
 <div class="cloud cloud2">☁</div>
-
 <div class="cloud cloud3">☁</div>
-
 <div class="cloud cloud4">☁</div>
 
-
 <h1>
-    HERBAL PLANT EXPLORER
+HERBAL PLANT EXPLORER
 </h1>
 
-
 <img src="leaftransparent.png" class="title-leaf">
-
 <img src="leaftransparent.png" class="title-leaf">
-
 
 <p class="subtitle">
-    EXPLORER MEDICINAL AND HERBAL PLANT
+EXPLORER MEDICINAL AND HERBAL PLANT
 </p>
-```
 
 </div>
 
-<!-- ================= MENU ================= -->
+
+<!-- =====================================================
+     MENU
+===================================================== -->
 
 <div class="menu-container">
 
-```
 <button class="menu-button"
-        onclick="toggleSection('main-menu')">
-    ☰ MENU
+onclick="toggleSection('main-menu')">
+☰ MENU
 </button>
 
-
-<div id="main-menu"
-     class="menu-list">
-
-
-    <a href="#plant-information">
-        HOME
-    </a>
-
-
-    <div class="menu-parent"
-         onclick="toggleSection('plant-menu')">
-
-        PLANT INFORMATION ▾
-
-    </div>
-
-
-    <div id="plant-menu"
-         class="submenu">
-
-        <a href="#neem">
-            1) Nimba (Neem)
-        </a>
-
-        <a href="#haridra">
-            2) Haridra (Turmeric)
-        </a>
-
-        <a href="#guduchi">
-            3) Guduchi (Giloy)
-        </a>
-
-    </div>
-
-
-    <div class="menu-parent"
-         onclick="toggleSection('medicine-menu')">
-
-        MEDICINAL FORMULATIONS ▾
-
-    </div>
-
-
-    <div id="medicine-menu"
-         class="submenu">
-
-
-        <!-- NEEM MENU -->
-
-        <div class="medicine-plant"
-             onclick="showMedicineGroup('neem-menu-medicines')">
-
-            Neem
-
-        </div>
-
-
-        <div id="neem-menu-medicines"
-             class="medicine-group">
-
-            <a href="javascript:void(0)"
-               onclick="showMedicine('neem-medicine','nimba-taila')">
-
-                Nimba Taila
-
-            </a>
-
-            <a href="javascript:void(0)"
-               onclick="showMedicine('neem-medicine','nimba-ghrita')">
-
-                Nimba Ghrita
-
-            </a>
-
-            <a href="javascript:void(0)"
-               onclick="showMedicine('neem-medicine','nimbadi-kwatha')">
-
-                Nimbadi Kwatha
-
-            </a>
-
-            <a href="javascript:void(0)"
-               onclick="showMedicine('neem-medicine','panchatikta-ghrita')">
-
-                Panchatikta Ghrita
-
-            </a>
-
-            <a href="javascript:void(0)"
-               onclick="showMedicine('neem-medicine','nimbamritadi-taila')">
-
-                Nimbamritadi Taila
-
-            </a>
-
-        </div>
-
-
-        <!-- HARIDRA MENU -->
-
-        <div class="medicine-plant"
-             onclick="showMedicineGroup('haridra-menu-medicines')">
-
-            Haridra
-
-        </div>
-
-
-        <div id="haridra-menu-medicines"
-             class="medicine-group">
-
-            <a href="javascript:void(0)"
-               onclick="showMedicine('haridra-medicine','haridra-khanda')">
-
-                Haridra Khanda
-
-            </a>
-
-            <a href="javascript:void(0)"
-               onclick="showMedicine('haridra-medicine','haridra-churna')">
-
-                Haridra Churna
-
-            </a>
-
-            <a href="javascript:void(0)"
-               onclick="showMedicine('haridra-medicine','nisha-amalaki')">
-
-                Nisha Amalaki
-
-            </a>
-
-            <a href="javascript:void(0)"
-               onclick="showMedicine('haridra-medicine','haridra-taila')">
-
-                Haridra Taila
-
-            </a>
-
-            <a href="javascript:void(0)"
-               onclick="showMedicine('haridra-medicine','haridra-based')">
-
-                Haridra-based Preparations
-
-            </a>
-
-        </div>
-
-
-        <!-- GUDUCHI MENU -->
-
-        <div class="medicine-plant"
-             onclick="showMedicineGroup('guduchi-menu-medicines')">
-
-            Guduchi
-
-        </div>
-
-
-        <div id="guduchi-menu-medicines"
-             class="medicine-group">
-
-            <a href="javascript:void(0)"
-               onclick="showMedicine('guduchi-medicine','guduchi-satva')">
-
-                Guduchi Satva
-
-            </a>
-
-            <a href="javascript:void(0)"
-               onclick="showMedicine('guduchi-medicine','guduchyadi-churna')">
-
-                Guduchyadi Churna
-
-            </a>
-
-            <a href="javascript:void(0)"
-               onclick="showMedicine('guduchi-medicine','amritarishta')">
-
-                Amritarishta
-
-            </a>
-
-            <a href="javascript:void(0)"
-               onclick="showMedicine('guduchi-medicine','guduchi-ghrita')">
-
-                Guduchi Ghrita
-
-            </a>
-
-            <a href="javascript:void(0)"
-               onclick="showMedicine('guduchi-medicine','guduchi-taila')">
-
-                Guduchi Taila
-
-            </a>
-
-        </div>
-
-
-    </div>
-
-
-    <a href="#ayurveda">
-        AYURVEDA
-    </a>
-
-    <a href="#herbal-knowledge">
-        HERBAL KNOWLEDGE
-    </a>
-
-    <a href="#diseases">
-        DISEASES
-    </a>
-
-    <a href="#about">
-        ABOUT
-    </a>
-
-    <a href="#contact">
-        CONTACT
-    </a>
-
+<div id="main-menu" class="menu-list">
+
+<a href="#plant-information">
+HOME
+</a>
+
+<div class="menu-parent"
+onclick="toggleSection('plant-menu')">
+PLANT INFORMATION ▾
 </div>
-```
+
+<div id="plant-menu" class="submenu">
+
+<a href="#neem">
+1) Nimba (Neem)
+</a>
+
+<a href="#haridra">
+2) Haridra (Turmeric)
+</a>
+
+<a href="#guduchi">
+3) Guduchi (Giloy)
+</a>
+
+<a href="#chakotra">
+4) Chakotra
+</a>
+
+<a href="#sadabahar">
+5) Sadabahar
+</a>
+
+<a href="#banana">
+6) Kadali (Banana)
+</a>
 
 </div>
 
-<!-- ================= PLANT INFORMATION ================= -->
 
-<h2 id="plant-information"
-    class="plant-info-title">
+<div class="menu-parent"
+onclick="toggleSection('medicine-menu')">
+MEDICINAL FORMULATIONS ▾
+</div>
 
-```
+<div id="medicine-menu" class="submenu">
+
+
+<!-- =====================================================
+     NEEM MENU
+===================================================== -->
+
+<div class="medicine-plant"
+onclick="showMedicineGroup('neem-menu-medicines')">
+Neem
+</div>
+
+<div id="neem-menu-medicines" class="medicine-group">
+
+<a href="javascript:void(0)" onclick="showMedicine('neem-medicine','nimba-taila')">
+1. Nimba Taila
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('neem-medicine','nimba-ghrita')">
+2. Nimba Ghrita
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('neem-medicine','nimbadi-kwatha')">
+3. Nimbadi Kwatha
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('neem-medicine','panchatikta-ghrita')">
+4. Panchatikta Ghrita
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('neem-medicine','nimbamritadi-taila')">
+5. Nimbamritadi Taila
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('neem-medicine','nimba-churna')">
+6. Nimba Churna
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('neem-medicine','nimba-swarasa')">
+7. Nimba Swarasa
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('neem-medicine','nimba-kwatha')">
+8. Nimba Kwatha
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('neem-medicine','nimba-arishta')">
+9. Nimba Arishta
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('neem-medicine','nimba-lepa')">
+10. Nimba Lepa
+</a>
+
+</div>
+
+
+<!-- =====================================================
+     HARIDRA MENU
+===================================================== -->
+
+<div class="medicine-plant"
+onclick="showMedicineGroup('haridra-menu-medicines')">
+Haridra
+</div>
+
+<div id="haridra-menu-medicines" class="medicine-group">
+
+<a href="javascript:void(0)" onclick="showMedicine('haridra-medicine','haridra-khanda')">
+1. Haridra Khanda
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('haridra-medicine','haridra-churna')">
+2. Haridra Churna
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('haridra-medicine','nisha-amalaki')">
+3. Nisha Amalaki
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('haridra-medicine','haridra-taila')">
+4. Haridra Taila
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('haridra-medicine','haridra-ksheerapaka')">
+5. Haridra Ksheerapaka
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('haridra-medicine','haridra-lavana')">
+6. Haridra Lavana
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('haridra-medicine','haridra-lepa')">
+7. Haridra Lepa
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('haridra-medicine','haridra-arka')">
+8. Haridra Arka
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('haridra-medicine','haridra-asava')">
+9. Haridra Asava
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('haridra-medicine','haridra-based')">
+10. Haridra-based Preparations
+</a>
+
+</div>
+
+
+<!-- =====================================================
+     GUDUCHI MENU
+===================================================== -->
+
+<div class="medicine-plant"
+onclick="showMedicineGroup('guduchi-menu-medicines')">
+Guduchi
+</div>
+
+<div id="guduchi-menu-medicines" class="medicine-group">
+
+<a href="javascript:void(0)" onclick="showMedicine('guduchi-medicine','guduchi-satva')">
+1. Guduchi Satva
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('guduchi-medicine','guduchyadi-churna')">
+2. Guduchyadi Churna
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('guduchi-medicine','amritarishta')">
+3. Amritarishta
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('guduchi-medicine','guduchi-ghrita')">
+4. Guduchi Ghrita
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('guduchi-medicine','guduchi-taila')">
+5. Guduchi Taila
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('guduchi-medicine','guduchi-churna')">
+6. Guduchi Churna
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('guduchi-medicine','guduchi-swarasa')">
+7. Guduchi Swarasa
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('guduchi-medicine','guduchi-kwatha')">
+8. Guduchi Kwatha
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('guduchi-medicine','guduchyadi-tailam')">
+9. Guduchyadi Tailam
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('guduchi-medicine','guduchi-based')">
+10. Guduchi-based Preparations
+</a>
+
+</div>
+
+
+<!-- =====================================================
+     CHAKOTRA MENU
+===================================================== -->
+
+<div class="medicine-plant"
+onclick="showMedicineGroup('chakotra-menu-medicines')">
+Chakotra
+</div>
+
+<div id="chakotra-menu-medicines" class="medicine-group">
+
+<a href="javascript:void(0)" onclick="showMedicine('chakotra-medicine','chakotra-phala')">
+1. Chakotra Phala
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('chakotra-medicine','chakotra-swarasa')">
+2. Chakotra Swarasa
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('chakotra-medicine','chakotra-peel')">
+3. Chakotra Peel Preparations
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('chakotra-medicine','chakotra-seed')">
+4. Chakotra Seed Preparations
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('chakotra-medicine','chakotra-leaf')">
+5. Chakotra Leaf Preparations
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('chakotra-medicine','chakotra-phala-churna')">
+6. Chakotra Phala Churna
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('chakotra-medicine','chakotra-peel-churna')">
+7. Chakotra Peel Churna
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('chakotra-medicine','chakotra-juice')">
+8. Chakotra Juice Preparation
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('chakotra-medicine','chakotra-aroma')">
+9. Chakotra Peel Aromatic Preparation
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('chakotra-medicine','chakotra-based')">
+10. Chakotra-based Preparations
+</a>
+
+</div>
+
+
+<!-- =====================================================
+     SADABAHAR MENU
+===================================================== -->
+
+<div class="medicine-plant"
+onclick="showMedicineGroup('sadabahar-menu-medicines')">
+Sadabahar
+</div>
+
+<div id="sadabahar-menu-medicines" class="medicine-group">
+
+<a href="javascript:void(0)" onclick="showMedicine('sadabahar-medicine','sadabahar-leaf-preparation')">
+1. Sadabahar Leaf Preparations
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('sadabahar-medicine','sadabahar-root-preparation')">
+2. Sadabahar Root Preparations
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('sadabahar-medicine','sadabahar-flower-preparation')">
+3. Sadabahar Flower Preparations
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('sadabahar-medicine','sadabahar-whole-plant')">
+4. Sadabahar Whole Plant Preparations
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('sadabahar-medicine','vincristine')">
+5. Vincristine
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('sadabahar-medicine','vinblastine')">
+6. Vinblastine
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('sadabahar-medicine','sadabahar-alkaloid-research')">
+7. Indole Alkaloid Preparations
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('sadabahar-medicine','sadabahar-churna')">
+8. Sadabahar Churna
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('sadabahar-medicine','sadabahar-kwatha')">
+9. Sadabahar Kwatha
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('sadabahar-medicine','sadabahar-based')">
+10. Sadabahar-based Preparations
+</a>
+
+</div>
+
+
+<!-- =====================================================
+     BANANA MENU
+===================================================== -->
+
+<div class="medicine-plant"
+onclick="showMedicineGroup('banana-menu-medicines')">
+Banana / Kadali
+</div>
+
+<div id="banana-menu-medicines" class="medicine-group">
+
+<a href="javascript:void(0)" onclick="showMedicine('banana-medicine','kadali-phala')">
+1. Kadali Phala
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('banana-medicine','kadali-kshara')">
+2. Kadali Kshara
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('banana-medicine','banana-flower-preparation')">
+3. Banana Flower Preparations
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('banana-medicine','banana-stem-preparation')">
+4. Banana Stem Preparations
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('banana-medicine','banana-pseudostem-juice')">
+5. Banana Pseudostem Juice
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('banana-medicine','banana-flower-churna')">
+6. Banana Flower Churna
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('banana-medicine','banana-unripe-fruit')">
+7. Unripe Banana Preparation
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('banana-medicine','banana-ripe-fruit')">
+8. Ripe Banana Preparation
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('banana-medicine','banana-leaf-preparation')">
+9. Banana Leaf Preparations
+</a>
+
+<a href="javascript:void(0)" onclick="showMedicine('banana-medicine','kadali-based')">
+10. Kadali-based Preparations
+</a>
+
+</div>
+
+</div>
+
+
+<a href="#ayurveda">
+AYURVEDA
+</a>
+
+<a href="#herbal-knowledge">
+HERBAL KNOWLEDGE
+</a>
+
+<a href="#diseases">
+DISEASES
+</a>
+
+<a href="#about">
+ABOUT
+</a>
+
+<a href="#contact">
+CONTACT
+</a>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     PLANT INFORMATION
+===================================================== -->
+
+<h2 id="plant-information" class="plant-info-title">
+
 <span>PLANT</span>
 <span>INFORMATION</span>
-```
 
 </h2>
 
+
 <div class="plants-row">
 
-<!-- ================= NEEM ================= -->
+
+<!-- =====================================================
+     1. NEEM
+===================================================== -->
 
 <div class="plant-section">
 
-```
 <h3 id="neem">
-    1) निम्ब (Nimba)
+1) निम्ब (Nimba)
 </h3>
-
 
 <div class="plant-card">
 
+<div class="plant-main-content">
 
-    <div class="plant-main-content">
+<div class="plant-photo">
 
+<img src="images.jpg" alt="neem plant">
 
-        <!-- NEEM IMAGE -->
+<button onclick="showInfo()">
+learn more
+</button>
 
-        <div class="plant-photo">
-
-            <img src="images.jpg"
-                 alt="neem plant">
-
-
-            <button onclick="showInfo()">
-                learn more
-            </button>
-
-
-            <p id="extra-info"></p>
-
-        </div>
-
-
-        <!-- NEEM DATA -->
-
-        <div class="plant-right-data">
-
-            <div class="plant-data">
-
-
-                <div class="data-box">
-                    <b>Plant Name</b><br>
-                    Neem
-                </div>
-
-
-                <div class="data-box">
-                    <b>Botanical Name</b><br>
-                    Azadirachta indica
-                </div>
-
-
-                <div class="data-box">
-                    <b>Family</b><br>
-                    Meliaceae
-                </div>
-
-
-                <div class="data-box">
-                    <b>Parts Used</b><br>
-                    Leaves, Bark, Seeds
-                </div>
-
-
-                <div class="data-box">
-                    <b>Medicinal Effect</b><br>
-                    Antimicrobial
-                </div>
-
-
-                <div class="data-box">
-                    <b>Active Compounds</b><br>
-                    Azadirachtin, Nimbin
-                </div>
-
-
-                <div class="data-box">
-                    <b>Traditional Use</b><br>
-                    Skin care, Wound care
-                </div>
-
-
-            </div>
-
-
-            <div class="add-more"
-                 onclick="showMoreneem()">
-
-                + ADD MORE
-
-            </div>
-
-
-            <div id="more-data-neem"
-                 class="more-data">
-
-                <div class="plant-data">
-
-                    <div class="data-box">
-
-                        <b>Write Heading</b><br>
-
-                        <input type="text"
-                               placeholder="Type here...">
-
-                    </div>
-
-
-                    <div class="data-box">
-
-                        <b>Write Information</b><br>
-
-                        <input type="text"
-                               placeholder="Type here...">
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- NEEM MEDICINE DETAILS -->
-
-    <div id="neem-medicine"
-         class="medicine-list">
-
-
-        <p id="nimba-taila"
-           class="medicine-name">
-
-            <b>1. Nimba Taila</b>
-
-        </p>
-
-        <p>→ Main Effect: Skin-supporting, antimicrobial</p>
-
-        <p>→ Neem Part: Neem seed oil</p>
-
-        <p>→ Other Ingredients: Sesame oil</p>
-
-        <p>→ Why Neem is Used: Traditional antimicrobial and skin-supporting properties.</p>
-
-
-        <p id="nimba-ghrita"
-           class="medicine-name">
-
-            <b>2. Nimba Ghrita</b>
-
-        </p>
-
-        <p>→ Main Effect: Skin-supporting</p>
-
-        <p>→ Neem Part: Neem</p>
-
-        <p>→ Other Ingredients: Go-ghrita</p>
-
-        <p>→ Why Neem is Used: Traditional use in skin-related Ayurvedic preparations.</p>
-
-
-        <p id="nimbadi-kwatha"
-           class="medicine-name">
-
-            <b>3. Nimbadi Kwatha</b>
-
-        </p>
-
-        <p>→ Main Effect: Traditional support for skin and fever-related conditions</p>
-
-        <p>→ Neem Part: Neem</p>
-
-        <p>→ Other Ingredients: Formulation-specific herbs</p>
-
-        <p>→ Why Neem is Used: Neem is traditionally included for its bitter and skin-supporting properties.</p>
-
-
-        <p id="panchatikta-ghrita"
-           class="medicine-name">
-
-            <b>4. Panchatikta Ghrita</b>
-
-        </p>
-
-        <p>→ Main Effect: Traditional support for skin and inflammatory conditions</p>
-
-        <p>→ Neem Part: Stem and bark</p>
-
-        <p>→ Other Ingredients: Patola, Guduchi, Vasa, Ghrita</p>
-
-        <p>→ Why Neem is Used: Neem is one of the principal bitter herbs in the Panchatikta group.</p>
-
-
-        <p id="nimbamritadi-taila"
-           class="medicine-name">
-
-            <b>5. Nimbamritadi Taila</b>
-
-        </p>
-
-        <p>→ Main Effect: Traditional skin-supporting use</p>
-
-        <p>→ Neem Part: Neem</p>
-
-        <p>→ Other Ingredients: Guduchi, Patola, oil base</p>
-
-        <p>→ Why Neem is Used: Neem is included as a key herb in this traditional medicated-oil formulation.</p>
-
-
-    </div>
-
-</div>
-```
+<p id="extra-info"></p>
 
 </div>
 
-<!-- ================= HARIDRA ================= -->
+<div class="plant-right-data">
+
+<div class="plant-data">
+
+<div class="data-box">
+<b>Plant Name</b><br>
+Neem
+</div>
+
+<div class="data-box">
+<b>Botanical Name</b><br>
+Azadirachta indica
+</div>
+
+<div class="data-box">
+<b>Family</b><br>
+Meliaceae
+</div>
+
+<div class="data-box">
+<b>Parts Used</b><br>
+Leaves, Bark, Seeds
+</div>
+
+<div class="data-box">
+<b>Medicinal Effect</b><br>
+Antimicrobial, Anti-inflammatory
+</div>
+
+<div class="data-box">
+<b>Active Compounds</b><br>
+Azadirachtin, Nimbin, Nimbidin
+</div>
+
+<div class="data-box">
+<b>Traditional Use</b><br>
+Skin care, Wound care
+</div>
+
+</div>
+
+<div class="add-more" onclick="showMoreneem()">
++ ADD MORE
+</div>
+
+<div id="more-data-neem" class="more-data">
+
+<div class="plant-data">
+
+<div class="data-box">
+<b>Write Heading</b><br>
+<input type="text" placeholder="Type here...">
+</div>
+
+<div class="data-box">
+<b>Write Information</b><br>
+<input type="text" placeholder="Type here...">
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div id="neem-medicine" class="medicine-list">
+
+<p id="nimba-taila" class="medicine-name">
+<b>1. Nimba Taila</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Neem on Body:</b>
+Traditionally used to support the skin barrier and reduce microbial growth on the skin.
+</p>
+
+<p>→ Neem Part: Neem seed oil</p>
+<p>→ Active Neem Constituents: Nimbidin and related limonoids</p>
+<p>→ Other Ingredients: Oil base and formulation-specific ingredients</p>
+<p>→ Why Neem is Used: Traditionally valued for antimicrobial and skin-supporting properties.</p>
+
+
+<p id="nimba-ghrita" class="medicine-name">
+<b>2. Nimba Ghrita</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Neem on Body:</b>
+Neem contributes bitter and traditionally skin-supporting properties to the preparation.
+</p>
+
+<p>→ Neem Part: Neem leaves and/or other specified parts</p>
+<p>→ Active Neem Constituents: Limonoids and bitter principles</p>
+<p>→ Other Ingredients: Go-ghrita and formulation-specific ingredients</p>
+<p>→ Why Neem is Used: Traditionally included in selected skin-related Ayurvedic preparations.</p>
+
+
+<p id="nimbadi-kwatha" class="medicine-name">
+<b>3. Nimbadi Kwatha</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Neem on Body:</b>
+Traditionally associated with bitter, cleansing and skin-supporting activity.
+</p>
+
+<p>→ Neem Part: Neem bark/leaves depending on formulation</p>
+<p>→ Active Neem Constituents: Bitter limonoids</p>
+<p>→ Other Ingredients: Formulation-specific herbs</p>
+<p>→ Why Neem is Used: Neem is an important bitter herb in traditional preparations.</p>
+
+
+<p id="panchatikta-ghrita" class="medicine-name">
+<b>4. Panchatikta Ghrita</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Neem on Body:</b>
+Neem contributes bitter and traditionally anti-inflammatory/skin-supporting properties.
+</p>
+
+<p>→ Neem Part: Neem bark and other specified parts</p>
+<p>→ Active Neem Constituents: Limonoids and bitter principles</p>
+<p>→ Other Ingredients: Patola, Guduchi, Vasa and Ghrita</p>
+<p>→ Why Neem is Used: Neem is one of the important bitter herbs in the formulation.</p>
+
+
+<p id="nimbamritadi-taila" class="medicine-name">
+<b>5. Nimbamritadi Taila</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Neem on Body:</b>
+Traditionally used to provide antimicrobial and skin-supporting effects in an external oil preparation.
+</p>
+
+<p>→ Neem Part: Neem</p>
+<p>→ Active Neem Constituents: Limonoids and bitter principles</p>
+<p>→ Other Ingredients: Guduchi, Patola and oil base</p>
+<p>→ Why Neem is Used: Neem is a key traditional herb in this medicated oil.</p>
+
+
+<p id="nimba-churna" class="medicine-name">
+<b>6. Nimba Churna</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Neem on Body:</b>
+Traditionally associated with bitter and antimicrobial activity.
+</p>
+
+<p>→ Neem Part: Neem leaves or bark</p>
+<p>→ Active Neem Constituents: Nimbin, nimbidin and related compounds</p>
+<p>→ Other Ingredients: Depends on preparation</p>
+<p>→ Why Neem is Used: The powdered plant material is used in selected traditional formulations.</p>
+
+
+<p id="nimba-swarasa" class="medicine-name">
+<b>7. Nimba Swarasa</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Neem on Body:</b>
+Provides the plant's water-soluble and bitter constituents in a fresh-juice preparation.
+</p>
+
+<p>→ Neem Part: Fresh neem leaves</p>
+<p>→ Active Neem Constituents: Various bitter phytochemicals</p>
+<p>→ Other Ingredients: Usually preparation-specific</p>
+<p>→ Why Neem is Used: Traditionally valued as a bitter herbal preparation.</p>
+
+
+<p id="nimba-kwatha" class="medicine-name">
+<b>8. Nimba Kwatha</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Neem on Body:</b>
+Traditionally used for bitter and cleansing-supporting effects.
+</p>
+
+<p>→ Neem Part: Leaves or bark</p>
+<p>→ Active Neem Constituents: Bitter limonoids</p>
+<p>→ Other Ingredients: Water and formulation-specific herbs</p>
+<p>→ Why Neem is Used: Used as a traditional decoction preparation.</p>
+
+
+<p id="nimba-arishta" class="medicine-name">
+<b>9. Nimba Arishta</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Neem on Body:</b>
+Neem contributes bitter and traditionally antimicrobial/skin-supporting properties.
+</p>
+
+<p>→ Neem Part: Neem plant material</p>
+<p>→ Active Neem Constituents: Limonoids and bitter compounds</p>
+<p>→ Other Ingredients: Formulation-specific herbs</p>
+<p>→ Why Neem is Used: Neem is traditionally included in selected polyherbal preparations.</p>
+
+
+<p id="nimba-lepa" class="medicine-name">
+<b>10. Nimba Lepa</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Neem on Body:</b>
+External application is traditionally associated with local antimicrobial and soothing skin support.
+</p>
+
+<p>→ Neem Part: Neem leaves</p>
+<p>→ Active Neem Constituents: Nimbidin and related compounds</p>
+<p>→ Other Ingredients: Preparation-specific herbal ingredients</p>
+<p>→ Why Neem is Used: Traditionally used in external skin preparations.</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     2. HARIDRA
+===================================================== -->
 
 <div class="plant-section">
 
-```
 <h3 id="haridra">
-    2) हरिद्रा (Haridra)
+2) हरिद्रा (Haridra)
 </h3>
-
 
 <div class="plant-card">
 
+<div class="plant-main-content">
 
-    <div class="plant-main-content">
+<div class="plant-photo">
 
+<img src="haldi.jpg" alt="turmeric plant">
 
-        <!-- HARIDRA IMAGE -->
+<button onclick="showInfoTurmeric()">
+learn more
+</button>
 
-        <div class="plant-photo">
-
-            <img src="haldi.jpg"
-                 alt="turmeric plant">
-
-
-            <button onclick="showInfoTurmeric()">
-                learn more
-            </button>
-
-
-            <p id="extra-info-turmeric"></p>
-
-        </div>
-
-
-        <!-- HARIDRA DATA -->
-
-        <div class="plant-right-data">
-
-            <div class="plant-data">
-
-
-                <div class="data-box">
-                    <b>Plant Name</b><br>
-                    Turmeric
-                </div>
-
-
-                <div class="data-box">
-                    <b>Botanical Name</b><br>
-                    Curcuma longa
-                </div>
-
-
-                <div class="data-box">
-                    <b>Family</b><br>
-                    Zingiberaceae
-                </div>
-
-
-                <div class="data-box">
-                    <b>Parts Used</b><br>
-                    Rhizome
-                </div>
-
-
-                <div class="data-box">
-                    <b>Medicinal Effect</b><br>
-                    Antioxidant, Antimicrobial
-                </div>
-
-
-                <div class="data-box">
-                    <b>Active Compounds</b><br>
-                    Curcumin
-                </div>
-
-
-                <div class="data-box">
-                    <b>Traditional Use</b><br>
-                    Digestive support, Skin care
-                </div>
-
-
-            </div>
-
-
-            <div class="add-more"
-                 onclick="showMoreTurmeric()">
-
-                + ADD MORE
-
-            </div>
-
-
-            <div id="more-data-turmeric"
-                 class="more-data">
-
-                <div class="plant-data">
-
-                    <div class="data-box">
-
-                        <b>Write Heading</b><br>
-
-                        <input type="text"
-                               placeholder="Type here...">
-
-                    </div>
-
-
-                    <div class="data-box">
-
-                        <b>Write Information</b><br>
-
-                        <input type="text"
-                               placeholder="Type here...">
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- HARIDRA MEDICINE DETAILS -->
-
-    <div id="haridra-medicine"
-         class="medicine-list">
-
-
-        <p id="haridra-khanda"
-           class="medicine-name">
-
-            <b>1. Haridra Khanda</b>
-
-        </p>
-
-        <p>→ Main Effect: Traditional support for skin and allergy-related conditions</p>
-
-        <p>→ Turmeric Part: Haridra rhizome</p>
-
-        <p>→ Other Ingredients: Formulation-specific herbs and spices</p>
-
-        <p>→ Why Turmeric is Used: Haridra is traditionally valued for skin-supporting properties.</p>
-
-
-        <p id="haridra-churna"
-           class="medicine-name">
-
-            <b>2. Haridra Churna</b>
-
-        </p>
-
-        <p>→ Main Effect: Traditional digestive and skin-supporting use</p>
-
-        <p>→ Turmeric Part: Haridra rhizome</p>
-
-        <p>→ Other Ingredients: Depends on the preparation</p>
-
-        <p>→ Why Turmeric is Used: The rhizome is the principal medicinal part of Haridra.</p>
-
-
-        <p id="nisha-amalaki"
-           class="medicine-name">
-
-            <b>3. Nisha Amalaki</b>
-
-        </p>
-
-        <p>→ Main Effect: Traditional support for metabolic health</p>
-
-        <p>→ Turmeric Part: Haridra rhizome</p>
-
-        <p>→ Other Ingredients: Amalaki</p>
-
-        <p>→ Why Turmeric is Used: Haridra is traditionally combined with Amalaki in this preparation.</p>
-
-
-        <p id="haridra-taila"
-           class="medicine-name">
-
-            <b>4. Haridra Taila</b>
-
-        </p>
-
-        <p>→ Main Effect: Traditional skin-supporting use</p>
-
-        <p>→ Turmeric Part: Haridra rhizome</p>
-
-        <p>→ Other Ingredients: Oil base and formulation-specific ingredients</p>
-
-        <p>→ Why Turmeric is Used: Traditionally used in external preparations for skin care.</p>
-
-
-        <p id="haridra-based"
-           class="medicine-name">
-
-            <b>5. Haridra-based Preparations</b>
-
-        </p>
-
-        <p>→ Main Effect: Traditional digestive and skin-supporting use</p>
-
-        <p>→ Turmeric Part: Haridra rhizome</p>
-
-        <p>→ Other Ingredients: Depends on the formulation</p>
-
-        <p>→ Why Turmeric is Used: Haridra is an important traditional Ayurvedic herb.</p>
-
-
-    </div>
-
-</div>
-```
+<p id="extra-info-turmeric"></p>
 
 </div>
 
-<!-- ================= GUDUCHI ================= -->
+<div class="plant-right-data">
+
+<div class="plant-data">
+
+<div class="data-box">
+<b>Plant Name</b><br>
+Turmeric
+</div>
+
+<div class="data-box">
+<b>Botanical Name</b><br>
+Curcuma longa
+</div>
+
+<div class="data-box">
+<b>Family</b><br>
+Zingiberaceae
+</div>
+
+<div class="data-box">
+<b>Parts Used</b><br>
+Rhizome
+</div>
+
+<div class="data-box">
+<b>Medicinal Effect</b><br>
+Antioxidant, Anti-inflammatory
+</div>
+
+<div class="data-box">
+<b>Active Compounds</b><br>
+Curcumin, Curcuminoids
+</div>
+
+<div class="data-box">
+<b>Traditional Use</b><br>
+Digestive support, Skin care
+</div>
+
+</div>
+
+<div class="add-more" onclick="showMoreTurmeric()">
++ ADD MORE
+</div>
+
+<div id="more-data-turmeric" class="more-data">
+
+<div class="plant-data">
+
+<div class="data-box">
+<b>Write Heading</b><br>
+<input type="text" placeholder="Type here...">
+</div>
+
+<div class="data-box">
+<b>Write Information</b><br>
+<input type="text" placeholder="Type here...">
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div id="haridra-medicine" class="medicine-list">
+
+<p id="haridra-khanda" class="medicine-name">
+<b>1. Haridra Khanda</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Haridra on Body:</b>
+Traditionally used for skin support and studied for anti-inflammatory activity associated with curcuminoids.
+</p>
+
+<p>→ Turmeric Part: Haridra rhizome</p>
+<p>→ Active Compound: Curcuminoids</p>
+<p>→ Other Ingredients: Formulation-specific herbs and spices</p>
+<p>→ Why Turmeric is Used: Traditionally valued in skin-related and allergy-supporting preparations.</p>
+
+
+<p id="haridra-churna" class="medicine-name">
+<b>2. Haridra Churna</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Haridra on Body:</b>
+Provides the characteristic curcuminoid-rich rhizome traditionally associated with digestive and inflammatory support.
+</p>
+
+<p>→ Turmeric Part: Rhizome</p>
+<p>→ Active Compound: Curcumin and related curcuminoids</p>
+<p>→ Other Ingredients: Depends on preparation</p>
+<p>→ Why Turmeric is Used: The rhizome is the principal medicinal part.</p>
+
+
+<p id="nisha-amalaki" class="medicine-name">
+<b>3. Nisha Amalaki</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Haridra on Body:</b>
+Haridra contributes curcuminoids with antioxidant and studied anti-inflammatory activity.
+</p>
+
+<p>→ Turmeric Part: Rhizome</p>
+<p>→ Active Compound: Curcuminoids</p>
+<p>→ Other Ingredients: Amalaki</p>
+<p>→ Why Turmeric is Used: Traditionally combined with Amalaki in Ayurvedic preparations.</p>
+
+
+<p id="haridra-taila" class="medicine-name">
+<b>4. Haridra Taila</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Haridra on Body:</b>
+External use is traditionally associated with skin-supporting and soothing properties.
+</p>
+
+<p>→ Turmeric Part: Rhizome</p>
+<p>→ Active Compound: Curcuminoids and turmeric volatile constituents</p>
+<p>→ Other Ingredients: Oil base</p>
+<p>→ Why Turmeric is Used: Traditionally used in external skin preparations.</p>
+
+
+<p id="haridra-ksheerapaka" class="medicine-name">
+<b>5. Haridra Ksheerapaka</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Haridra on Body:</b>
+Provides turmeric constituents in a traditional milk-based preparation.
+</p>
+
+<p>→ Turmeric Part: Rhizome</p>
+<p>→ Active Compound: Curcuminoids</p>
+<p>→ Other Ingredients: Milk and preparation-specific ingredients</p>
+<p>→ Why Turmeric is Used: Traditionally used as a soothing herbal preparation.</p>
+
+
+<p id="haridra-lavana" class="medicine-name">
+<b>6. Haridra Lavana</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Haridra on Body:</b>
+Traditionally used to support digestion while providing turmeric's characteristic bitter and aromatic constituents.
+</p>
+
+<p>→ Turmeric Part: Rhizome</p>
+<p>→ Active Compound: Curcuminoids and volatile oils</p>
+<p>→ Other Ingredients: Salt and formulation-specific ingredients</p>
+<p>→ Why Turmeric is Used: Traditionally valued in digestive preparations.</p>
+
+
+<p id="haridra-lepa" class="medicine-name">
+<b>7. Haridra Lepa</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Haridra on Body:</b>
+External application is traditionally associated with soothing and skin-supporting effects.
+</p>
+
+<p>→ Turmeric Part: Rhizome</p>
+<p>→ Active Compound: Curcuminoids</p>
+<p>→ Other Ingredients: Depends on formulation</p>
+<p>→ Why Turmeric is Used: Traditionally used as an external herbal paste.</p>
+
+
+<p id="haridra-arka" class="medicine-name">
+<b>8. Haridra Arka</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Haridra on Body:</b>
+Provides selected water-distilled/aromatic constituents depending on the preparation method.
+</p>
+
+<p>→ Turmeric Part: Rhizome</p>
+<p>→ Active Compound: Preparation-dependent constituents</p>
+<p>→ Other Ingredients: Preparation-specific</p>
+<p>→ Why Turmeric is Used: Used in selected traditional herbal preparations.</p>
+
+
+<p id="haridra-asava" class="medicine-name">
+<b>9. Haridra Asava</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Haridra on Body:</b>
+Traditionally associated with digestive and skin-supporting properties.
+</p>
+
+<p>→ Turmeric Part: Rhizome</p>
+<p>→ Active Compound: Curcuminoids and other phytochemicals</p>
+<p>→ Other Ingredients: Formulation-specific ingredients</p>
+<p>→ Why Turmeric is Used: Included in selected polyherbal preparations.</p>
+
+
+<p id="haridra-based" class="medicine-name">
+<b>10. Haridra-based Preparations</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Haridra on Body:</b>
+Haridra is studied for antioxidant and anti-inflammatory activity, while traditional uses include digestive and skin support.
+</p>
+
+<p>→ Turmeric Part: Rhizome</p>
+<p>→ Active Compound: Curcuminoids</p>
+<p>→ Other Ingredients: Depends on formulation</p>
+<p>→ Why Turmeric is Used: Haridra is one of the important traditional Ayurvedic herbs.</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     3. GUDUCHI
+===================================================== -->
 
 <div class="plant-section">
 
-```
 <h3 id="guduchi">
-    3) गुडूची (Guduchi)
+3) गुडूची (Guduchi)
 </h3>
-
 
 <div class="plant-card">
 
+<div class="plant-main-content">
 
-    <div class="plant-main-content">
+<div class="plant-photo">
 
+<img src="gloe.jpg" alt="giloy plant">
 
-        <!-- GUDUCHI IMAGE -->
+<button onclick="showInfoGiloy()">
+learn more
+</button>
 
-        <div class="plant-photo">
-
-            <img src="gloe.jpg"
-                 alt="giloy plant">
-
-
-            <button onclick="showInfoGiloy()">
-                learn more
-            </button>
-
-
-            <p id="extra-info-giloy"></p>
-
-        </div>
-
-
-        <!-- GUDUCHI DATA -->
-
-        <div class="plant-right-data">
-
-            <div class="plant-data">
-
-
-                <div class="data-box">
-                    <b>Plant Name</b><br>
-                    Giloy
-                </div>
-
-
-                <div class="data-box">
-                    <b>Botanical Name</b><br>
-                    Tinospora cordifolia
-                </div>
-
-
-                <div class="data-box">
-                    <b>Family</b><br>
-                    Menispermaceae
-                </div>
-
-
-                <div class="data-box">
-                    <b>Parts Used</b><br>
-                    Stem
-                </div>
-
-
-                <div class="data-box">
-                    <b>Medicinal Effect</b><br>
-                    Immunomodulatory, Antioxidant
-                </div>
-
-
-                <div class="data-box">
-                    <b>Active Compounds</b><br>
-                    Tinosporin, Berberine
-                </div>
-
-
-                <div class="data-box">
-                    <b>Traditional Use</b><br>
-                    Fever support, Digestive support
-                </div>
-
-
-            </div>
-
-
-            <div class="add-more"
-                 onclick="showMoreGiloy()">
-
-                + ADD MORE
-
-            </div>
-
-
-            <div id="more-data-giloy"
-                 class="more-data">
-
-                <div class="plant-data">
-
-                    <div class="data-box">
-
-                        <b>Write Heading</b><br>
-
-                        <input type="text"
-                               placeholder="Type here...">
-
-                    </div>
-
-
-                    <div class="data-box">
-
-                        <b>Write Information</b><br>
-
-                        <input type="text"
-                               placeholder="Type here...">
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- GUDUCHI MEDICINE DETAILS -->
-
-    <div id="guduchi-medicine"
-         class="medicine-list">
-
-
-        <p id="guduchi-satva"
-           class="medicine-name">
-
-            <b>1. Guduchi Satva</b>
-
-        </p>
-
-        <p>→ Main Effect: Traditional support for general wellness and fever-related conditions</p>
-
-        <p>→ Giloy Part: Giloy stem</p>
-
-        <p>→ Other Ingredients: Prepared primarily from Guduchi</p>
-
-        <p>→ Why Giloy is Used: Guduchi is traditionally valued for its bitter and supportive properties.</p>
-
-
-        <p id="guduchyadi-churna"
-           class="medicine-name">
-
-            <b>2. Guduchyadi Churna</b>
-
-        </p>
-
-        <p>→ Main Effect: Traditional digestive and wellness support</p>
-
-        <p>→ Giloy Part: Giloy stem</p>
-
-        <p>→ Other Ingredients: Formulation-specific herbs</p>
-
-        <p>→ Why Giloy is Used: Guduchi is traditionally included as an important herb in the formulation.</p>
-
-
-        <p id="amritarishta"
-           class="medicine-name">
-
-            <b>3. Amritarishta</b>
-
-        </p>
-
-        <p>→ Main Effect: Traditional support for fever-related conditions</p>
-
-        <p>→ Giloy Part: Giloy stem</p>
-
-        <p>→ Other Ingredients: Dashamoola, Trikatu and other formulation-specific ingredients</p>
-
-        <p>→ Why Giloy is Used: Guduchi is traditionally used as an important ingredient in this preparation.</p>
-
-
-        <p id="guduchi-ghrita"
-           class="medicine-name">
-
-            <b>4. Guduchi Ghrita</b>
-
-        </p>
-
-        <p>→ Main Effect: Traditional general wellness support</p>
-
-        <p>→ Giloy Part: Giloy stem</p>
-
-        <p>→ Other Ingredients: Ghrita and formulation-specific ingredients</p>
-
-        <p>→ Why Giloy is Used: Guduchi is traditionally used in ghrita-based Ayurvedic preparations.</p>
-
-
-        <p id="guduchi-taila"
-           class="medicine-name">
-
-            <b>5. Guduchi Taila</b>
-
-        </p>
-
-        <p>→ Main Effect: Traditional external-use preparation</p>
-
-        <p>→ Giloy Part: Giloy stem</p>
-
-        <p>→ Other Ingredients: Oil base and formulation-specific ingredients</p>
-
-        <p>→ Why Giloy is Used: Guduchi is traditionally included in selected medicated-oil preparations.</p>
-
-
-    </div>
+<p id="extra-info-giloy"></p>
 
 </div>
-```
+
+<div class="plant-right-data">
+
+<div class="plant-data">
+
+<div class="data-box">
+<b>Plant Name</b><br>
+Giloy
+</div>
+
+<div class="data-box">
+<b>Botanical Name</b><br>
+Tinospora cordifolia
+</div>
+
+<div class="data-box">
+<b>Family</b><br>
+Menispermaceae
+</div>
+
+<div class="data-box">
+<b>Parts Used</b><br>
+Stem
+</div>
+
+<div class="data-box">
+<b>Medicinal Effect</b><br>
+Immunomodulatory, Antioxidant
+</div>
+
+<div class="data-box">
+<b>Active Compounds</b><br>
+Tinosporin, Berberine
+</div>
+
+<div class="data-box">
+<b>Traditional Use</b><br>
+Fever support, Digestive support
+</div>
+
+</div>
+
+<div class="add-more" onclick="showMoreGiloy()">
++ ADD MORE
+</div>
+
+<div id="more-data-giloy" class="more-data">
+
+<div class="plant-data">
+
+<div class="data-box">
+<b>Write Heading</b><br>
+<input type="text" placeholder="Type here...">
+</div>
+
+<div class="data-box">
+<b>Write Information</b><br>
+<input type="text" placeholder="Type here...">
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div id="guduchi-medicine" class="medicine-list">
+
+<p id="guduchi-satva" class="medicine-name">
+<b>1. Guduchi Satva</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Guduchi on Body:</b>
+Traditionally used for general wellness and studied for immunomodulatory and antioxidant activity.
+</p>
+
+<p>→ Giloy Part: Giloy stem</p>
+<p>→ Active Compounds: Tinosporin and other diterpenoids/alkaloids</p>
+<p>→ Other Ingredients: Prepared primarily from Guduchi</p>
+<p>→ Why Giloy is Used: Guduchi is an important traditional Ayurvedic herb.</p>
+
+
+<p id="guduchyadi-churna" class="medicine-name">
+<b>2. Guduchyadi Churna</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Guduchi on Body:</b>
+Contributes bitter and traditionally digestive-supporting properties.
+</p>
+
+<p>→ Giloy Part: Stem</p>
+<p>→ Active Compounds: Diterpenoids and alkaloids</p>
+<p>→ Other Ingredients: Formulation-specific herbs</p>
+<p>→ Why Giloy is Used: Traditionally included as an important herb.</p>
+
+
+<p id="amritarishta" class="medicine-name">
+<b>3. Amritarishta</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Guduchi on Body:</b>
+Traditionally used as a supportive herb in fever-related Ayurvedic preparations.
+</p>
+
+<p>→ Giloy Part: Stem</p>
+<p>→ Active Compounds: Guduchi diterpenoids and alkaloids</p>
+<p>→ Other Ingredients: Dashamoola, Trikatu and formulation-specific ingredients</p>
+<p>→ Why Giloy is Used: Guduchi is traditionally a principal herb in this preparation.</p>
+
+
+<p id="guduchi-ghrita" class="medicine-name">
+<b>4. Guduchi Ghrita</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Guduchi on Body:</b>
+Traditionally used to provide Guduchi's supportive and antioxidant-associated properties in a ghrita preparation.
+</p>
+
+<p>→ Giloy Part: Stem</p>
+<p>→ Active Compounds: Diterpenoids and alkaloids</p>
+<p>→ Other Ingredients: Ghrita and formulation-specific ingredients</p>
+<p>→ Why Giloy is Used: Traditionally used in ghrita-based preparations.</p>
+
+
+<p id="guduchi-taila" class="medicine-name">
+<b>5. Guduchi Taila</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Guduchi on Body:</b>
+External preparation traditionally used for local supportive and soothing purposes.
+</p>
+
+<p>→ Giloy Part: Stem</p>
+<p>→ Active Compounds: Preparation-dependent</p>
+<p>→ Other Ingredients: Oil base and formulation-specific ingredients</p>
+<p>→ Why Giloy is Used: Included in selected medicated-oil preparations.</p>
+
+
+<p id="guduchi-churna" class="medicine-name">
+<b>6. Guduchi Churna</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Guduchi on Body:</b>
+Traditionally associated with digestive, fever-supporting and general wellness effects.
+</p>
+
+<p>→ Giloy Part: Stem</p>
+<p>→ Active Compounds: Diterpenoids, alkaloids and polysaccharides</p>
+<p>→ Other Ingredients: Usually none or preparation-specific</p>
+<p>→ Why Giloy is Used: Stem is the principal medicinal part.</p>
+
+
+<p id="guduchi-swarasa" class="medicine-name">
+<b>7. Guduchi Swarasa</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Guduchi on Body:</b>
+Fresh stem juice provides plant constituents traditionally used for fever and general wellness support.
+</p>
+
+<p>→ Giloy Part: Fresh stem</p>
+<p>→ Active Compounds: Plant alkaloids and diterpenoids</p>
+<p>→ Other Ingredients: Preparation-specific</p>
+<p>→ Why Giloy is Used: Fresh stem is traditionally used in swarasa preparations.</p>
+
+
+<p id="guduchi-kwatha" class="medicine-name">
+<b>8. Guduchi Kwatha</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Guduchi on Body:</b>
+Traditionally used as a bitter decoction for digestive and fever-related support.
+</p>
+
+<p>→ Giloy Part: Stem</p>
+<p>→ Active Compounds: Water-extractable phytochemicals</p>
+<p>→ Other Ingredients: Water and formulation-specific herbs</p>
+<p>→ Why Giloy is Used: Used in traditional decoction preparations.</p>
+
+
+<p id="guduchyadi-tailam" class="medicine-name">
+<b>9. Guduchyadi Tailam</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Guduchi on Body:</b>
+Guduchi contributes traditional soothing and supportive properties in an external oil preparation.
+</p>
+
+<p>→ Giloy Part: Stem</p>
+<p>→ Active Compounds: Preparation-dependent constituents</p>
+<p>→ Other Ingredients: Oil base and additional herbs</p>
+<p>→ Why Giloy is Used: Included in selected traditional medicated oils.</p>
+
+
+<p id="guduchi-based" class="medicine-name">
+<b>10. Guduchi-based Preparations</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Guduchi on Body:</b>
+Guduchi is studied for antioxidant and immune-system-related activity and has long traditional Ayurvedic use.
+</p>
+
+<p>→ Giloy Part: Mainly stem</p>
+<p>→ Active Compounds: Diterpenoids, alkaloids and polysaccharides</p>
+<p>→ Other Ingredients: Depends on formulation</p>
+<p>→ Why Giloy is Used: Guduchi is a widely used Ayurvedic medicinal plant.</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     4. CHAKOTRA
+===================================================== -->
+
+<div class="plant-section">
+
+<h3 id="chakotra">
+4) चक्रोत (Chakotra)
+</h3>
+
+<div class="plant-card">
+
+<div class="plant-main-content">
+
+<div class="plant-photo">
+
+<img src="chakotra.jpg.jpg" alt="chakotra fruit">
+
+<button onclick="showInfoChakotra()">
+learn more
+</button>
+
+<p id="extra-info-chakotra"></p>
+
+</div>
+
+<div class="plant-right-data">
+
+<div class="plant-data">
+
+<div class="data-box">
+<b>Plant Name</b><br>
+Chakotra
+</div>
+
+<div class="data-box">
+<b>Botanical Name</b><br>
+Citrus maxima
+</div>
+
+<div class="data-box">
+<b>Family</b><br>
+Rutaceae
+</div>
+
+<div class="data-box">
+<b>Parts Used</b><br>
+Fruit, Peel, Pulp, Seeds, Leaves
+</div>
+
+<div class="data-box">
+<b>Medicinal Effect</b><br>
+Antioxidant, Digestive support
+</div>
+
+<div class="data-box">
+<b>Active Compounds</b><br>
+Vitamin C, Flavonoids
+</div>
+
+<div class="data-box">
+<b>Traditional Use</b><br>
+Nourishment, Digestive support
+</div>
+
+</div>
+
+<div class="add-more" onclick="showMoreChakotra()">
++ ADD MORE
+</div>
+
+<div id="more-data-chakotra" class="more-data">
+
+<div class="plant-data">
+
+<div class="data-box">
+<b>Write Heading</b><br>
+<input type="text" placeholder="Type here...">
+</div>
+
+<div class="data-box">
+<b>Write Information</b><br>
+<input type="text" placeholder="Type here...">
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div id="chakotra-medicine" class="medicine-list">
+
+<p id="chakotra-phala" class="medicine-name">
+<b>1. Chakotra Phala</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Chakotra on Body:</b>
+Provides vitamin C, water and plant nutrients that contribute to normal nutritional and antioxidant support.
+</p>
+
+<p>→ Chakotra Part: Fruit pulp</p>
+<p>→ Active Compounds: Vitamin C and flavonoids</p>
+<p>→ Other Ingredients: Depends on preparation</p>
+<p>→ Why Chakotra is Used: Traditionally valued as a nourishing citrus fruit.</p>
+
+
+<p id="chakotra-swarasa" class="medicine-name">
+<b>2. Chakotra Swarasa</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Chakotra on Body:</b>
+Provides citrus nutrients and antioxidant compounds from the fruit.
+</p>
+
+<p>→ Chakotra Part: Fresh fruit juice</p>
+<p>→ Active Compounds: Vitamin C and flavonoids</p>
+<p>→ Other Ingredients: Depends on preparation</p>
+<p>→ Why Chakotra is Used: Fresh juice provides the dietary value of the fruit.</p>
+
+
+<p id="chakotra-peel" class="medicine-name">
+<b>3. Chakotra Peel Preparations</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Chakotra on Body:</b>
+Peel contains aromatic compounds and flavonoids that are studied for antioxidant activity.
+</p>
+
+<p>→ Chakotra Part: Fruit peel</p>
+<p>→ Active Compounds: Flavonoids and citrus aromatic compounds</p>
+<p>→ Other Ingredients: Preparation-specific ingredients</p>
+<p>→ Why Chakotra is Used: Citrus peel contains concentrated plant phytochemicals.</p>
+
+
+<p id="chakotra-seed" class="medicine-name">
+<b>4. Chakotra Seed Preparations</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Chakotra on Body:</b>
+Seeds contain plant phytochemicals that have been studied for antioxidant and antimicrobial properties.
+</p>
+
+<p>→ Chakotra Part: Seeds</p>
+<p>→ Active Compounds: Seed-specific phytochemicals</p>
+<p>→ Other Ingredients: Preparation-specific</p>
+<p>→ Why Chakotra is Used: Seeds are studied as a source of citrus phytochemicals.</p>
+
+
+<p id="chakotra-leaf" class="medicine-name">
+<b>5. Chakotra Leaf Preparations</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Chakotra on Body:</b>
+Leaves contain flavonoids and aromatic compounds studied for antioxidant activity.
+</p>
+
+<p>→ Chakotra Part: Leaves</p>
+<p>→ Active Compounds: Flavonoids and volatile compounds</p>
+<p>→ Other Ingredients: Depends on preparation</p>
+<p>→ Why Chakotra is Used: Leaves contain several naturally occurring citrus compounds.</p>
+
+
+<p id="chakotra-phala-churna" class="medicine-name">
+<b>6. Chakotra Phala Churna</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Chakotra on Body:</b>
+Provides powdered fruit nutrients and citrus phytochemicals.
+</p>
+
+<p>→ Chakotra Part: Dried fruit</p>
+<p>→ Active Compounds: Vitamin C and flavonoids</p>
+<p>→ Other Ingredients: Preparation-specific</p>
+<p>→ Why Chakotra is Used: Used as a traditional fruit-based preparation.</p>
+
+
+<p id="chakotra-peel-churna" class="medicine-name">
+<b>7. Chakotra Peel Churna</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Chakotra on Body:</b>
+Provides aromatic and flavonoid-rich citrus peel constituents.
+</p>
+
+<p>→ Chakotra Part: Dried peel</p>
+<p>→ Active Compounds: Flavonoids and volatile oils</p>
+<p>→ Other Ingredients: Depends on preparation</p>
+<p>→ Why Chakotra is Used: Peel is a concentrated source of citrus phytochemicals.</p>
+
+
+<p id="chakotra-juice" class="medicine-name">
+<b>8. Chakotra Juice Preparation</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Chakotra on Body:</b>
+Supports normal nutrition by supplying fluid, vitamin C and fruit-derived phytochemicals.
+</p>
+
+<p>→ Chakotra Part: Fruit pulp and juice</p>
+<p>→ Active Compounds: Vitamin C and flavonoids</p>
+<p>→ Other Ingredients: Depends on preparation</p>
+<p>→ Why Chakotra is Used: Used as a dietary fruit preparation.</p>
+
+
+<p id="chakotra-aroma" class="medicine-name">
+<b>9. Chakotra Peel Aromatic Preparation</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Chakotra on Body:</b>
+Provides aromatic citrus compounds from the peel; effects depend on the specific preparation and route of use.
+</p>
+
+<p>→ Chakotra Part: Peel</p>
+<p>→ Active Compounds: Citrus volatile compounds</p>
+<p>→ Other Ingredients: Preparation-specific</p>
+<p>→ Why Chakotra is Used: Peel contains aromatic plant constituents.</p>
+
+
+<p id="chakotra-based" class="medicine-name">
+<b>10. Chakotra-based Preparations</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Chakotra on Body:</b>
+Different plant parts provide vitamin C, flavonoids and other citrus phytochemicals.
+</p>
+
+<p>→ Chakotra Part: Fruit, peel, seeds or leaves</p>
+<p>→ Active Compounds: Vitamin C, flavonoids and volatile compounds</p>
+<p>→ Other Ingredients: Depends on formulation</p>
+<p>→ Why Chakotra is Used: Different parts have nutritional and traditional herbal uses.</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     5. SADABAHAR
+===================================================== -->
+
+<div class="plant-section">
+
+<h3 id="sadabahar">
+5) सदाबहार (Sadabahar)
+</h3>
+
+<div class="plant-card">
+
+<div class="plant-main-content">
+
+<div class="plant-photo">
+
+<img src="sadabahar.jpg.jpg" alt="sadabahar plant">
+
+<button onclick="showInfoSadabahar()">
+learn more
+</button>
+
+<p id="extra-info-sadabahar"></p>
+
+</div>
+
+<div class="plant-right-data">
+
+<div class="plant-data">
+
+<div class="data-box">
+<b>Plant Name</b><br>
+Sadabahar
+</div>
+
+<div class="data-box">
+<b>Botanical Name</b><br>
+Catharanthus roseus
+</div>
+
+<div class="data-box">
+<b>Family</b><br>
+Apocynaceae
+</div>
+
+<div class="data-box">
+<b>Parts Used</b><br>
+Leaves, Flowers, Roots
+</div>
+
+<div class="data-box">
+<b>Medicinal Effect</b><br>
+Pharmacologically active plant
+</div>
+
+<div class="data-box">
+<b>Active Compounds</b><br>
+Vincristine, Vinblastine
+</div>
+
+<div class="data-box">
+<b>Traditional Use</b><br>
+Traditional herbal use
+</div>
+
+</div>
+
+<div class="add-more" onclick="showMoreSadabahar()">
++ ADD MORE
+</div>
+
+<div id="more-data-sadabahar" class="more-data">
+
+<div class="plant-data">
+
+<div class="data-box">
+<b>Write Heading</b><br>
+<input type="text" placeholder="Type here...">
+</div>
+
+<div class="data-box">
+<b>Write Information</b><br>
+<input type="text" placeholder="Type here...">
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div id="sadabahar-medicine" class="medicine-list">
+
+<p id="sadabahar-leaf-preparation" class="medicine-name">
+<b>1. Sadabahar Leaf Preparations</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Sadabahar on Body:</b>
+Leaves contain pharmacologically active indole alkaloids that are important in medicinal research.
+</p>
+
+<p>→ Sadabahar Part: Leaves</p>
+<p>→ Active Compounds: Catharanthine and related alkaloids</p>
+<p>→ Other Ingredients: Preparation-specific</p>
+<p>→ Why Sadabahar is Used: Leaves contain important naturally occurring alkaloids.</p>
+
+
+<p id="sadabahar-root-preparation" class="medicine-name">
+<b>2. Sadabahar Root Preparations</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Sadabahar on Body:</b>
+Roots contain indole alkaloids with pharmacological activity studied in medicinal research.
+</p>
+
+<p>→ Sadabahar Part: Roots</p>
+<p>→ Active Compounds: Indole alkaloids</p>
+<p>→ Other Ingredients: Preparation-specific</p>
+<p>→ Why Sadabahar is Used: Roots are a source of naturally occurring alkaloids.</p>
+
+
+<p id="sadabahar-flower-preparation" class="medicine-name">
+<b>3. Sadabahar Flower Preparations</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Sadabahar on Body:</b>
+Flowers contain plant alkaloids and other phytochemicals studied for biological activity.
+</p>
+
+<p>→ Sadabahar Part: Flowers</p>
+<p>→ Active Compounds: Alkaloid-containing phytochemicals</p>
+<p>→ Other Ingredients: Depends on preparation</p>
+<p>→ Why Sadabahar is Used: Flowers are used in some traditional herbal preparations.</p>
+
+
+<p id="sadabahar-whole-plant" class="medicine-name">
+<b>4. Sadabahar Whole Plant Preparations</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Sadabahar on Body:</b>
+Different parts contain pharmacologically active alkaloids; effects depend strongly on the specific extract and dose.
+</p>
+
+<p>→ Sadabahar Part: Whole plant</p>
+<p>→ Active Compounds: Indole alkaloids</p>
+<p>→ Other Ingredients: Preparation-specific</p>
+<p>→ Why Sadabahar is Used: It is an important source of medicinally significant alkaloids.</p>
+
+
+<p id="vincristine" class="medicine-name">
+<b>5. Vincristine</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Sadabahar on Body:</b>
+Vincristine is a clinically used vinca alkaloid that interferes with microtubule formation in rapidly dividing cells.
+</p>
+
+<p>→ Sadabahar Part: Plant-derived alkaloid source</p>
+<p>→ Active Compound: Vincristine</p>
+<p>→ Other Ingredients: Pharmaceutical formulation</p>
+<p>→ Why Sadabahar is Important: Catharanthus roseus is the natural plant source from which vincristine was originally identified.</p>
+
+
+<p id="vinblastine" class="medicine-name">
+<b>6. Vinblastine</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Sadabahar on Body:</b>
+Vinblastine is a vinca alkaloid that acts on microtubules and is used as a prescription anticancer medicine under specialist medical care.
+</p>
+
+<p>→ Sadabahar Part: Plant-derived alkaloid source</p>
+<p>→ Active Compound: Vinblastine</p>
+<p>→ Other Ingredients: Pharmaceutical formulation</p>
+<p>→ Why Sadabahar is Important: Vinblastine is derived from alkaloids associated with Catharanthus roseus.</p>
+
+
+<p id="sadabahar-alkaloid-research" class="medicine-name">
+<b>7. Indole Alkaloid Preparations</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Sadabahar on Body:</b>
+Sadabahar produces several indole alkaloids with diverse pharmacological activity studied in modern medicine.
+</p>
+
+<p>→ Sadabahar Part: Leaves, roots and other aerial parts</p>
+<p>→ Active Compounds: Indole alkaloids</p>
+<p>→ Other Ingredients: Depends on extraction</p>
+<p>→ Why Sadabahar is Used: It is a major natural source of medicinally important alkaloids.</p>
+
+
+<p id="sadabahar-churna" class="medicine-name">
+<b>8. Sadabahar Churna</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Sadabahar on Body:</b>
+Contains the plant's naturally occurring alkaloids; effects depend on preparation and should not be assumed to equal pharmaceutical vinca alkaloids.
+</p>
+
+<p>→ Sadabahar Part: Dried plant material</p>
+<p>→ Active Compounds: Various indole alkaloids</p>
+<p>→ Other Ingredients: Depends on preparation</p>
+<p>→ Why Sadabahar is Used: Mainly of botanical and research interest.</p>
+
+
+<p id="sadabahar-kwatha" class="medicine-name">
+<b>9. Sadabahar Kwatha</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Sadabahar on Body:</b>
+A water-based preparation may contain water-soluble plant constituents, but its biological effect depends on the preparation.
+</p>
+
+<p>→ Sadabahar Part: Leaves or whole plant</p>
+<p>→ Active Compounds: Preparation-dependent alkaloids</p>
+<p>→ Other Ingredients: Water and formulation-specific herbs</p>
+<p>→ Why Sadabahar is Used: Used in some traditional herbal contexts.</p>
+
+
+<p id="sadabahar-based" class="medicine-name">
+<b>10. Sadabahar-based Preparations</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Sadabahar on Body:</b>
+The plant is particularly important because its alkaloids have demonstrated significant pharmacological activity.
+</p>
+
+<p>→ Sadabahar Part: Leaves, roots or whole plant</p>
+<p>→ Active Compounds: Vincristine, vinblastine and related alkaloids</p>
+<p>→ Other Ingredients: Depends on pharmaceutical or research preparation</p>
+<p>→ Why Sadabahar is Used: It is a major medicinal plant in pharmacognosy.</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     6. BANANA
+===================================================== -->
+
+<div class="plant-section">
+
+<h3 id="banana">
+6) कदली (Kadali)
+</h3>
+
+<div class="plant-card">
+
+<div class="plant-main-content">
+
+<div class="plant-photo">
+
+<img src="banana.jpg.jpg" alt="banana plant">
+
+<button onclick="showInfoBanana()">
+learn more
+</button>
+
+<p id="extra-info-banana"></p>
+
+</div>
+
+<div class="plant-right-data">
+
+<div class="plant-data">
+
+<div class="data-box">
+<b>Plant Name</b><br>
+Banana
+</div>
+
+<div class="data-box">
+<b>Botanical Name</b><br>
+Musa spp.
+</div>
+
+<div class="data-box">
+<b>Family</b><br>
+Musaceae
+</div>
+
+<div class="data-box">
+<b>Parts Used</b><br>
+Fruit, Flower, Stem
+</div>
+
+<div class="data-box">
+<b>Medicinal Effect</b><br>
+Nutritive, Digestive support
+</div>
+
+<div class="data-box">
+<b>Active Compounds</b><br>
+Resistant starch, Potassium, Dietary fibre
+</div>
+
+<div class="data-box">
+<b>Traditional Use</b><br>
+Nourishment, Digestive support
+</div>
+
+</div>
+
+<div class="add-more" onclick="showMoreBanana()">
++ ADD MORE
+</div>
+
+<div id="more-data-banana" class="more-data">
+
+<div class="plant-data">
+
+<div class="data-box">
+<b>Write Heading</b><br>
+<input type="text" placeholder="Type here...">
+</div>
+
+<div class="data-box">
+<b>Write Information</b><br>
+<input type="text" placeholder="Type here...">
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div id="banana-medicine" class="medicine-list">
+
+<p id="kadali-phala" class="medicine-name">
+<b>1. Kadali Phala</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Banana on Body:</b>
+Provides carbohydrates, potassium and other nutrients that support normal energy and nutritional needs.
+</p>
+
+<p>→ Banana Part: Banana fruit</p>
+<p>→ Active Components: Potassium, carbohydrates and dietary fibre</p>
+<p>→ Other Ingredients: Depends on preparation</p>
+<p>→ Why Banana is Used: Banana fruit is traditionally valued as a nourishing food.</p>
+
+
+<p id="kadali-kshara" class="medicine-name">
+<b>2. Kadali Kshara</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Banana on Body:</b>
+Provides mineral-rich plant-derived material in a traditional kshara preparation.
+</p>
+
+<p>→ Banana Part: Banana plant material</p>
+<p>→ Active Components: Mineral constituents formed during preparation</p>
+<p>→ Other Ingredients: Preparation-specific</p>
+<p>→ Why Banana is Used: Kadali is used as a plant source in traditional Ayurvedic kshara preparations.</p>
+
+
+<p id="banana-flower-preparation" class="medicine-name">
+<b>3. Banana Flower Preparations</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Banana on Body:</b>
+Banana flower provides dietary fibre and plant nutrients and is traditionally used as food and herbal material.
+</p>
+
+<p>→ Banana Part: Banana flower</p>
+<p>→ Active Components: Dietary fibre and plant phytochemicals</p>
+<p>→ Other Ingredients: Depends on preparation</p>
+<p>→ Why Banana is Used: Banana flower is traditionally used as a food and herbal ingredient.</p>
+
+
+<p id="banana-stem-preparation" class="medicine-name">
+<b>4. Banana Stem Preparations</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Banana on Body:</b>
+The pseudostem contains water, fibre and plant minerals and is traditionally used as a dietary plant part.
+</p>
+
+<p>→ Banana Part: Banana pseudostem</p>
+<p>→ Active Components: Fibre and mineral constituents</p>
+<p>→ Other Ingredients: Preparation-specific</p>
+<p>→ Why Banana is Used: The pseudostem has traditional dietary and herbal uses.</p>
+
+
+<p id="banana-pseudostem-juice" class="medicine-name">
+<b>5. Banana Pseudostem Juice</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Banana on Body:</b>
+Provides water and plant-derived nutrients from the banana pseudostem.
+</p>
+
+<p>→ Banana Part: Pseudostem</p>
+<p>→ Active Components: Water, minerals and plant compounds</p>
+<p>→ Other Ingredients: Depends on preparation</p>
+<p>→ Why Banana is Used: Traditionally used as a plant-based juice preparation.</p>
+
+
+<p id="banana-flower-churna" class="medicine-name">
+<b>6. Banana Flower Churna</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Banana on Body:</b>
+Provides dietary fibre and plant phytochemicals from dried banana flower.
+</p>
+
+<p>→ Banana Part: Flower</p>
+<p>→ Active Components: Fibre and phytochemicals</p>
+<p>→ Other Ingredients: Depends on preparation</p>
+<p>→ Why Banana is Used: Used as a traditional food/herbal preparation.</p>
+
+
+<p id="banana-unripe-fruit" class="medicine-name">
+<b>7. Unripe Banana Preparation</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Banana on Body:</b>
+Unripe banana contains resistant starch and dietary fibre that can influence digestion and the intestinal environment.
+</p>
+
+<p>→ Banana Part: Unripe fruit</p>
+<p>→ Active Components: Resistant starch and fibre</p>
+<p>→ Other Ingredients: Depends on preparation</p>
+<p>→ Why Banana is Used: Traditionally used as a dietary preparation.</p>
+
+
+<p id="banana-ripe-fruit" class="medicine-name">
+<b>8. Ripe Banana Preparation</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Banana on Body:</b>
+Provides readily available carbohydrate, potassium and other nutrients for normal nutrition.
+</p>
+
+<p>→ Banana Part: Ripe fruit</p>
+<p>→ Active Components: Carbohydrates, potassium and fibre</p>
+<p>→ Other Ingredients: Depends on preparation</p>
+<p>→ Why Banana is Used: Traditionally valued as a nourishing fruit.</p>
+
+
+<p id="banana-leaf-preparation" class="medicine-name">
+<b>9. Banana Leaf Preparations</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Banana on Body:</b>
+Banana leaves mainly serve as a traditional plant material and food-serving medium rather than a major medicinal drug.
+</p>
+
+<p>→ Banana Part: Leaves</p>
+<p>→ Active Components: Leaf phytochemicals</p>
+<p>→ Other Ingredients: Depends on preparation</p>
+<p>→ Why Banana is Used: Banana leaves have extensive traditional cultural and dietary use.</p>
+
+
+<p id="kadali-based" class="medicine-name">
+<b>10. Kadali-based Preparations</b>
+</p>
+
+<p class="special-effect">
+→ <b>Special Effect of Banana on Body:</b>
+Different parts of Kadali provide nutrients, fibre and plant compounds with mainly nutritional and traditional supportive roles.
+</p>
+
+<p>→ Banana Part: Fruit, flower, stem or leaves</p>
+<p>→ Active Components: Potassium, fibre, resistant starch and phytochemicals</p>
+<p>→ Other Ingredients: Depends on formulation</p>
+<p>→ Why Banana is Used: Different parts of Kadali have traditional dietary and Ayurvedic uses.</p>
+
+</div>
+
+</div>
 
 </div>
 
