@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,8 +15,6 @@ body {
     font-family: Arial, sans-serif;
     margin: 40px;
 }
-
-/* ================= HEADER ================= */
 
 .hero-header {
     position: relative;
@@ -91,9 +90,6 @@ h1 {
     font-size: 95px;
     transform: rotate(-10deg);
 }
-
-
-/* ================= MENU ================= */
 
 .menu-container {
     position: sticky;
@@ -208,9 +204,6 @@ h1 {
     display: none;
 }
 
-
-/* ================= TITLES ================= */
-
 h2 {
     margin-top: 30px;
 }
@@ -227,9 +220,6 @@ h2 {
     color: purple;
     text-shadow: 0 0 0 purple;
 }
-
-
-/* ================= PLANTS ================= */
 
 .plants-row {
     display: flex;
@@ -256,11 +246,6 @@ h3 {
     overflow: visible;
     box-sizing: border-box;
 }
-
-
-/* IMPORTANT FIX:
-   Photo aur plant details ab overlap nahi karenge.
-*/
 
 .plant-main-content {
     display: flex;
@@ -321,9 +306,6 @@ h3 {
     color: darkgreen;
 }
 
-
-/* ================= MEDICINES ================= */
-
 .medicine-list {
     width: 100%;
     margin-top: 25px;
@@ -363,9 +345,6 @@ h3 {
 .special-effect b {
     color: #b35a00;
 }
-
-
-/* ================= LEARN MORE ================= */
 
 .extra-info {
     border: 2px solid green;
@@ -413,9 +392,6 @@ h3 {
     margin-top: 5px;
     box-sizing: border-box;
 }
-
-
-/* ================= MOBILE ================= */
 
 @media (max-width: 700px) {
 
@@ -533,11 +509,7 @@ h3 {
         font-size: 17px;
         font-weight: 600;
     }
-
 }
-
-
-/* ================= VERY SMALL MOBILE ================= */
 
 @media (max-width: 420px) {
 
@@ -558,87 +530,63 @@ h3 {
         padding: 9px 12px;
         font-size: 15px;
     }
-
 }
 
 </style>
 
-
 <script>
-
-/* ================= DETAIL ================= */
 
 function toggleDetail(id) {
 
     let box = document.getElementById(id);
 
-    if (!box) {
-        return;
-    }
+    if (!box) return;
 
-    if (box.style.display === "block") {
-        box.style.display = "none";
-    } else {
-        box.style.display = "block";
-    }
+    box.style.display =
+        box.style.display === "block"
+        ? "none"
+        : "block";
 }
 
-
-/* ================= ADD MORE ================= */
 
 function toggleMore(id) {
 
     let box = document.getElementById(id);
 
-    if (!box) {
-        return;
-    }
+    if (!box) return;
 
-    if (box.style.display === "block") {
-        box.style.display = "none";
-    } else {
-        box.style.display = "block";
-    }
+    box.style.display =
+        box.style.display === "block"
+        ? "none"
+        : "block";
 }
 
-
-/* ================= MENU ================= */
 
 function toggleSection(id) {
 
     let section = document.getElementById(id);
 
-    if (!section) {
-        return;
-    }
+    if (!section) return;
 
-    if (section.style.display === "block") {
-        section.style.display = "none";
-    } else {
-        section.style.display = "block";
-    }
+    section.style.display =
+        section.style.display === "block"
+        ? "none"
+        : "block";
 }
 
-
-/* ================= MEDICINE GROUP ================= */
 
 function showMedicineGroup(groupId) {
 
     let group = document.getElementById(groupId);
 
-    if (!group) {
-        return;
-    }
+    if (!group) return;
 
-    if (group.style.display === "block") {
-        group.style.display = "none";
-    } else {
-        group.style.display = "block";
-    }
+    group.style.display =
+        group.style.display === "block"
+        ? "none"
+        : "block";
 }
 
-
-/* ================= MEDICINE JUMP ================= */
 
 function showMedicine(groupId, medicineId) {
 
@@ -655,19 +603,14 @@ function showMedicine(groupId, medicineId) {
 }
 
 
-/* ================= PLANT ARRANGEMENT ================= */
-
 function arrangePlants(type, button) {
 
     let row = document.querySelector(".plants-row");
 
-    if (!row) {
-        return;
-    }
+    if (!row) return;
 
-    let plants = Array.from(
-        row.querySelectorAll(".plant-section")
-    );
+    let plants =
+        Array.from(row.querySelectorAll(".plant-section"));
 
     if (type === "normal") {
 
@@ -695,30 +638,234 @@ function arrangePlants(type, button) {
 
     }
 
-    plants.forEach(plant => row.appendChild(plant));
+    plants.forEach(plant =>
+        row.appendChild(plant)
+    );
 
     document
         .querySelectorAll(".arrangement-button")
-        .forEach(btn => {
+        .forEach(btn =>
+            btn.classList.remove("active")
+        );
 
-            btn.classList.remove("active");
+    if (button)
+        button.classList.add("active");
+}
+
+
+/* ================= SPECIAL EFFECTS ================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const effects = {
+
+        "neem-medicine": {
+            "nimba-taila":
+            "Traditionally associated with external skin-supporting and soothing properties.",
+
+            "nimba-ghrita":
+            "Traditionally associated with soothing and skin-supporting herbal applications.",
+
+            "nimbadi-kwatha":
+            "Traditionally used as a bitter herbal decoction and associated with cleansing-oriented Ayurvedic use.",
+
+            "panchatikta-ghrita":
+            "Traditionally associated with bitter-herb based Ayurvedic support and skin-related applications.",
+
+            "nimbamritadi-taila":
+            "Traditionally used as an external medicated oil and associated with skin-supporting applications.",
+
+            "nimba-churna":
+            "Traditionally associated with bitter herbal properties and skin-supporting use.",
+
+            "nimba-swarasa":
+            "Traditionally associated with bitter phytochemicals and cleansing-oriented herbal use.",
+
+            "nimba-kwatha":
+            "Traditionally used as a bitter decoction and associated with antimicrobial and skin-supporting properties.",
+
+            "nimba-arishta":
+            "Traditionally associated with bitter herbal constituents and digestive-supporting Ayurvedic use.",
+
+            "nimba-lepa":
+            "Traditionally used externally and associated with soothing and skin-supporting applications."
+        },
+
+        "haridra-medicine": {
+            "haridra-khanda":
+            "Traditionally associated with antioxidant, soothing and skin-supporting properties.",
+
+            "haridra-churna":
+            "Traditionally associated with antioxidant and anti-inflammatory activity.",
+
+            "nisha-amalaki":
+            "Traditionally associated with antioxidant support through the combined use of Haridra and Amalaki.",
+
+            "haridra-taila":
+            "Traditionally used externally and associated with soothing and skin-supporting applications.",
+
+            "haridra-ksheerapaka":
+            "Traditionally associated with soothing and supportive herbal use.",
+
+            "haridra-lavana":
+            "Traditionally associated with digestive-supporting herbal use.",
+
+            "haridra-lepa":
+            "Traditionally used externally for soothing and skin-supporting applications.",
+
+            "haridra-arka":
+            "Traditionally associated with the phytochemical properties of turmeric.",
+
+            "haridra-asava":
+            "Traditionally associated with digestive and antioxidant-oriented herbal use.",
+
+            "haridra-based":
+            "Traditionally associated with antioxidant, soothing and skin-supporting properties."
+        },
+
+        "guduchi-medicine": {
+            "guduchi-satva":
+            "Traditionally associated with immune-supporting, antioxidant and general restorative properties.",
+
+            "guduchyadi-churna":
+            "Traditionally associated with digestive-supporting and herbal restorative use.",
+
+            "amritarishta":
+            "Traditionally associated with fever-supporting and restorative Ayurvedic use.",
+
+            "guduchi-ghrita":
+            "Traditionally associated with restorative and nourishing herbal applications.",
+
+            "guduchi-taila":
+            "Traditionally used externally and associated with soothing herbal applications.",
+
+            "guduchi-churna":
+            "Traditionally associated with antioxidant and digestive-supporting properties.",
+
+            "guduchi-swarasa":
+            "Traditionally associated with restorative and immune-supporting herbal use.",
+
+            "guduchi-kwatha":
+            "Traditionally associated with digestive, restorative and antioxidant-oriented use.",
+
+            "guduchyadi-tailam":
+            "Traditionally used as an external herbal oil preparation and associated with soothing applications.",
+
+            "guduchi-based":
+            "Traditionally associated with restorative, antioxidant and immune-supporting properties."
+        },
+
+        "chakotra-medicine": {
+            "chakotra-phala":
+            "Traditionally valued for nutritional and antioxidant support from fruit constituents.",
+
+            "chakotra-swarasa":
+            "Traditionally valued as a fruit-based preparation providing nutritional and antioxidant support.",
+
+            "chakotra-peel":
+            "Associated with flavonoids and aromatic phytochemicals found in citrus peel.",
+
+            "chakotra-seed":
+            "Contains plant phytochemicals that are studied for antioxidant and other biological activities.",
+
+            "chakotra-leaf":
+            "Leaves contain phytochemicals studied for antioxidant and botanical properties.",
+
+            "chakotra-phala-churna":
+            "Traditionally valued as a dried fruit preparation with nutritional and antioxidant properties.",
+
+            "chakotra-peel-churna":
+            "Associated with citrus flavonoids and aromatic phytochemicals.",
+
+            "chakotra-juice":
+            "Provides fruit-derived nutrients and antioxidant-related phytochemicals.",
+
+            "chakotra-aroma":
+            "Associated with aromatic citrus constituents present in the peel.",
+
+            "chakotra-based":
+            "Associated with nutritional, antioxidant and citrus phytochemical properties."
+        },
+
+        "sadabahar-medicine": {
+            "sadabahar-leaf-preparation":
+            "Leaves contain indole alkaloids with significant pharmacological research interest.",
+
+            "sadabahar-root-preparation":
+            "Roots contain alkaloids and other phytochemicals studied for biological activity.",
+
+            "sadabahar-flower-preparation":
+            "Flowers contain various phytochemicals and are of botanical and pharmacological interest.",
+
+            "sadabahar-whole-plant":
+            "The whole plant contains pharmacologically important indole alkaloids.",
+
+            "vincristine":
+            "A pharmacologically important vinca alkaloid derived from Catharanthus roseus and used in modern medicine under specialist care.",
+
+            "vinblastine":
+            "A pharmacologically important vinca alkaloid derived from Catharanthus roseus and used in modern medicine under specialist care.",
+
+            "sadabahar-alkaloid-research":
+            "Indole alkaloids from the plant are extensively studied for significant pharmacological activity.",
+
+            "sadabahar-churna":
+            "Contains plant alkaloids and other constituents; traditional and pharmacological significance varies by preparation.",
+
+            "sadabahar-kwatha":
+            "Contains water-soluble plant constituents and alkaloids and has botanical research interest.",
+
+            "sadabahar-based":
+            "Important mainly because of its pharmacologically significant indole alkaloids."
+        }
+    };
+
+
+    Object.keys(effects).forEach(function(groupId) {
+
+        let group = document.getElementById(groupId);
+
+        if (!group) return;
+
+        let medicines =
+            group.querySelectorAll(".medicine-name");
+
+        medicines.forEach(function(medicine) {
+
+            let id = medicine.id;
+
+            if (
+                effects[groupId][id] &&
+                !medicine.nextElementSibling?.classList.contains("special-effect")
+            ) {
+
+                let effect =
+                    document.createElement("p");
+
+                effect.className =
+                    "special-effect";
+
+                effect.innerHTML =
+                    "→ <b>Special Effect on Body:</b> " +
+                    effects[groupId][id];
+
+                medicine.insertAdjacentElement(
+                    "afterend",
+                    effect
+                );
+            }
 
         });
 
-    if (button) {
-        button.classList.add("active");
-    }
-}
+    });
+
+});
 
 </script>
 
 </head>
 
-
 <body>
-
-
-<!-- ================= HEADER ================= -->
 
 <div class="hero-header">
 
@@ -727,9 +874,7 @@ function arrangePlants(type, button) {
 <div class="cloud cloud3">☁</div>
 <div class="cloud cloud4">☁</div>
 
-<h1>
-HERBAL PLANT EXPLORER
-</h1>
+<h1>HERBAL PLANT EXPLORER</h1>
 
 <img src="leaftransparent.png" class="title-leaf">
 <img src="leaftransparent.png" class="title-leaf">
@@ -739,9 +884,6 @@ EXPLORER MEDICINAL AND HERBAL PLANT
 </p>
 
 </div>
-
-
-<!-- ================= MENU ================= -->
 
 <div class="menu-container">
 
@@ -769,12 +911,9 @@ MOST IMPORTANT
 
 </div>
 
-
 <div id="main-menu" class="menu-list">
 
-<a href="#plant-information">
-HOME
-</a>
+<a href="#plant-information">HOME</a>
 
 <div class="menu-parent"
 onclick="toggleSection('plant-menu')">
@@ -797,17 +936,12 @@ PLANT INFORMATION ▾
 
 </div>
 
-
 <div class="menu-parent"
 onclick="toggleSection('medicine-menu')">
 MEDICINAL FORMULATIONS ▾
 </div>
 
-
 <div id="medicine-menu" class="submenu">
-
-
-<!-- ================= NEEM ================= -->
 
 <div class="medicine-plant"
 onclick="showMedicineGroup('neem-menu-medicines')">
@@ -829,9 +963,6 @@ Neem
 
 </div>
 
-
-<!-- ================= HARIDRA ================= -->
-
 <div class="medicine-plant"
 onclick="showMedicineGroup('haridra-menu-medicines')">
 Haridra
@@ -851,9 +982,6 @@ Haridra
 <a href="javascript:void(0)" onclick="showMedicine('haridra-medicine','haridra-based')">10. Haridra-based Preparations</a>
 
 </div>
-
-
-<!-- ================= GUDUCHI ================= -->
 
 <div class="medicine-plant"
 onclick="showMedicineGroup('guduchi-menu-medicines')">
@@ -875,9 +1003,6 @@ Guduchi
 
 </div>
 
-
-<!-- ================= CHAKOTRA ================= -->
-
 <div class="medicine-plant"
 onclick="showMedicineGroup('chakotra-menu-medicines')">
 Chakotra
@@ -897,9 +1022,6 @@ Chakotra
 <a href="javascript:void(0)" onclick="showMedicine('chakotra-medicine','chakotra-based')">10. Chakotra-based Preparations</a>
 
 </div>
-
-
-<!-- ================= SADABAHAR ================= -->
 
 <div class="medicine-plant"
 onclick="showMedicineGroup('sadabahar-menu-medicines')">
@@ -921,146 +1043,7 @@ Sadabahar
 
 </div>
 
-
-<!-- ================= BANANA ================= -->
-
-<div class="medicine-plant"
-onclick="showMedicineGroup('banana-menu-medicines')">
-Banana / Kadali
 </div>
-
-<div id="banana-menu-medicines" class="medicine-group">
-
-<a href="javascript:void(0)" onclick="showMedicine('banana-medicine','kadali-phala')">1. Kadali Phala</a>
-<a href="javascript:void(0)" onclick="showMedicine('banana-medicine','kadali-kshara')">2. Kadali Kshara</a>
-<a href="javascript:void(0)" onclick="showMedicine('banana-medicine','banana-flower-preparation')">3. Banana Flower Preparations</a>
-<a href="javascript:void(0)" onclick="showMedicine('banana-medicine','banana-stem-preparation')">4. Banana Stem Preparations</a>
-<a href="javascript:void(0)" onclick="showMedicine('banana-medicine','banana-pseudostem-juice')">5. Banana Pseudostem Juice</a>
-<a href="javascript:void(0)" onclick="showMedicine('banana-medicine','banana-flower-churna')">6. Banana Flower Churna</a>
-<a href="javascript:void(0)" onclick="showMedicine('banana-medicine','banana-unripe-fruit')">7. Unripe Banana Preparation</a>
-<a href="javascript:void(0)" onclick="showMedicine('banana-medicine','banana-ripe-fruit')">8. Ripe Banana Preparation</a>
-<a href="javascript:void(0)" onclick="showMedicine('banana-medicine','banana-leaf-preparation')">9. Banana Leaf Preparations</a>
-<a href="javascript:void(0)" onclick="showMedicine('banana-medicine','kadali-based')">10. Kadali-based Preparations</a>
-
-</div>
-
-
-<!-- ================= BILVA ================= -->
-
-<div class="medicine-plant"
-onclick="showMedicineGroup('bilva-menu-medicines')">
-Bilva / Bel
-</div>
-
-<div id="bilva-menu-medicines" class="medicine-group">
-
-<a href="javascript:void(0)" onclick="showMedicine('bilva-medicine','bilva-phala')">1. Bilva Phala</a>
-<a href="javascript:void(0)" onclick="showMedicine('bilva-medicine','bilva-patra')">2. Bilva Patra</a>
-<a href="javascript:void(0)" onclick="showMedicine('bilva-medicine','bilva-churna')">3. Bilva Churna</a>
-<a href="javascript:void(0)" onclick="showMedicine('bilva-medicine','bilva-swarasa')">4. Bilva Swarasa</a>
-<a href="javascript:void(0)" onclick="showMedicine('bilva-medicine','bilva-kwatha')">5. Bilva Kwatha</a>
-<a href="javascript:void(0)" onclick="showMedicine('bilva-medicine','bilva-avaleha')">6. Bilva Avaleha</a>
-<a href="javascript:void(0)" onclick="showMedicine('bilva-medicine','bilva-root')">7. Bilva Root Preparations</a>
-<a href="javascript:void(0)" onclick="showMedicine('bilva-medicine','bilva-bark')">8. Bilva Bark Preparations</a>
-<a href="javascript:void(0)" onclick="showMedicine('bilva-medicine','bilva-leaf')">9. Bilva Leaf Preparations</a>
-<a href="javascript:void(0)" onclick="showMedicine('bilva-medicine','bilva-based')">10. Bilva-based Preparations</a>
-
-</div>
-
-
-<!-- ================= GULMEHNDI ================= -->
-
-<div class="medicine-plant"
-onclick="showMedicineGroup('gulmehndi-menu-medicines')">
-Gulmehndi
-</div>
-
-<div id="gulmehndi-menu-medicines" class="medicine-group">
-
-<a href="javascript:void(0)" onclick="showMedicine('gulmehndi-medicine','gulmehndi-leaf')">1. Gulmehndi Leaf Preparations</a>
-<a href="javascript:void(0)" onclick="showMedicine('gulmehndi-medicine','gulmehndi-flower')">2. Gulmehndi Flower Preparations</a>
-<a href="javascript:void(0)" onclick="showMedicine('gulmehndi-medicine','gulmehndi-seed')">3. Gulmehndi Seed Preparations</a>
-<a href="javascript:void(0)" onclick="showMedicine('gulmehndi-medicine','gulmehndi-root')">4. Gulmehndi Root Preparations</a>
-<a href="javascript:void(0)" onclick="showMedicine('gulmehndi-medicine','gulmehndi-whole')">5. Gulmehndi Whole Plant Preparations</a>
-<a href="javascript:void(0)" onclick="showMedicine('gulmehndi-medicine','gulmehndi-paste')">6. Gulmehndi Leaf Paste</a>
-<a href="javascript:void(0)" onclick="showMedicine('gulmehndi-medicine','gulmehndi-extract')">7. Gulmehndi Extract</a>
-<a href="javascript:void(0)" onclick="showMedicine('gulmehndi-medicine','gulmehndi-churna')">8. Gulmehndi Churna</a>
-<a href="javascript:void(0)" onclick="showMedicine('gulmehndi-medicine','gulmehndi-kwatha')">9. Gulmehndi Kwatha</a>
-<a href="javascript:void(0)" onclick="showMedicine('gulmehndi-medicine','gulmehndi-based')">10. Gulmehndi-based Preparations</a>
-
-</div>
-
-
-<!-- ================= HIBISCUS ================= -->
-
-<div class="medicine-plant"
-onclick="showMedicineGroup('hibiscus-menu-medicines')">
-Gudhal / Hibiscus
-</div>
-
-<div id="hibiscus-menu-medicines" class="medicine-group">
-
-<a href="javascript:void(0)" onclick="showMedicine('hibiscus-medicine','hibiscus-flower')">1. Gudhal Flower Preparation</a>
-<a href="javascript:void(0)" onclick="showMedicine('hibiscus-medicine','hibiscus-petals')">2. Gudhal Petal Preparation</a>
-<a href="javascript:void(0)" onclick="showMedicine('hibiscus-medicine','hibiscus-leaf')">3. Gudhal Leaf Preparation</a>
-<a href="javascript:void(0)" onclick="showMedicine('hibiscus-medicine','hibiscus-root')">4. Gudhal Root Preparation</a>
-<a href="javascript:void(0)" onclick="showMedicine('hibiscus-medicine','hibiscus-juice')">5. Gudhal Flower Juice</a>
-<a href="javascript:void(0)" onclick="showMedicine('hibiscus-medicine','hibiscus-tea')">6. Hibiscus Herbal Infusion</a>
-<a href="javascript:void(0)" onclick="showMedicine('hibiscus-medicine','hibiscus-paste')">7. Gudhal Flower Paste</a>
-<a href="javascript:void(0)" onclick="showMedicine('hibiscus-medicine','hibiscus-oil')">8. Gudhal Hair Oil Preparations</a>
-<a href="javascript:void(0)" onclick="showMedicine('hibiscus-medicine','hibiscus-churna')">9. Gudhal Churna</a>
-<a href="javascript:void(0)" onclick="showMedicine('hibiscus-medicine','hibiscus-based')">10. Hibiscus-based Preparations</a>
-
-</div>
-
-
-<!-- ================= PATHARCHATTA ================= -->
-
-<div class="medicine-plant"
-onclick="showMedicineGroup('patharchatta-menu-medicines')">
-Patharchatta
-</div>
-
-<div id="patharchatta-menu-medicines" class="medicine-group">
-
-<a href="javascript:void(0)" onclick="showMedicine('patharchatta-medicine','patharchatta-leaf')">1. Patharchatta Leaf Preparation</a>
-<a href="javascript:void(0)" onclick="showMedicine('patharchatta-medicine','patharchatta-swarasa')">2. Patharchatta Swarasa</a>
-<a href="javascript:void(0)" onclick="showMedicine('patharchatta-medicine','patharchatta-paste')">3. Patharchatta Leaf Paste</a>
-<a href="javascript:void(0)" onclick="showMedicine('patharchatta-medicine','patharchatta-juice')">4. Patharchatta Leaf Juice</a>
-<a href="javascript:void(0)" onclick="showMedicine('patharchatta-medicine','patharchatta-churna')">5. Patharchatta Churna</a>
-<a href="javascript:void(0)" onclick="showMedicine('patharchatta-medicine','patharchatta-kwatha')">6. Patharchatta Kwatha</a>
-<a href="javascript:void(0)" onclick="showMedicine('patharchatta-medicine','patharchatta-extract')">7. Patharchatta Extract</a>
-<a href="javascript:void(0)" onclick="showMedicine('patharchatta-medicine','patharchatta-leaf-dry')">8. Dried Patharchatta Leaf</a>
-<a href="javascript:void(0)" onclick="showMedicine('patharchatta-medicine','patharchatta-research')">9. Patharchatta Research Preparations</a>
-<a href="javascript:void(0)" onclick="showMedicine('patharchatta-medicine','patharchatta-based')">10. Patharchatta-based Preparations</a>
-
-</div>
-
-
-<!-- ================= ROSE ================= -->
-
-<div class="medicine-plant"
-onclick="showMedicineGroup('rose-menu-medicines')">
-Rose
-</div>
-
-<div id="rose-menu-medicines" class="medicine-group">
-
-<a href="javascript:void(0)" onclick="showMedicine('rose-medicine','rose-petal')">1. Rose Petal Preparation</a>
-<a href="javascript:void(0)" onclick="showMedicine('rose-medicine','rose-gulkand')">2. Gulkand</a>
-<a href="javascript:void(0)" onclick="showMedicine('rose-medicine','rose-water')">3. Rose Water</a>
-<a href="javascript:void(0)" onclick="showMedicine('rose-medicine','rose-flower')">4. Rose Flower Preparation</a>
-<a href="javascript:void(0)" onclick="showMedicine('rose-medicine','rose-petal-paste')">5. Rose Petal Paste</a>
-<a href="javascript:void(0)" onclick="showMedicine('rose-medicine','rose-infusion')">6. Rose Herbal Infusion</a>
-<a href="javascript:void(0)" onclick="showMedicine('rose-medicine','rose-petal-churna')">7. Rose Petal Churna</a>
-<a href="javascript:void(0)" onclick="showMedicine('rose-medicine','rose-syrup')">8. Rose Syrup</a>
-<a href="javascript:void(0)" onclick="showMedicine('rose-medicine','rose-extract')">9. Rose Extract</a>
-<a href="javascript:void(0)" onclick="showMedicine('rose-medicine','rose-based')">10. Rose-based Preparations</a>
-
-</div>
-
-</div>
-
 
 <a href="#ayurveda">AYURVEDA</a>
 <a href="#herbal-knowledge">HERBAL KNOWLEDGE</a>
@@ -1072,30 +1055,19 @@ Rose
 
 </div>
 
-
-<!-- ================= PLANT INFORMATION ================= -->
-
 <h2 id="plant-information" class="plant-info-title">
 <span>PLANT</span>
 <span>INFORMATION</span>
 </h2>
 
-
 <div class="plants-row">
-
-
-<!-- =====================================================
-     1. NEEM
-===================================================== -->
 
 <div class="plant-section"
 data-normal="1"
 data-name="Nimba"
 data-importance="1">
 
-<h3 id="neem">
-1) निम्ब (Nimba)
-</h3>
+<h3 id="neem">1) निम्ब (Nimba)</h3>
 
 <div class="plant-card">
 
@@ -1126,7 +1098,6 @@ LEARN MORE
 </div>
 
 </div>
-
 
 <div class="plant-right-data">
 
@@ -1169,11 +1140,10 @@ onclick="toggleMore('more-data-neem')">
 
 </div>
 
-
 <div id="neem-medicine" class="medicine-list">
 
 <p id="nimba-taila" class="medicine-name"><b>1. Nimba Taila</b></p>
-<p class="special-effect">→ <b>Special Effect of Neem on Body:</b> Traditionally used in external skin-supporting preparations.</p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Traditionally associated with external skin-supporting and soothing properties.</p>
 <p>→ Neem Part: Neem seed oil</p>
 <p>→ Active Neem Constituents: Nimbidin and related limonoids</p>
 <p>→ Other Ingredients: Oil base and formulation-specific ingredients</p>
@@ -1225,24 +1195,15 @@ onclick="toggleMore('more-data-neem')">
 <p>→ Why Neem is Used: Traditional external herbal preparation.</p>
 
 </div>
-
 </div>
-
 </div>
-
-
-<!-- =====================================================
-     2. HARIDRA
-===================================================== -->
 
 <div class="plant-section"
 data-normal="2"
 data-name="Haridra"
 data-importance="2">
 
-<h3 id="haridra">
-2) हरिद्रा (Haridra)
-</h3>
+<h3 id="haridra">2) हरिद्रा (Haridra)</h3>
 
 <div class="plant-card">
 
@@ -1268,7 +1229,6 @@ LEARN MORE
 </div>
 
 </div>
-
 
 <div class="plant-right-data">
 
@@ -1310,7 +1270,6 @@ onclick="toggleMore('more-data-haridra')">
 </div>
 
 </div>
-
 
 <div id="haridra-medicine" class="medicine-list">
 
@@ -1357,24 +1316,15 @@ onclick="toggleMore('more-data-haridra')">
 <p>→ Major Constituents: Curcuminoids</p>
 
 </div>
-
 </div>
-
 </div>
-
-
-<!-- =====================================================
-     3. GUDUCHI
-===================================================== -->
 
 <div class="plant-section"
 data-normal="3"
 data-name="Guduchi"
 data-importance="3">
 
-<h3 id="guduchi">
-3) गुडूची (Guduchi)
-</h3>
+<h3 id="guduchi">3) गुडूची (Guduchi)</h3>
 
 <div class="plant-card">
 
@@ -1401,7 +1351,6 @@ LEARN MORE
 </div>
 
 </div>
-
 
 <div class="plant-right-data">
 
@@ -1443,7 +1392,6 @@ onclick="toggleMore('more-data-guduchi')">
 </div>
 
 </div>
-
 
 <div id="guduchi-medicine" class="medicine-list">
 
@@ -1488,24 +1436,15 @@ onclick="toggleMore('more-data-guduchi')">
 <p>→ Major Constituents: Diterpenoids, alkaloids and polysaccharides</p>
 
 </div>
-
 </div>
-
 </div>
-
-
-<!-- =====================================================
-     4. CHAKOTRA
-===================================================== -->
 
 <div class="plant-section"
 data-normal="4"
 data-name="Chakotra"
 data-importance="7">
 
-<h3 id="chakotra">
-4) चक्रोत (Chakotra)
-</h3>
+<h3 id="chakotra">4) चक्रोत (Chakotra)</h3>
 
 <div class="plant-card">
 
@@ -1513,7 +1452,7 @@ data-importance="7">
 
 <div class="plant-photo">
 
-<img src="chakotra.jpg.jpg" alt="Chakotra fruit">
+<img src="chakotra.jpg" alt="Chakotra plant">
 
 <button onclick="toggleDetail('extra-info-chakotra')">
 LEARN MORE
@@ -1523,16 +1462,17 @@ LEARN MORE
 
 <h3>Useful Parts of Chakotra</h3>
 
-<p><b>A - Fruit:</b> Chakotra fruit</p>
-<p><b>B - Peel:</b> Fruit peel</p>
-<p><b>C - Pulp:</b> Edible pulp</p>
+<p><b>A - Whole Plant:</b> Chakotra plant</p>
+<p><b>B - Fruit:</b> Mature Chakotra fruit</p>
+<p><b>C - Peel:</b> Citrus fruit peel</p>
 <p><b>D - Seeds:</b> Chakotra seeds</p>
 <p><b>E - Leaves:</b> Chakotra leaves</p>
+<p><b>F - Flowers:</b> Chakotra flowers</p>
+<p><b>G - Juice:</b> Fresh fruit juice</p>
 
 </div>
 
 </div>
-
 
 <div class="plant-right-data">
 
@@ -1541,10 +1481,10 @@ LEARN MORE
 <div class="data-box"><b>Plant Name</b><br>Chakotra</div>
 <div class="data-box"><b>Botanical Name</b><br>Citrus maxima</div>
 <div class="data-box"><b>Family</b><br>Rutaceae</div>
-<div class="data-box"><b>Parts Used</b><br>Fruit, Peel, Pulp, Seeds, Leaves</div>
-<div class="data-box"><b>Medicinal Effect</b><br>Antioxidant, Digestive support</div>
-<div class="data-box"><b>Active Compounds</b><br>Vitamin C, Flavonoids</div>
-<div class="data-box"><b>Traditional Use</b><br>Nourishment, Digestive support</div>
+<div class="data-box"><b>Parts Used</b><br>Fruit, Peel, Seeds, Leaves</div>
+<div class="data-box"><b>Medicinal Effect</b><br>Antioxidant, Digestive-supporting</div>
+<div class="data-box"><b>Active Compounds</b><br>Flavonoids, Vitamin C, Essential oils</div>
+<div class="data-box"><b>Traditional Use</b><br>Digestive support, Nutritional support</div>
 
 </div>
 
@@ -1575,59 +1515,80 @@ onclick="toggleMore('more-data-chakotra')">
 
 </div>
 
-
 <div id="chakotra-medicine" class="medicine-list">
 
 <p id="chakotra-phala" class="medicine-name"><b>1. Chakotra Phala</b></p>
-<p>→ Part: Fruit pulp</p>
-<p>→ Constituents: Vitamin C and flavonoids</p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Provides fruit-derived nutrients and antioxidant phytochemicals that may support normal cellular protection.</p>
+<p>→ Plant Part: Fruit</p>
+<p>→ Active Constituents: Vitamin C, flavonoids and other citrus phytochemicals</p>
+<p>→ Traditional Role: Nutritional and digestive-supporting fruit.</p>
 
 <p id="chakotra-swarasa" class="medicine-name"><b>2. Chakotra Swarasa</b></p>
-<p>→ Part: Fresh fruit juice</p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Provides hydration, vitamin C and citrus phytochemicals that contribute to antioxidant support.</p>
+<p>→ Plant Part: Fresh fruit</p>
+<p>→ Active Constituents: Vitamin C and flavonoids</p>
+<p>→ Traditional Role: Fresh fruit-juice preparation.</p>
 
-<p id="chakotra-peel" class="medicine-name"><b>3. Chakotra Peel Preparations</b></p>
-<p>→ Part: Fruit peel</p>
+<p id="chakotra-peel" class="medicine-name"><b>3. Chakotra Peel Preparation</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Citrus peel phytochemicals may provide antioxidant activity and support normal digestive function.</p>
+<p>→ Plant Part: Fruit peel</p>
+<p>→ Active Constituents: Flavonoids and aromatic essential-oil constituents</p>
+<p>→ Traditional Role: Peel-based herbal preparation.</p>
 
-<p id="chakotra-seed" class="medicine-name"><b>4. Chakotra Seed Preparations</b></p>
-<p>→ Part: Seeds</p>
+<p id="chakotra-seed" class="medicine-name"><b>4. Chakotra Seed Preparation</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Seed phytochemicals are studied for antioxidant and other biological activities.</p>
+<p>→ Plant Part: Seeds</p>
+<p>→ Active Constituents: Seed-specific phytochemicals</p>
+<p>→ Traditional Role: Seed-based botanical preparation.</p>
 
-<p id="chakotra-leaf" class="medicine-name"><b>5. Chakotra Leaf Preparations</b></p>
-<p>→ Part: Leaves</p>
+<p id="chakotra-leaf" class="medicine-name"><b>5. Chakotra Leaf Preparation</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Leaf phytochemicals are associated with antioxidant and botanical biological activity.</p>
+<p>→ Plant Part: Leaves</p>
+<p>→ Active Constituents: Flavonoids and other phytochemicals</p>
+<p>→ Traditional Role: Leaf-based herbal preparation.</p>
 
 <p id="chakotra-phala-churna" class="medicine-name"><b>6. Chakotra Phala Churna</b></p>
-<p>→ Part: Dried fruit</p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Provides fruit-derived phytochemicals and may contribute to antioxidant and digestive support.</p>
+<p>→ Plant Part: Dried fruit</p>
+<p>→ Active Constituents: Flavonoids and citrus phytochemicals</p>
+<p>→ Traditional Role: Powdered fruit preparation.</p>
 
 <p id="chakotra-peel-churna" class="medicine-name"><b>7. Chakotra Peel Churna</b></p>
-<p>→ Part: Dried peel</p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Concentrates citrus peel flavonoids and aromatic compounds associated with antioxidant activity.</p>
+<p>→ Plant Part: Dried peel</p>
+<p>→ Active Constituents: Flavonoids and essential-oil constituents</p>
+<p>→ Traditional Role: Dried peel powder preparation.</p>
 
-<p id="chakotra-juice" class="medicine-name"><b>8. Chakotra Juice Preparation</b></p>
-<p>→ Part: Fruit pulp and juice</p>
+<p id="chakotra-juice" class="medicine-name"><b>8. Chakotra Juice</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Supplies vitamin C, fluids and citrus phytochemicals that support nutritional antioxidant intake.</p>
+<p>→ Plant Part: Fruit</p>
+<p>→ Active Constituents: Vitamin C and flavonoids</p>
+<p>→ Traditional Role: Fruit juice preparation.</p>
 
 <p id="chakotra-aroma" class="medicine-name"><b>9. Chakotra Peel Aromatic Preparation</b></p>
-<p>→ Part: Peel</p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Aromatic citrus constituents contribute to the characteristic fragrance and are studied for antioxidant properties.</p>
+<p>→ Plant Part: Peel</p>
+<p>→ Active Constituents: Volatile aromatic compounds</p>
+<p>→ Traditional Role: Aromatic citrus preparation.</p>
 
-<p id="chakotra-based" class="medicine-name"><b>10. Chakotra-based Preparations</b></p>
-<p>→ Parts: Fruit, peel, seeds or leaves</p>
+<p id="chakotra-based" class="medicine-name"><b>10. Chakotra-based Preparation</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Depending on the plant part used, the preparation may provide nutritional, antioxidant and digestive-supporting properties.</p>
+<p>→ Main Plant Parts: Fruit, peel and seeds</p>
+<p>→ Major Constituents: Flavonoids, vitamin C and aromatic phytochemicals</p>
+<p>→ Traditional Role: Chakotra-based herbal preparation.</p>
 
 </div>
 
 </div>
-
 </div>
 
-
-<!-- =====================================================
-     5. SADABAHAR
-===================================================== -->
 
 <div class="plant-section"
 data-normal="5"
 data-name="Sadabahar"
-data-importance="4">
+data-importance="5">
 
-<h3 id="sadabahar">
-5) सदाबहार (Sadabahar)
-</h3>
+<h3 id="sadabahar">5) सदाबहार (Sadabahar)</h3>
 
 <div class="plant-card">
 
@@ -1635,7 +1596,7 @@ data-importance="4">
 
 <div class="plant-photo">
 
-<img src="sadabahar.jpg.jpg" alt="Sadabahar plant">
+<img src="sadabahar.jpg" alt="Sadabahar plant">
 
 <button onclick="toggleDetail('extra-info-sadabahar')">
 LEARN MORE
@@ -1645,15 +1606,16 @@ LEARN MORE
 
 <h3>Useful Parts of Sadabahar</h3>
 
-<p><b>A - Leaves:</b> Sadabahar leaves</p>
-<p><b>B - Flowers:</b> Sadabahar flowers</p>
+<p><b>A - Whole Plant:</b> Sadabahar plant</p>
+<p><b>B - Leaves:</b> Sadabahar leaves</p>
 <p><b>C - Roots:</b> Sadabahar roots</p>
-<p><b>D - Whole Plant:</b> Sadabahar plant</p>
+<p><b>D - Flowers:</b> Sadabahar flowers</p>
+<p><b>E - Stems:</b> Sadabahar stems</p>
+<p><b>F - Seeds:</b> Sadabahar seeds</p>
 
 </div>
 
 </div>
-
 
 <div class="plant-right-data">
 
@@ -1662,10 +1624,10 @@ LEARN MORE
 <div class="data-box"><b>Plant Name</b><br>Sadabahar</div>
 <div class="data-box"><b>Botanical Name</b><br>Catharanthus roseus</div>
 <div class="data-box"><b>Family</b><br>Apocynaceae</div>
-<div class="data-box"><b>Parts Used</b><br>Leaves, Flowers, Roots</div>
-<div class="data-box"><b>Medicinal Importance</b><br>Pharmacologically active plant</div>
-<div class="data-box"><b>Active Compounds</b><br>Vincristine, Vinblastine</div>
-<div class="data-box"><b>Traditional Use</b><br>Traditional herbal use</div>
+<div class="data-box"><b>Parts Used</b><br>Leaves, Roots, Flowers, Whole Plant</div>
+<div class="data-box"><b>Medicinal Effect</b><br>Pharmacologically active alkaloids</div>
+<div class="data-box"><b>Active Compounds</b><br>Vincristine, Vinblastine, Catharanthine</div>
+<div class="data-box"><b>Traditional Use</b><br>Traditional herbal use and pharmacological research</div>
 
 </div>
 
@@ -1696,61 +1658,79 @@ onclick="toggleMore('more-data-sadabahar')">
 
 </div>
 
-
 <div id="sadabahar-medicine" class="medicine-list">
 
-<p id="sadabahar-leaf-preparation" class="medicine-name"><b>1. Sadabahar Leaf Preparations</b></p>
-<p>→ Part: Leaves</p>
-<p>→ Constituents: Indole alkaloids</p>
+<p id="sadabahar-leaf-preparation" class="medicine-name"><b>1. Sadabahar Leaf Preparation</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Contains indole alkaloids with significant pharmacological activity under scientific study.</p>
+<p>→ Plant Part: Leaves</p>
+<p>→ Active Constituents: Vindoline, catharanthine and related alkaloids</p>
+<p>→ Traditional Role: Traditional botanical preparation.</p>
 
-<p id="sadabahar-root-preparation" class="medicine-name"><b>2. Sadabahar Root Preparations</b></p>
-<p>→ Part: Roots</p>
+<p id="sadabahar-root-preparation" class="medicine-name"><b>2. Sadabahar Root Preparation</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Root alkaloids have pharmacological activity and are mainly important for scientific research.</p>
+<p>→ Plant Part: Roots</p>
+<p>→ Active Constituents: Indole alkaloids</p>
+<p>→ Traditional Role: Traditional plant-part preparation.</p>
 
-<p id="sadabahar-flower-preparation" class="medicine-name"><b>3. Sadabahar Flower Preparations</b></p>
-<p>→ Part: Flowers</p>
+<p id="sadabahar-flower-preparation" class="medicine-name"><b>3. Sadabahar Flower Preparation</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Flowers contain several phytochemicals and are studied for their biological properties.</p>
+<p>→ Plant Part: Flowers</p>
+<p>→ Active Constituents: Various phytochemicals</p>
+<p>→ Traditional Role: Botanical herbal preparation.</p>
 
-<p id="sadabahar-whole-plant" class="medicine-name"><b>4. Sadabahar Whole Plant Preparations</b></p>
-<p>→ Part: Whole plant</p>
+<p id="sadabahar-whole-plant" class="medicine-name"><b>4. Sadabahar Whole Plant Preparation</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> The plant contains pharmacologically important indole alkaloids with significant research interest.</p>
+<p>→ Plant Part: Whole plant</p>
+<p>→ Active Constituents: Indole alkaloids</p>
+<p>→ Traditional Role: Traditional botanical use.</p>
 
 <p id="vincristine" class="medicine-name"><b>5. Vincristine</b></p>
-<p>→ Plant source: Catharanthus roseus</p>
-<p>→ Importance: Pharmacologically important vinca alkaloid.</p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> A vinca alkaloid that acts on cell division and has an important role in modern oncology under specialist medical supervision.</p>
+<p>→ Plant Source: Catharanthus roseus</p>
+<p>→ Active Compound: Vincristine</p>
+<p>→ Medical Importance: Important pharmaceutical alkaloid.</p>
 
 <p id="vinblastine" class="medicine-name"><b>6. Vinblastine</b></p>
-<p>→ Plant source: Catharanthus roseus</p>
-<p>→ Importance: Pharmacologically important vinca alkaloid.</p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> A vinca alkaloid that interferes with cell division and is used in specialist medical treatment.</p>
+<p>→ Plant Source: Catharanthus roseus</p>
+<p>→ Active Compound: Vinblastine</p>
+<p>→ Medical Importance: Important pharmaceutical alkaloid.</p>
 
-<p id="sadabahar-alkaloid-research" class="medicine-name"><b>7. Indole Alkaloid Preparations</b></p>
-<p>→ Plant Part: Leaves, roots and aerial parts</p>
+<p id="sadabahar-alkaloid-research" class="medicine-name"><b>7. Indole Alkaloid Research</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Sadabahar indole alkaloids show significant pharmacological activity and are extensively studied scientifically.</p>
+<p>→ Plant Part: Mainly leaves and roots</p>
+<p>→ Active Constituents: Vincristine, vinblastine and related alkaloids</p>
+<p>→ Importance: Major pharmaceutical research area.</p>
 
 <p id="sadabahar-churna" class="medicine-name"><b>8. Sadabahar Churna</b></p>
-<p>→ Part: Dried plant material</p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Contains plant alkaloids and other phytochemicals; effects depend on composition and preparation.</p>
+<p>→ Plant Part: Dried plant material</p>
+<p>→ Active Constituents: Indole alkaloids</p>
+<p>→ Traditional Role: Botanical powdered preparation.</p>
 
 <p id="sadabahar-kwatha" class="medicine-name"><b>9. Sadabahar Kwatha</b></p>
-<p>→ Part: Leaves or whole plant</p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Water-soluble plant constituents may be extracted during preparation; pharmacological significance is under study.</p>
+<p>→ Plant Part: Selected plant parts</p>
+<p>→ Active Constituents: Water-soluble phytochemicals and alkaloids</p>
+<p>→ Traditional Role: Decoction-type botanical preparation.</p>
 
-<p id="sadabahar-based" class="medicine-name"><b>10. Sadabahar-based Preparations</b></p>
-<p>→ Main Importance: Source of pharmacologically significant alkaloids.</p>
+<p id="sadabahar-based" class="medicine-name"><b>10. Sadabahar-based Preparation</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Its importance mainly comes from pharmacologically active indole alkaloids present in the plant.</p>
+<p>→ Main Plant Parts: Leaves, roots and whole plant</p>
+<p>→ Major Constituents: Indole alkaloids</p>
+<p>→ Importance: Botanical and pharmaceutical research.</p>
 
 </div>
 
 </div>
-
 </div>
-
-
-<!-- =====================================================
-     6. BANANA
-===================================================== -->
 
 <div class="plant-section"
 data-normal="6"
 data-name="Kadali"
-data-importance="5">
+data-importance="4">
 
-<h3 id="banana">
-6) कदली (Kadali)
-</h3>
+<h3 id="banana">6) कदली (Kadali / Banana)</h3>
 
 <div class="plant-card">
 
@@ -1758,7 +1738,7 @@ data-importance="5">
 
 <div class="plant-photo">
 
-<img src="banana.jpg.jpg" alt="Banana plant">
+<img src="banana.jpg" alt="Banana plant">
 
 <button onclick="toggleDetail('extra-info-banana')">
 LEARN MORE
@@ -1768,29 +1748,29 @@ LEARN MORE
 
 <h3>Useful Parts of Kadali</h3>
 
-<p><b>A - Fruit:</b> Ripe and unripe banana fruit</p>
-<p><b>B - Flower:</b> Banana flower</p>
-<p><b>C - Stem:</b> Banana pseudostem</p>
-<p><b>D - Leaves:</b> Banana leaves</p>
-<p><b>E - Rhizome:</b> Underground rhizome</p>
-<p><b>F - Whole Plant:</b> Banana plant</p>
+<p><b>A - Whole Plant:</b> Banana plant</p>
+<p><b>B - Fruit:</b> Banana fruit</p>
+<p><b>C - Flower:</b> Banana flower</p>
+<p><b>D - Leaf:</b> Banana leaf</p>
+<p><b>E - Stem:</b> Banana pseudostem</p>
+<p><b>F - Rhizome:</b> Underground rhizome</p>
+<p><b>G - Root:</b> Banana roots</p>
 
 </div>
 
 </div>
-
 
 <div class="plant-right-data">
 
 <div class="plant-data">
 
 <div class="data-box"><b>Plant Name</b><br>Banana</div>
-<div class="data-box"><b>Botanical Name</b><br>Musa spp.</div>
+<div class="data-box"><b>Botanical Name</b><br>Musa × paradisiaca</div>
 <div class="data-box"><b>Family</b><br>Musaceae</div>
-<div class="data-box"><b>Parts Used</b><br>Fruit, Flower, Stem</div>
-<div class="data-box"><b>Medicinal Effect</b><br>Nutritive, Digestive support</div>
-<div class="data-box"><b>Active Compounds</b><br>Resistant starch, Potassium, Dietary fibre</div>
-<div class="data-box"><b>Traditional Use</b><br>Nourishment, Digestive support</div>
+<div class="data-box"><b>Parts Used</b><br>Fruit, Flower, Leaf, Stem, Rhizome</div>
+<div class="data-box"><b>Medicinal Effect</b><br>Nutritional, Digestive-supporting</div>
+<div class="data-box"><b>Active Compounds</b><br>Potassium, Resistant starch, Phenolic compounds</div>
+<div class="data-box"><b>Traditional Use</b><br>Nutritional support, Digestive support</div>
 
 </div>
 
@@ -1821,58 +1801,80 @@ onclick="toggleMore('more-data-banana')">
 
 </div>
 
-
 <div id="banana-medicine" class="medicine-list">
 
-<p id="kadali-phala" class="medicine-name"><b>1. Kadali Phala</b></p>
-<p>→ Part: Banana fruit</p>
+<p id="banana-phala" class="medicine-name"><b>1. Kadali Phala</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Provides carbohydrates, potassium and other nutrients that support normal energy and muscle function.</p>
+<p>→ Plant Part: Fruit</p>
+<p>→ Active Constituents: Potassium, carbohydrates, dietary fiber</p>
+<p>→ Traditional Role: Nutritive fruit used as food and traditional dietary support.</p>
 
-<p id="kadali-kshara" class="medicine-name"><b>2. Kadali Kshara</b></p>
-<p>→ Part: Banana plant material</p>
+<p id="banana-flower" class="medicine-name"><b>2. Kadali Pushpa</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Provides dietary fiber and plant phytochemicals that may contribute to antioxidant and nutritional support.</p>
+<p>→ Plant Part: Flower</p>
+<p>→ Active Constituents: Dietary fiber, phenolic compounds and flavonoids</p>
+<p>→ Traditional Role: Traditional food and plant-based preparation.</p>
 
-<p id="banana-flower-preparation" class="medicine-name"><b>3. Banana Flower Preparations</b></p>
-<p>→ Part: Banana flower</p>
+<p id="banana-stem" class="medicine-name"><b>3. Kadali Kanda</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> The pseudostem contains water, fiber and plant compounds and is traditionally valued as a dietary preparation.</p>
+<p>→ Plant Part: Pseudostem</p>
+<p>→ Active Constituents: Dietary fiber and plant phytochemicals</p>
+<p>→ Traditional Role: Traditional vegetable and dietary preparation.</p>
 
-<p id="banana-stem-preparation" class="medicine-name"><b>4. Banana Stem Preparations</b></p>
-<p>→ Part: Banana pseudostem</p>
+<p id="banana-stem-juice" class="medicine-name"><b>4. Kadali Kanda Swarasa</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Provides fluids and plant-derived constituents and is traditionally associated with urinary and digestive support.</p>
+<p>→ Plant Part: Pseudostem</p>
+<p>→ Active Constituents: Water, minerals and plant phytochemicals</p>
+<p>→ Traditional Role: Traditional fresh-juice preparation.</p>
 
-<p id="banana-pseudostem-juice" class="medicine-name"><b>5. Banana Pseudostem Juice</b></p>
-<p>→ Part: Pseudostem</p>
+<p id="banana-rhizome" class="medicine-name"><b>5. Kadali Kanda / Rhizome Preparation</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Rhizome constituents are studied for antioxidant and other biological properties.</p>
+<p>→ Plant Part: Rhizome</p>
+<p>→ Active Constituents: Phenolic compounds and other phytochemicals</p>
+<p>→ Traditional Role: Plant-part based traditional preparation.</p>
 
-<p id="banana-flower-churna" class="medicine-name"><b>6. Banana Flower Churna</b></p>
-<p>→ Part: Flower</p>
+<p id="banana-leaf" class="medicine-name"><b>6. Kadali Patra</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Banana leaves contain polyphenols and other plant compounds with antioxidant research interest.</p>
+<p>→ Plant Part: Leaf</p>
+<p>→ Active Constituents: Polyphenols and flavonoids</p>
+<p>→ Traditional Role: Traditional plant material and food-serving leaf.</p>
 
-<p id="banana-unripe-fruit" class="medicine-name"><b>7. Unripe Banana Preparation</b></p>
-<p>→ Part: Unripe fruit</p>
+<p id="banana-unripe-fruit" class="medicine-name"><b>7. Kadali Kachcha Phala</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Unripe banana contains resistant starch and dietary fiber that support normal digestive function.</p>
+<p>→ Plant Part: Unripe fruit</p>
+<p>→ Active Constituents: Resistant starch, dietary fiber and minerals</p>
+<p>→ Traditional Role: Nutritive and dietary preparation.</p>
 
-<p id="banana-ripe-fruit" class="medicine-name"><b>8. Ripe Banana Preparation</b></p>
-<p>→ Part: Ripe fruit</p>
+<p id="banana-ripe-fruit" class="medicine-name"><b>8. Kadali Pakva Phala</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Ripe banana provides readily available carbohydrates, potassium and other nutrients for normal nutritional support.</p>
+<p>→ Plant Part: Ripe fruit</p>
+<p>→ Active Constituents: Natural sugars, potassium and dietary fiber</p>
+<p>→ Traditional Role: Nutritive food preparation.</p>
 
-<p id="banana-leaf-preparation" class="medicine-name"><b>9. Banana Leaf Preparations</b></p>
-<p>→ Part: Leaves</p>
+<p id="banana-flower-preparation" class="medicine-name"><b>9. Kadali Pushpa Preparation</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Flower-based food preparations provide fiber and plant phytochemicals that contribute to nutritional support.</p>
+<p>→ Plant Part: Flower</p>
+<p>→ Active Constituents: Fiber, phenolics and flavonoids</p>
+<p>→ Traditional Role: Traditional dietary preparation.</p>
 
-<p id="kadali-based" class="medicine-name"><b>10. Kadali-based Preparations</b></p>
-<p>→ Parts: Fruit, flower, stem or leaves</p>
+<p id="banana-based" class="medicine-name"><b>10. Kadali-based Preparation</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> The nutritional effect varies with the plant part used, with banana providing fiber, minerals and plant phytochemicals.</p>
+<p>→ Main Plant Parts: Fruit, flower, stem and leaf</p>
+<p>→ Major Constituents: Potassium, fiber, resistant starch and phenolic compounds</p>
+<p>→ Traditional Role: Banana-based nutritional and traditional plant preparation.</p>
 
 </div>
 
 </div>
-
 </div>
 
-
-<!-- =====================================================
-     7. BILVA
-===================================================== -->
 
 <div class="plant-section"
 data-normal="7"
 data-name="Bilva"
 data-importance="6">
 
-<h3 id="bilva">
-7) बिल्व (Bilva / Bel)
-</h3>
+<h3 id="bilva">7) बिल्व (Bilva)</h3>
 
 <div class="plant-card">
 
@@ -1880,7 +1882,7 @@ data-importance="6">
 
 <div class="plant-photo">
 
-<img src="beel.jpg.jpg" alt="Bilva Bel plant">
+<img src="beel.jpg.jpg" alt="Bilva plant">
 
 <button onclick="toggleDetail('extra-info-bilva')">
 LEARN MORE
@@ -1890,30 +1892,30 @@ LEARN MORE
 
 <h3>Useful Parts of Bilva</h3>
 
-<p><b>A - Fruit:</b> Bilva fruit</p>
-<p><b>B - Leaves:</b> Bilva Patra</p>
-<p><b>C - Root:</b> Bilva root</p>
-<p><b>D - Bark:</b> Bilva bark</p>
-<p><b>E - Stem:</b> Bilva stem</p>
-<p><b>F - Flowers:</b> Bilva flowers</p>
-<p><b>G - Whole Plant:</b> Bilva tree</p>
+<p><b>A - Whole Plant:</b> Bilva tree</p>
+<p><b>B - Fruit:</b> Bilva fruit</p>
+<p><b>C - Unripe Fruit:</b> Raw Bilva fruit</p>
+<p><b>D - Leaves:</b> Bilva leaves</p>
+<p><b>E - Bark:</b> Bilva bark</p>
+<p><b>F - Roots:</b> Bilva roots</p>
+<p><b>G - Flowers:</b> Bilva flowers</p>
+<p><b>H - Seeds:</b> Bilva seeds</p>
 
 </div>
 
 </div>
-
 
 <div class="plant-right-data">
 
 <div class="plant-data">
 
-<div class="data-box"><b>Plant Name</b><br>Bel / Bilva</div>
+<div class="data-box"><b>Plant Name</b><br>Bilva / Bael</div>
 <div class="data-box"><b>Botanical Name</b><br>Aegle marmelos</div>
 <div class="data-box"><b>Family</b><br>Rutaceae</div>
-<div class="data-box"><b>Parts Used</b><br>Fruit, Leaves, Root, Bark</div>
-<div class="data-box"><b>Medicinal Importance</b><br>Digestive and traditional herbal use</div>
-<div class="data-box"><b>Active Compounds</b><br>Marmelosin and other phytochemicals</div>
-<div class="data-box"><b>Cultural Use</b><br>Bilva Patra is traditionally offered to Lord Shiva</div>
+<div class="data-box"><b>Parts Used</b><br>Fruit, Leaves, Bark, Roots</div>
+<div class="data-box"><b>Medicinal Effect</b><br>Digestive-supporting, Antioxidant</div>
+<div class="data-box"><b>Active Compounds</b><br>Marmelosin, Tannins, Flavonoids</div>
+<div class="data-box"><b>Traditional Use</b><br>Digestive support, Traditional gastrointestinal use</div>
 
 </div>
 
@@ -1944,60 +1946,79 @@ onclick="toggleMore('more-data-bilva')">
 
 </div>
 
-
 <div id="bilva-medicine" class="medicine-list">
 
 <p id="bilva-phala" class="medicine-name"><b>1. Bilva Phala</b></p>
-<p>→ Part: Bilva fruit</p>
-<p>→ Traditional role: Fruit-based herbal preparation.</p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Traditionally valued for digestive support and the nutritional properties of bael fruit.</p>
+<p>→ Plant Part: Fruit</p>
+<p>→ Active Constituents: Tannins, marmelosin and flavonoids</p>
+<p>→ Traditional Role: Traditional digestive and dietary preparation.</p>
 
-<p id="bilva-patra" class="medicine-name"><b>2. Bilva Patra</b></p>
-<p>→ Part: Bilva leaves</p>
-<p>→ Traditional role: Important cultural and Ayurvedic plant part.</p>
+<p id="bilva-unripe" class="medicine-name"><b>2. Bilva Kachcha Phala</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Unripe bael contains tannins and other compounds traditionally associated with digestive-supporting use.</p>
+<p>→ Plant Part: Unripe fruit</p>
+<p>→ Active Constituents: Tannins and marmelosin</p>
+<p>→ Traditional Role: Traditional fruit preparation.</p>
 
-<p id="bilva-churna" class="medicine-name"><b>3. Bilva Churna</b></p>
-<p>→ Part: Dried Bilva material</p>
+<p id="bilva-pulp" class="medicine-name"><b>3. Bilva Phala Majja</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> The fruit pulp provides dietary fiber and plant compounds traditionally valued for digestive support.</p>
+<p>→ Plant Part: Fruit pulp</p>
+<p>→ Active Constituents: Fiber, tannins and phytochemicals</p>
+<p>→ Traditional Role: Fruit-pulp preparation.</p>
 
-<p id="bilva-swarasa" class="medicine-name"><b>4. Bilva Swarasa</b></p>
-<p>→ Part: Fresh Bilva plant material</p>
+<p id="bilva-patra" class="medicine-name"><b>4. Bilva Patra</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Bilva leaves contain flavonoids and other phytochemicals studied for antioxidant and biological activity.</p>
+<p>→ Plant Part: Leaves</p>
+<p>→ Active Constituents: Flavonoids and phenolic compounds</p>
+<p>→ Traditional Role: Traditional leaf-based herbal use.</p>
 
-<p id="bilva-kwatha" class="medicine-name"><b>5. Bilva Kwatha</b></p>
-<p>→ Part: Bilva plant material</p>
+<p id="bilva-moola" class="medicine-name"><b>5. Bilva Moola</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Root constituents have been studied for antioxidant and other biological activities.</p>
+<p>→ Plant Part: Root</p>
+<p>→ Active Constituents: Alkaloids, coumarins and other phytochemicals</p>
+<p>→ Traditional Role: Traditional root-based herbal preparation.</p>
 
-<p id="bilva-avaleha" class="medicine-name"><b>6. Bilva Avaleha</b></p>
-<p>→ Part: Bilva fruit or specified plant material</p>
+<p id="bilva-twak" class="medicine-name"><b>6. Bilva Twak</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Bark contains tannins and other phytochemicals associated with astringent and antioxidant research properties.</p>
+<p>→ Plant Part: Bark</p>
+<p>→ Active Constituents: Tannins, flavonoids and phenolic compounds</p>
+<p>→ Traditional Role: Traditional bark preparation.</p>
 
-<p id="bilva-root" class="medicine-name"><b>7. Bilva Root Preparations</b></p>
-<p>→ Part: Bilva root</p>
+<p id="bilva-swarasa" class="medicine-name"><b>7. Bilva Swarasa</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Fresh bael preparations provide plant-derived phytochemicals traditionally associated with digestive support.</p>
+<p>→ Plant Part: Fresh fruit or specified plant part</p>
+<p>→ Active Constituents: Tannins and flavonoids</p>
+<p>→ Traditional Role: Fresh juice preparation.</p>
 
-<p id="bilva-bark" class="medicine-name"><b>8. Bilva Bark Preparations</b></p>
-<p>→ Part: Bilva bark</p>
+<p id="bilva-churna" class="medicine-name"><b>8. Bilva Churna</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Provides powdered bael plant constituents traditionally used for digestive-supporting purposes.</p>
+<p>→ Plant Part: Dried fruit or specified plant part</p>
+<p>→ Active Constituents: Tannins, marmelosin and other phytochemicals</p>
+<p>→ Traditional Role: Powdered herbal preparation.</p>
 
-<p id="bilva-leaf" class="medicine-name"><b>9. Bilva Leaf Preparations</b></p>
-<p>→ Part: Bilva leaves</p>
+<p id="bilva-kwatha" class="medicine-name"><b>9. Bilva Kwatha</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Extracts water-soluble plant constituents and is traditionally associated with digestive-supporting herbal use.</p>
+<p>→ Plant Part: Bark, root or other specified parts</p>
+<p>→ Active Constituents: Tannins and water-soluble phytochemicals</p>
+<p>→ Traditional Role: Decoction preparation.</p>
 
-<p id="bilva-based" class="medicine-name"><b>10. Bilva-based Preparations</b></p>
-<p>→ Parts: Fruit, leaves, root or bark</p>
+<p id="bilva-based" class="medicine-name"><b>10. Bilva-based Preparation</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> The traditional effect varies by plant part, with Bilva mainly valued for digestive and astringent herbal applications.</p>
+<p>→ Main Plant Parts: Fruit, leaves, bark and root</p>
+<p>→ Major Constituents: Tannins, marmelosin, flavonoids and phenolics</p>
+<p>→ Traditional Role: Bilva-based traditional herbal preparation.</p>
 
 </div>
 
 </div>
-
 </div>
-
-
-<!-- =====================================================
-     8. GULMEHNDI
-===================================================== -->
 
 <div class="plant-section"
 data-normal="8"
 data-name="Gulmehndi"
-data-importance="9">
+data-importance="8">
 
-<h3 id="gulmehndi">
-8) गुलमेहंदी (Gulmehndi)
-</h3>
+<h3 id="gulmehndi">8) गुलमेहंदी (Gulmehndi)</h3>
 
 <div class="plant-card">
 
@@ -2015,28 +2036,27 @@ LEARN MORE
 
 <h3>Useful Parts of Gulmehndi</h3>
 
-<p><b>A - Leaves:</b> Gulmehndi leaves</p>
-<p><b>B - Flowers:</b> Gulmehndi flowers</p>
-<p><b>C - Seeds:</b> Gulmehndi seeds</p>
-<p><b>D - Roots:</b> Gulmehndi roots</p>
-<p><b>E - Whole Plant:</b> Whole plant material</p>
+<p><b>A - Whole Plant:</b> Gulmehndi plant</p>
+<p><b>B - Leaves:</b> Gulmehndi leaves</p>
+<p><b>C - Flowers:</b> Gulmehndi flowers</p>
+<p><b>D - Stem:</b> Young stems</p>
+<p><b>E - Roots:</b> Plant roots</p>
 
 </div>
 
 </div>
-
 
 <div class="plant-right-data">
 
 <div class="plant-data">
 
-<div class="data-box"><b>Plant Name</b><br>Gulmehndi</div>
-<div class="data-box"><b>Botanical Name</b><br>Impatiens balsamina</div>
-<div class="data-box"><b>Family</b><br>Balsaminaceae</div>
-<div class="data-box"><b>Parts Used</b><br>Leaves, Flowers, Seeds</div>
-<div class="data-box"><b>Medicinal Importance</b><br>Traditional herbal and botanical research</div>
-<div class="data-box"><b>Plant Constituents</b><br>Flavonoids and other phytochemicals</div>
-<div class="data-box"><b>Traditional Use</b><br>Traditional external and herbal uses</div>
+<div class="data-box"><b>Plant Name</b><br>Gulmehndi / Rosemary</div>
+<div class="data-box"><b>Botanical Name</b><br>Salvia rosmarinus</div>
+<div class="data-box"><b>Family</b><br>Lamiaceae</div>
+<div class="data-box"><b>Parts Used</b><br>Leaves, Flowers, Young Stems</div>
+<div class="data-box"><b>Medicinal Effect</b><br>Antioxidant, Digestive-supporting</div>
+<div class="data-box"><b>Active Compounds</b><br>Rosmarinic acid, Carnosic acid, Essential oils</div>
+<div class="data-box"><b>Traditional Use</b><br>Digestive support, Aromatic herbal use</div>
 
 </div>
 
@@ -2067,58 +2087,80 @@ onclick="toggleMore('more-data-gulmehndi')">
 
 </div>
 
-
 <div id="gulmehndi-medicine" class="medicine-list">
 
-<p id="gulmehndi-leaf" class="medicine-name"><b>1. Gulmehndi Leaf Preparations</b></p>
-<p>→ Part: Leaves</p>
+<p id="gulmehndi-patra" class="medicine-name"><b>1. Gulmehndi Patra</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Rosemary leaves contain antioxidant compounds that help protect cells from oxidative stress.</p>
+<p>→ Plant Part: Leaves</p>
+<p>→ Active Constituents: Rosmarinic acid, carnosic acid and essential oils</p>
+<p>→ Traditional Role: Aromatic and digestive-supporting herbal use.</p>
 
-<p id="gulmehndi-flower" class="medicine-name"><b>2. Gulmehndi Flower Preparations</b></p>
-<p>→ Part: Flowers</p>
+<p id="gulmehndi-swarasa" class="medicine-name"><b>2. Gulmehndi Swarasa</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Fresh leaf constituents provide antioxidant phytochemicals and aromatic compounds.</p>
+<p>→ Plant Part: Fresh leaves</p>
+<p>→ Active Constituents: Rosmarinic acid and volatile oils</p>
+<p>→ Traditional Role: Fresh herbal preparation.</p>
 
-<p id="gulmehndi-seed" class="medicine-name"><b>3. Gulmehndi Seed Preparations</b></p>
-<p>→ Part: Seeds</p>
+<p id="gulmehndi-churna" class="medicine-name"><b>3. Gulmehndi Churna</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> The powdered herb provides concentrated aromatic and antioxidant plant constituents.</p>
+<p>→ Plant Part: Dried leaves</p>
+<p>→ Active Constituents: Carnosic acid, rosmarinic acid and essential oils</p>
+<p>→ Traditional Role: Powdered herbal preparation.</p>
 
-<p id="gulmehndi-root" class="medicine-name"><b>4. Gulmehndi Root Preparations</b></p>
-<p>→ Part: Roots</p>
+<p id="gulmehndi-kwatha" class="medicine-name"><b>4. Gulmehndi Kwatha</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Water-soluble rosemary compounds may contribute to antioxidant and digestive-supporting activity.</p>
+<p>→ Plant Part: Leaves</p>
+<p>→ Active Constituents: Rosmarinic acid and other polyphenols</p>
+<p>→ Traditional Role: Decoction-type herbal preparation.</p>
 
-<p id="gulmehndi-whole" class="medicine-name"><b>5. Gulmehndi Whole Plant Preparations</b></p>
-<p>→ Part: Whole plant</p>
+<p id="gulmehndi-taila" class="medicine-name"><b>5. Gulmehndi Taila</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Aromatic rosemary oil constituents are traditionally valued for external soothing and aromatic applications.</p>
+<p>→ Plant Part: Leaves and flowering tops</p>
+<p>→ Active Constituents: Essential oils, including 1,8-cineole and camphor</p>
+<p>→ Traditional Role: External aromatic herbal oil.</p>
 
-<p id="gulmehndi-paste" class="medicine-name"><b>6. Gulmehndi Leaf Paste</b></p>
-<p>→ Part: Leaves</p>
+<p id="gulmehndi-arka" class="medicine-name"><b>6. Gulmehndi Arka</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Contains water-distilled aromatic constituents and is mainly valued for its aromatic botanical properties.</p>
+<p>→ Plant Part: Leaves and flowering tops</p>
+<p>→ Active Constituents: Volatile aromatic compounds</p>
+<p>→ Traditional Role: Distilled herbal preparation.</p>
 
-<p id="gulmehndi-extract" class="medicine-name"><b>7. Gulmehndi Extract</b></p>
-<p>→ Part: Plant material</p>
+<p id="gulmehndi-flower" class="medicine-name"><b>7. Gulmehndi Pushpa</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Flowers contain aromatic and phenolic compounds with antioxidant research interest.</p>
+<p>→ Plant Part: Flowers</p>
+<p>→ Active Constituents: Essential oils and phenolic compounds</p>
+<p>→ Traditional Role: Aromatic botanical preparation.</p>
 
-<p id="gulmehndi-churna" class="medicine-name"><b>8. Gulmehndi Churna</b></p>
-<p>→ Part: Dried plant material</p>
+<p id="gulmehndi-essential-oil" class="medicine-name"><b>8. Gulmehndi Essential Oil</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Volatile compounds provide characteristic aroma and are studied for antioxidant and antimicrobial properties.</p>
+<p>→ Plant Part: Leaves and flowering tops</p>
+<p>→ Active Constituents: 1,8-cineole, camphor and other volatile compounds</p>
+<p>→ Traditional Role: Aromatic essential-oil preparation.</p>
 
-<p id="gulmehndi-kwatha" class="medicine-name"><b>9. Gulmehndi Kwatha</b></p>
-<p>→ Part: Plant material</p>
+<p id="gulmehndi-lepa" class="medicine-name"><b>9. Gulmehndi Lepa</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> External application provides contact with rosemary's aromatic and antioxidant plant constituents.</p>
+<p>→ Plant Part: Leaves</p>
+<p>→ Active Constituents: Rosmarinic acid and aromatic compounds</p>
+<p>→ Traditional Role: External herbal paste preparation.</p>
 
-<p id="gulmehndi-based" class="medicine-name"><b>10. Gulmehndi-based Preparations</b></p>
-<p>→ Parts: Leaves, flowers, seeds or other specified parts</p>
+<p id="gulmehndi-based" class="medicine-name"><b>10. Gulmehndi-based Preparation</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Rosemary-based preparations are mainly associated with antioxidant, aromatic and digestive-supporting properties.</p>
+<p>→ Main Plant Parts: Leaves and flowering tops</p>
+<p>→ Major Constituents: Rosmarinic acid, carnosic acid and essential oils</p>
+<p>→ Traditional Role: Rosemary-based herbal preparation.</p>
 
 </div>
 
 </div>
-
 </div>
 
-
-<!-- =====================================================
-     9. HIBISCUS
-===================================================== -->
 
 <div class="plant-section"
 data-normal="9"
-data-name="Hibiscus"
-data-importance="8">
+data-name="Gudhal"
+data-importance="9">
 
-<h3 id="hibiscus">
-9) गुड़हल (Gudhal / Hibiscus)
-</h3>
+<h3 id="hibiscus">9) गुड़हल (Gudhal / Hibiscus)</h3>
 
 <div class="plant-card">
 
@@ -2126,7 +2168,7 @@ data-importance="8">
 
 <div class="plant-photo">
 
-<img src="hibiscus.jpg.jpg" alt="Hibiscus Gudhal plant">
+<img src="hibiscus.jpg.jpg" alt="Hibiscus plant">
 
 <button onclick="toggleDetail('extra-info-hibiscus')">
 LEARN MORE
@@ -2134,30 +2176,30 @@ LEARN MORE
 
 <div id="extra-info-hibiscus" class="extra-info">
 
-<h3>Useful Parts of Hibiscus</h3>
+<h3>Useful Parts of Gudhal</h3>
 
-<p><b>A - Flowers:</b> Hibiscus flowers</p>
-<p><b>B - Petals:</b> Flower petals</p>
+<p><b>A - Whole Plant:</b> Hibiscus plant</p>
+<p><b>B - Flowers:</b> Hibiscus flowers</p>
 <p><b>C - Leaves:</b> Hibiscus leaves</p>
 <p><b>D - Roots:</b> Hibiscus roots</p>
-<p><b>E - Whole Plant:</b> Hibiscus plant</p>
+<p><b>E - Stems:</b> Hibiscus stems</p>
+<p><b>F - Seeds:</b> Hibiscus seeds</p>
 
 </div>
 
 </div>
-
 
 <div class="plant-right-data">
 
 <div class="plant-data">
 
-<div class="data-box"><b>Plant Name</b><br>Gudhal / Hibiscus</div>
+<div class="data-box"><b>Plant Name</b><br>Hibiscus / Gudhal</div>
 <div class="data-box"><b>Botanical Name</b><br>Hibiscus rosa-sinensis</div>
 <div class="data-box"><b>Family</b><br>Malvaceae</div>
 <div class="data-box"><b>Parts Used</b><br>Flowers, Leaves, Roots</div>
-<div class="data-box"><b>Medicinal Importance</b><br>Traditional herbal and botanical use</div>
-<div class="data-box"><b>Plant Constituents</b><br>Flavonoids, anthocyanins and other phytochemicals</div>
-<div class="data-box"><b>Traditional Use</b><br>Hair care and traditional herbal preparations</div>
+<div class="data-box"><b>Medicinal Effect</b><br>Antioxidant, Soothing</div>
+<div class="data-box"><b>Active Compounds</b><br>Anthocyanins, Flavonoids, Phenolic compounds</div>
+<div class="data-box"><b>Traditional Use</b><br>Hair care, Skin care, Traditional herbal use</div>
 
 </div>
 
@@ -2188,58 +2230,80 @@ onclick="toggleMore('more-data-hibiscus')">
 
 </div>
 
-
 <div id="hibiscus-medicine" class="medicine-list">
 
-<p id="hibiscus-flower" class="medicine-name"><b>1. Gudhal Flower Preparation</b></p>
-<p>→ Part: Flowers</p>
+<p id="hibiscus-pushpa" class="medicine-name"><b>1. Gudhal Pushpa</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Hibiscus flowers contain polyphenols and pigments with antioxidant activity that may help protect cells from oxidative stress.</p>
+<p>→ Plant Part: Flowers</p>
+<p>→ Active Constituents: Anthocyanins, flavonoids and phenolic compounds</p>
+<p>→ Traditional Role: Traditional flower-based herbal use.</p>
 
-<p id="hibiscus-petals" class="medicine-name"><b>2. Gudhal Petal Preparation</b></p>
-<p>→ Part: Petals</p>
+<p id="hibiscus-swarasa" class="medicine-name"><b>2. Gudhal Swarasa</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Fresh plant material provides polyphenols and other phytochemicals with antioxidant research interest.</p>
+<p>→ Plant Part: Fresh flowers or leaves</p>
+<p>→ Active Constituents: Flavonoids and phenolic compounds</p>
+<p>→ Traditional Role: Fresh plant preparation.</p>
 
-<p id="hibiscus-leaf" class="medicine-name"><b>3. Gudhal Leaf Preparation</b></p>
-<p>→ Part: Leaves</p>
+<p id="hibiscus-churna" class="medicine-name"><b>3. Gudhal Churna</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> The powdered plant material provides polyphenols and other phytochemicals associated with antioxidant activity.</p>
+<p>→ Plant Part: Dried flowers or leaves</p>
+<p>→ Active Constituents: Flavonoids, anthocyanins and phenolics</p>
+<p>→ Traditional Role: Powdered herbal preparation.</p>
 
-<p id="hibiscus-root" class="medicine-name"><b>4. Gudhal Root Preparation</b></p>
-<p>→ Part: Roots</p>
+<p id="hibiscus-kwatha" class="medicine-name"><b>4. Gudhal Kwatha</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Water-extracted plant compounds may contribute to antioxidant and soothing botanical activity.</p>
+<p>→ Plant Part: Flowers or leaves</p>
+<p>→ Active Constituents: Water-soluble polyphenols and flavonoids</p>
+<p>→ Traditional Role: Decoction-type herbal preparation.</p>
 
-<p id="hibiscus-juice" class="medicine-name"><b>5. Gudhal Flower Juice</b></p>
-<p>→ Part: Flowers</p>
+<p id="hibiscus-taila" class="medicine-name"><b>5. Gudhal Taila</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> External use provides contact with flower and plant constituents traditionally valued for soothing and hair-supporting applications.</p>
+<p>→ Plant Part: Flowers and leaves</p>
+<p>→ Active Constituents: Flavonoids, mucilage and plant oils</p>
+<p>→ Traditional Role: External herbal oil preparation.</p>
 
-<p id="hibiscus-tea" class="medicine-name"><b>6. Hibiscus Herbal Infusion</b></p>
-<p>→ Part: Flowers</p>
+<p id="hibiscus-lepa" class="medicine-name"><b>6. Gudhal Lepa</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> External application provides soothing contact with plant polyphenols and mucilaginous constituents.</p>
+<p>→ Plant Part: Flowers and leaves</p>
+<p>→ Active Constituents: Polyphenols, flavonoids and mucilage</p>
+<p>→ Traditional Role: External herbal paste.</p>
 
-<p id="hibiscus-paste" class="medicine-name"><b>7. Gudhal Flower Paste</b></p>
-<p>→ Part: Flowers</p>
+<p id="hibiscus-flower-paste" class="medicine-name"><b>7. Gudhal Pushpa Lepa</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Flower-based external application is traditionally associated with soothing and cosmetic herbal use.</p>
+<p>→ Plant Part: Flowers</p>
+<p>→ Active Constituents: Anthocyanins and flavonoids</p>
+<p>→ Traditional Role: Traditional flower paste.</p>
 
-<p id="hibiscus-oil" class="medicine-name"><b>8. Gudhal Hair Oil Preparations</b></p>
-<p>→ Part: Flowers and/or leaves</p>
+<p id="hibiscus-hair-oil" class="medicine-name"><b>8. Gudhal Hair Oil</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> External scalp application is traditionally valued for conditioning and hair-care support.</p>
+<p>→ Plant Part: Flowers and leaves</p>
+<p>→ Active Constituents: Mucilage, flavonoids and plant phenolics</p>
+<p>→ Traditional Role: Traditional hair-care oil preparation.</p>
 
-<p id="hibiscus-churna" class="medicine-name"><b>9. Gudhal Churna</b></p>
-<p>→ Part: Dried plant material</p>
+<p id="hibiscus-arka" class="medicine-name"><b>9. Gudhal Arka</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Distilled plant preparation contains selected volatile or water-distilled constituents depending on the method used.</p>
+<p>→ Plant Part: Flowers or leaves</p>
+<p>→ Active Constituents: Distillable plant constituents</p>
+<p>→ Traditional Role: Botanical distilled preparation.</p>
 
-<p id="hibiscus-based" class="medicine-name"><b>10. Hibiscus-based Preparations</b></p>
-<p>→ Parts: Flowers, leaves or roots</p>
+<p id="hibiscus-based" class="medicine-name"><b>10. Gudhal-based Preparation</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Gudhal preparations are mainly associated with antioxidant, soothing, skin-care and traditional hair-care properties.</p>
+<p>→ Main Plant Parts: Flowers and leaves</p>
+<p>→ Major Constituents: Anthocyanins, flavonoids, phenolics and mucilage</p>
+<p>→ Traditional Role: Gudhal-based herbal preparation.</p>
 
 </div>
 
 </div>
-
 </div>
 
-
-<!-- =====================================================
-     10. PATHARCHATTA
-===================================================== -->
 
 <div class="plant-section"
 data-normal="10"
 data-name="Patharchatta"
 data-importance="10">
 
-<h3 id="patharchatta">
-10) पाषाणभेद / Patharchatta
-</h3>
+<h3 id="patharchatta">10) पथरचट्टा (Patharchatta)</h3>
 
 <div class="plant-card">
 
@@ -2247,7 +2311,7 @@ data-importance="10">
 
 <div class="plant-photo">
 
-<img src="pathachata.jpg.jpg" alt="Patharchatta plant">
+<img src="patharchatta.jpg.jpg" alt="Patharchatta plant">
 
 <button onclick="toggleDetail('extra-info-patharchatta')">
 LEARN MORE
@@ -2257,29 +2321,27 @@ LEARN MORE
 
 <h3>Useful Parts of Patharchatta</h3>
 
-<p><b>A - Leaves:</b> Main plant part traditionally discussed</p>
-<p><b>B - Leaf margins:</b> Characteristic plantlets may develop along margins</p>
-<p><b>C - Stems:</b> Plant stem</p>
-<p><b>D - Roots:</b> Root system</p>
-<p><b>E - Flowers:</b> Flowers</p>
-<p><b>F - Whole Plant:</b> Whole plant material</p>
+<p><b>A - Whole Plant:</b> Patharchatta plant</p>
+<p><b>B - Leaves:</b> Main traditionally used part</p>
+<p><b>C - Stem:</b> Patharchatta stem</p>
+<p><b>D - Roots:</b> Patharchatta roots</p>
+<p><b>E - Flowers:</b> Patharchatta flowers</p>
 
 </div>
 
 </div>
-
 
 <div class="plant-right-data">
 
 <div class="plant-data">
 
 <div class="data-box"><b>Plant Name</b><br>Patharchatta</div>
-<div class="data-box"><b>Botanical Name</b><br>Bryophyllum pinnatum</div>
+<div class="data-box"><b>Botanical Name</b><br>Kalanchoe pinnata</div>
 <div class="data-box"><b>Family</b><br>Crassulaceae</div>
 <div class="data-box"><b>Parts Used</b><br>Leaves, Stem, Roots</div>
-<div class="data-box"><b>Medicinal Importance</b><br>Traditional herbal and pharmacognostic interest</div>
-<div class="data-box"><b>Plant Constituents</b><br>Flavonoids, phenolic compounds and other phytochemicals</div>
-<div class="data-box"><b>Traditional Use</b><br>Traditional herbal use of leaves and other plant parts</div>
+<div class="data-box"><b>Medicinal Effect</b><br>Antioxidant, Traditional soothing use</div>
+<div class="data-box"><b>Active Compounds</b><br>Flavonoids, Phenolic compounds, Bufadienolides</div>
+<div class="data-box"><b>Traditional Use</b><br>Traditional urinary and wound-related herbal use</div>
 
 </div>
 
@@ -2310,58 +2372,80 @@ onclick="toggleMore('more-data-patharchatta')">
 
 </div>
 
-
 <div id="patharchatta-medicine" class="medicine-list">
 
-<p id="patharchatta-leaf" class="medicine-name"><b>1. Patharchatta Leaf Preparation</b></p>
-<p>→ Part: Leaves</p>
+<p id="patharchatta-patra" class="medicine-name"><b>1. Patharchatta Patra</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Traditionally associated with soothing and urinary-supporting herbal use; scientific evidence varies by preparation.</p>
+<p>→ Plant Part: Leaves</p>
+<p>→ Active Constituents: Flavonoids, phenolics and bufadienolides</p>
+<p>→ Traditional Role: Traditional leaf-based herbal preparation.</p>
 
 <p id="patharchatta-swarasa" class="medicine-name"><b>2. Patharchatta Swarasa</b></p>
-<p>→ Part: Fresh leaves or specified plant material</p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Fresh leaf juice contains plant phytochemicals studied for antioxidant and other biological activities.</p>
+<p>→ Plant Part: Fresh leaves</p>
+<p>→ Active Constituents: Flavonoids and phenolic compounds</p>
+<p>→ Traditional Role: Traditional fresh-juice preparation.</p>
 
-<p id="patharchatta-paste" class="medicine-name"><b>3. Patharchatta Leaf Paste</b></p>
-<p>→ Part: Leaves</p>
+<p id="patharchatta-churna" class="medicine-name"><b>3. Patharchatta Churna</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Powdered leaves provide concentrated plant phytochemicals with antioxidant research interest.</p>
+<p>→ Plant Part: Dried leaves</p>
+<p>→ Active Constituents: Flavonoids and phenolics</p>
+<p>→ Traditional Role: Powdered herbal preparation.</p>
 
-<p id="patharchatta-juice" class="medicine-name"><b>4. Patharchatta Leaf Juice</b></p>
-<p>→ Part: Leaves</p>
+<p id="patharchatta-kwatha" class="medicine-name"><b>4. Patharchatta Kwatha</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Water-extracted constituents are traditionally associated with urinary and soothing herbal applications.</p>
+<p>→ Plant Part: Leaves</p>
+<p>→ Active Constituents: Water-soluble phytochemicals</p>
+<p>→ Traditional Role: Decoction-type preparation.</p>
 
-<p id="patharchatta-churna" class="medicine-name"><b>5. Patharchatta Churna</b></p>
-<p>→ Part: Dried plant material</p>
+<p id="patharchatta-lepa" class="medicine-name"><b>5. Patharchatta Lepa</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> External application is traditionally associated with soothing support for the skin.</p>
+<p>→ Plant Part: Leaves</p>
+<p>→ Active Constituents: Flavonoids, phenolics and plant mucilage</p>
+<p>→ Traditional Role: External herbal paste.</p>
 
-<p id="patharchatta-kwatha" class="medicine-name"><b>6. Patharchatta Kwatha</b></p>
-<p>→ Part: Plant material</p>
+<p id="patharchatta-poultice" class="medicine-name"><b>6. Patharchatta Patra Pottali</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> External plant application is traditionally valued for soothing and local supportive use.</p>
+<p>→ Plant Part: Leaves</p>
+<p>→ Active Constituents: Plant polyphenols and other phytochemicals</p>
+<p>→ Traditional Role: External plant-based application.</p>
 
-<p id="patharchatta-extract" class="medicine-name"><b>7. Patharchatta Extract</b></p>
-<p>→ Part: Leaves or specified plant material</p>
+<p id="patharchatta-arka" class="medicine-name"><b>7. Patharchatta Arka</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Distilled preparation contains selected water-distillable constituents depending on preparation method.</p>
+<p>→ Plant Part: Leaves</p>
+<p>→ Active Constituents: Distillable plant constituents</p>
+<p>→ Traditional Role: Botanical distilled preparation.</p>
 
-<p id="patharchatta-leaf-dry" class="medicine-name"><b>8. Dried Patharchatta Leaf</b></p>
-<p>→ Part: Leaves</p>
+<p id="patharchatta-root" class="medicine-name"><b>8. Patharchatta Moola</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Root constituents are studied for antioxidant and other biological activities.</p>
+<p>→ Plant Part: Roots</p>
+<p>→ Active Constituents: Phenolic and other phytochemical constituents</p>
+<p>→ Traditional Role: Traditional root-based preparation.</p>
 
-<p id="patharchatta-research" class="medicine-name"><b>9. Patharchatta Research Preparations</b></p>
-<p>→ Plant material: Leaves and other specified parts</p>
+<p id="patharchatta-stem" class="medicine-name"><b>9. Patharchatta Stem Preparation</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Stem constituents contribute to the plant's overall phytochemical profile and are studied for biological activity.</p>
+<p>→ Plant Part: Stem</p>
+<p>→ Active Constituents: Phenolics and flavonoids</p>
+<p>→ Traditional Role: Plant-part based preparation.</p>
 
-<p id="patharchatta-based" class="medicine-name"><b>10. Patharchatta-based Preparations</b></p>
-<p>→ Parts: Leaves, stem or roots depending on preparation</p>
+<p id="patharchatta-based" class="medicine-name"><b>10. Patharchatta-based Preparation</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Traditionally associated with soothing and urinary-supporting applications, while scientific evidence depends on the specific preparation.</p>
+<p>→ Main Plant Parts: Leaves and roots</p>
+<p>→ Major Constituents: Flavonoids, phenolics and bufadienolides</p>
+<p>→ Traditional Role: Patharchatta-based herbal preparation.</p>
 
 </div>
 
 </div>
-
 </div>
 
-
-<!-- =====================================================
-     11. ROSE
-===================================================== -->
 
 <div class="plant-section"
 data-normal="11"
 data-name="Rose"
 data-importance="11">
 
-<h3 id="rose">
-11) गुलाब (Rose)
-</h3>
+<h3 id="rose">11) गुलाब (Rose)</h3>
 
 <div class="plant-card">
 
@@ -2379,59 +2463,31 @@ LEARN MORE
 
 <h3>Useful Parts of Rose</h3>
 
-<p><b>A - Flowers:</b> Rose flowers</p>
-<p><b>B - Petals:</b> Rose petals</p>
-<p><b>C - Fruits:</b> Rose hips</p>
-<p><b>D - Leaves:</b> Rose leaves</p>
-<p><b>E - Seeds:</b> Rose seeds</p>
-<p><b>F - Whole Plant:</b> Rose plant</p>
+<p><b>A - Whole Plant:</b> Rose plant</p>
+<p><b>B - Flowers:</b> Rose flowers</p>
+<p><b>C - Petals:</b> Rose petals</p>
+<p><b>D - Fruits:</b> Rose hips</p>
+<p><b>E - Leaves:</b> Rose leaves</p>
+<p><b>F - Seeds:</b> Rose seeds</p>
+<p><b>G - Roots:</b> Rose roots</p>
 
 </div>
 
 </div>
-
 
 <div class="plant-right-data">
 
 <div class="plant-data">
 
-<div class="data-box">
-<b>Plant Name</b><br>
-Rose
-</div>
-
-<div class="data-box">
-<b>Botanical Name</b><br>
-Rosa spp.
-</div>
-
-<div class="data-box">
-<b>Family</b><br>
-Rosaceae
-</div>
-
-<div class="data-box">
-<b>Parts Used</b><br>
-Flowers, Petals, Fruits
-</div>
-
-<div class="data-box">
-<b>Medicinal Importance</b><br>
-Traditional herbal and aromatic use
-</div>
-
-<div class="data-box">
-<b>Plant Constituents</b><br>
-Flavonoids, phenolic compounds and aromatic constituents
-</div>
-
-<div class="data-box">
-<b>Traditional Use</b><br>
-Rose water, Gulkand and traditional herbal preparations
-</div>
+<div class="data-box"><b>Plant Name</b><br>Rose</div>
+<div class="data-box"><b>Botanical Name</b><br>Rosa species</div>
+<div class="data-box"><b>Family</b><br>Rosaceae</div>
+<div class="data-box"><b>Parts Used</b><br>Flowers, Petals, Rose Hips</div>
+<div class="data-box"><b>Medicinal Effect</b><br>Antioxidant, Soothing</div>
+<div class="data-box"><b>Active Compounds</b><br>Flavonoids, Phenolics, Aromatic compounds</div>
+<div class="data-box"><b>Traditional Use</b><br>Cooling, soothing and aromatic herbal use</div>
 
 </div>
-
 
 <div class="add-more"
 onclick="toggleMore('more-data-rose')">
@@ -2460,73 +2516,74 @@ onclick="toggleMore('more-data-rose')">
 
 </div>
 
-
 <div id="rose-medicine" class="medicine-list">
 
-<p id="rose-petal" class="medicine-name">
-<b>1. Rose Petal Preparation</b>
-</p>
-<p>→ Part: Rose petals</p>
-<p>→ Constituents: Flavonoids and aromatic compounds</p>
+<p id="rose-pushpa" class="medicine-name"><b>1. Rosa Pushpa</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Rose flowers contain aromatic and polyphenolic compounds associated with soothing and antioxidant properties.</p>
+<p>→ Plant Part: Flowers</p>
+<p>→ Active Constituents: Flavonoids, phenolic compounds and aromatic constituents</p>
+<p>→ Traditional Role: Traditional aromatic and soothing herbal use.</p>
 
-<p id="rose-gulkand" class="medicine-name">
-<b>2. Gulkand</b>
-</p>
-<p>→ Part: Rose petals</p>
-<p>→ Traditional role: Traditional rose-petal preparation.</p>
+<p id="rose-petals" class="medicine-name"><b>2. Rose Petal Preparation</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Rose petals provide aromatic and polyphenolic compounds traditionally associated with soothing properties.</p>
+<p>→ Plant Part: Petals</p>
+<p>→ Active Constituents: Flavonoids, anthocyanins and aromatic compounds</p>
+<p>→ Traditional Role: Traditional petal-based preparation.</p>
 
-<p id="rose-water" class="medicine-name">
-<b>3. Rose Water</b>
-</p>
-<p>→ Part: Rose flowers or petals</p>
-<p>→ Traditional role: Traditional aromatic and cosmetic preparation.</p>
+<p id="rose-swarasa" class="medicine-name"><b>3. Rose Swarasa</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Fresh rose material contains polyphenols and aromatic constituents with antioxidant research interest.</p>
+<p>→ Plant Part: Fresh petals or flowers</p>
+<p>→ Active Constituents: Phenolics and flavonoids</p>
+<p>→ Traditional Role: Fresh botanical preparation.</p>
 
-<p id="rose-flower" class="medicine-name">
-<b>4. Rose Flower Preparation</b>
-</p>
-<p>→ Part: Rose flowers</p>
+<p id="rose-churna" class="medicine-name"><b>4. Rose Churna</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Dried rose petals provide concentrated aromatic and polyphenolic plant constituents.</p>
+<p>→ Plant Part: Dried petals</p>
+<p>→ Active Constituents: Flavonoids and phenolic compounds</p>
+<p>→ Traditional Role: Powdered herbal preparation.</p>
 
-<p id="rose-petal-paste" class="medicine-name">
-<b>5. Rose Petal Paste</b>
-</p>
-<p>→ Part: Rose petals</p>
+<p id="rose-arka" class="medicine-name"><b>5. Rose Arka</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Distilled rose preparation contains aromatic constituents and is traditionally valued for cooling and soothing use.</p>
+<p>→ Plant Part: Flowers or petals</p>
+<p>→ Active Constituents: Volatile aromatic compounds</p>
+<p>→ Traditional Role: Distilled floral preparation.</p>
 
-<p id="rose-infusion" class="medicine-name">
-<b>6. Rose Herbal Infusion</b>
-</p>
-<p>→ Part: Rose petals</p>
+<p id="rose-jala" class="medicine-name"><b>6. Gulab Jala</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Rose water is traditionally valued for its cooling, refreshing and soothing properties.</p>
+<p>→ Plant Part: Rose petals</p>
+<p>→ Active Constituents: Water-soluble aromatic and phenolic constituents</p>
+<p>→ Traditional Role: Floral water preparation.</p>
 
-<p id="rose-petal-churna" class="medicine-name">
-<b>7. Rose Petal Churna</b>
-</p>
-<p>→ Part: Dried rose petals</p>
+<p id="rose-taila" class="medicine-name"><b>7. Rose Taila</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> External aromatic use provides a soothing sensory effect and contact with rose-derived constituents.</p>
+<p>→ Plant Part: Rose flowers or petals</p>
+<p>→ Active Constituents: Aromatic compounds</p>
+<p>→ Traditional Role: External aromatic oil preparation.</p>
 
-<p id="rose-syrup" class="medicine-name">
-<b>8. Rose Syrup</b>
-</p>
-<p>→ Part: Rose flowers or petals</p>
+<p id="rose-lepa" class="medicine-name"><b>8. Rose Lepa</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> External application is traditionally associated with soothing and cooling skin-care use.</p>
+<p>→ Plant Part: Rose petals</p>
+<p>→ Active Constituents: Flavonoids, phenolics and aromatic compounds</p>
+<p>→ Traditional Role: External floral paste.</p>
 
-<p id="rose-extract" class="medicine-name">
-<b>9. Rose Extract</b>
-</p>
-<p>→ Part: Rose petals or flowers</p>
+<p id="rose-hip" class="medicine-name"><b>9. Rose Hip Preparation</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Rose hips provide vitamin C and antioxidant plant compounds that support nutritional antioxidant intake.</p>
+<p>→ Plant Part: Rose hips</p>
+<p>→ Active Constituents: Vitamin C, carotenoids and phenolic compounds</p>
+<p>→ Traditional Role: Fruit-based nutritional preparation.</p>
 
-<p id="rose-based" class="medicine-name">
-<b>10. Rose-based Preparations</b>
-</p>
-<p>→ Parts: Flowers, petals or rose fruits depending on preparation</p>
+<p id="rose-based" class="medicine-name"><b>10. Rose-based Preparation</b></p>
+<p class="special-effect">→ <b>Special Effect on Body:</b> Rose-based preparations are mainly associated with soothing, antioxidant, cooling and aromatic properties.</p>
+<p>→ Main Plant Parts: Flowers, petals and rose hips</p>
+<p>→ Major Constituents: Flavonoids, phenolics, vitamin C and aromatic compounds</p>
+<p>→ Traditional Role: Rose-based herbal preparation.</p>
 
 </div>
 
 </div>
-
 </div>
 
-
 </div>
-
-
-<!-- ================= END ================= -->
 
 </body>
 </html>
