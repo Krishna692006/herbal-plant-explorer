@@ -532,6 +532,242 @@ h3 {
     }
 }
 
+
+/* ================= PLANT SEARCH + AI PLANTCHAT ================= */
+
+.plant-search-area {
+    margin: 20px auto 25px auto;
+    max-width: 900px;
+    text-align: center;
+}
+
+.search-heading {
+    color: darkgreen;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.search-hint {
+    margin-top: 7px;
+    font-size: 13px;
+    color: #555;
+}
+
+.medicine-search-highlight {
+    background: #fff4a8 !important;
+    outline: 4px solid red;
+    outline-offset: 3px;
+    border-radius: 5px;
+}
+
+.plant-search-box {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.plant-search-box input {
+    flex: 1;
+    min-width: 0;
+    padding: 13px 15px;
+    border: 2px solid green;
+    border-radius: 9px;
+    font-size: 16px;
+    outline: none;
+}
+
+.plant-search-box button {
+    padding: 12px 17px;
+    background: darkgreen;
+    color: white;
+    border: 2px solid green;
+    border-radius: 9px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.search-results {
+    margin-top: 10px;
+    text-align: left;
+    background: #f4fff4;
+    border: 1px solid #9ccc9c;
+    border-radius: 8px;
+    display: none;
+    max-height: 260px;
+    overflow-y: auto;
+}
+
+.search-result-item {
+    padding: 10px 12px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.search-result-item:hover {
+    background: #dff0df;
+}
+
+.search-result-item b {
+    color: darkgreen;
+}
+
+.search-empty {
+    padding: 12px;
+    color: #555;
+}
+
+.plant-search-highlight {
+    outline: 4px solid orange;
+    outline-offset: 4px;
+}
+
+/* AI PlantChat */
+#plantchat-button {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 3000;
+    background: darkgreen;
+    color: white;
+    border: 2px solid white;
+    border-radius: 50px;
+    padding: 13px 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 12px #777;
+}
+
+#plantchat-box {
+    display: none;
+    position: fixed;
+    right: 20px;
+    bottom: 78px;
+    width: min(390px, calc(100vw - 30px));
+    height: min(560px, calc(100vh - 110px));
+    background: white;
+    border: 2px solid darkgreen;
+    border-radius: 14px;
+    z-index: 3000;
+    box-shadow: 0 6px 20px #777;
+    overflow: hidden;
+}
+
+.plantchat-header {
+    background: darkgreen;
+    color: white;
+    padding: 12px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.plantchat-close {
+    background: transparent;
+    border: 0;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+#plantchat-messages {
+    height: calc(100% - 112px);
+    overflow-y: auto;
+    padding: 12px;
+    background: #f7fff7;
+}
+
+.chat-message {
+    margin: 8px 0;
+    padding: 9px 11px;
+    border-radius: 10px;
+    line-height: 1.4;
+    font-size: 14px;
+}
+
+.chat-user {
+    background: #dff0df;
+    margin-left: 35px;
+}
+
+.chat-bot {
+    background: #eef5ff;
+    margin-right: 20px;
+}
+
+.chat-warning {
+    background: #ffe6e6;
+    border: 2px solid red;
+    color: #b00000;
+    font-weight: bold;
+}
+
+.chat-typing {
+    letter-spacing: 4px;
+    font-weight: bold;
+    animation: chatPulse 1s infinite;
+}
+
+@keyframes chatPulse {
+    0%,100% { opacity: .25; }
+    50% { opacity: 1; }
+}
+
+.plantchat-input-area {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    gap: 5px;
+    padding: 8px;
+    background: white;
+    border-top: 1px solid #ccc;
+}
+
+#plantchat-input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px;
+    border: 1px solid #888;
+    border-radius: 8px;
+}
+
+#plantchat-send {
+    background: darkgreen;
+    color: white;
+    border: 0;
+    border-radius: 8px;
+    padding: 0 13px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@media (max-width: 700px) {
+    .plant-search-box {
+        flex-direction: column;
+    }
+
+    .plant-search-box button {
+        width: 100%;
+    }
+
+    #plantchat-button {
+        right: 12px;
+        bottom: 12px;
+        padding: 11px 14px;
+    }
+
+    #plantchat-box {
+        right: 10px;
+        bottom: 65px;
+        width: calc(100vw - 20px);
+        height: min(560px, calc(100vh - 85px));
+    }
+}
+
 </style>
 
 <script>
@@ -861,6 +1097,381 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+
+/* ================= PLANT SEARCH ================= */
+
+const plantSearchData = [
+    { id:"neem", card:"neem", names:[
+        "neem","nimba","nimb","margosa","neem tree","azadirachta indica","azadirachta",
+        "nimba vriksha","nimb patra","निम्ब","निंब","नीम","নিম","નિમ","நீம்","వేప","ಬೇವು","വേപ്പ്","नीम का पेड़",
+        "margosa tree","indian lilac","holy tree","sacred neem"], botanical:"Azadirachta indica" },
+    { id:"haridra", card:"haridra", names:[
+        "turmeric","haridra","haldi","curcuma longa","curcuma","yellow turmeric","turmeric root",
+        "हरिद्रा","हल्दी","হলুদ","હળદર","மஞ்சள்","పసుపు","ಅರಿಶಿನ","മഞ്ഞൾ","pasupu","halad"], botanical:"Curcuma longa" },
+    { id:"guduchi", card:"guduchi", names:[
+        "guduchi","giloy","tinospora cordifolia","tinospora","amrita","heart-leaved moonseed","moonseed",
+        "गुडूची","गिलोय","अमृता","गुडुची","গিলয়","ગળો","சீந்தில்","తిప్పతీగ","ಅಮೃತಬಳ್ಳಿ","ചിറ്റമൃത്"], botanical:"Tinospora cordifolia" },
+    { id:"chakotra", card:"chakotra", names:[
+        "chakotra","pomelo","pummelo","shaddock","citrus maxima","citrus grandis","pomelo tree",
+        "चक्रोत","चकोतरा","चकोत्र","বাতাবি লেবু","জাম্বুরা","બોમ્બે લીંબુ","பம்பளிமாசு","దబ్బకాయ","ಬಂಬಳಿಕಾಯಿ","ചക്കരപ്പഴം"], botanical:"Citrus maxima" },
+    { id:"sadabahar", card:"sadabahar", names:[
+        "sadabahar","periwinkle","madagascar periwinkle","cape periwinkle","vinca","vinca rosea","catharanthus roseus",
+        "evergreen","rose periwinkle","सदाबहार","बारहमासी","सदाफुली","সদাবাহার","નયનતારા","நித்தியகல்யாணி","నిత్యకల్యాణి","ನಿತ್ಯಪುಷ್ಪ","ഉഷമലരി"], botanical:"Catharanthus roseus" },
+    { id:"banana", card:"banana", names:[
+        "banana","banana plant","plantain","musa","musa paradisiaca","musa acuminata","musa balbisiana",
+        "कदली","केला","कदलि","কলাগাছ","কলা","કેળું","வாழை","అరటి","ಬಾಳೆ","വാഴ","banane","bananeira","plátano","platano","bananen","banane"], botanical:"Musa × paradisiaca" },
+    { id:"bilva", card:"bilva", names:[
+        "bilva","bael","bel","wood apple","bengal quince","aegle marmelos","stone apple",
+        "बिल्व","बेल","बेलपत्र","শিব ফল","বেল","બિલી","வில்வம்","మారేడు","బిల్వం","ಬಿಲ್ವ","കൂവളം","bael fruit"], botanical:"Aegle marmelos" },
+    { id:"gulmehndi", card:"gulmehndi", names:[
+        "gulmehndi","rosemary","rosmarinus","salvia rosmarinus","rosemary herb","rosemary plant",
+        "गुलमेहंदी","रोजमेरी","রোজমেরি","રોઝમેરી","ரோஸ்மேரி","రోజ్మేరీ","ರೋಸ್ಮರಿ","റോസ്മേരി","romero","romarin","rosmarin","rosmarino","alecrim"], botanical:"Salvia rosmarinus" },
+    { id:"hibiscus", card:"hibiscus", names:[
+        "gudhal","hibiscus","shoe flower","china rose","chinese hibiscus","hibiscus rosa sinensis","hibiscus rosa-sinensis",
+        "jaswand","jaba","sembaruthi","gongura","गुड़हल","जास्वंद","जवाकुसुम","জবা","জবা ফুল","જાસૂદ","செம்பருத்தி","మందారం","ದಾಸವಾಳ","ചെമ്പരത്തി","hibisco","hibisco rosa","hibiscus rosado"], botanical:"Hibiscus rosa-sinensis" },
+    { id:"patharchatta", card:"patharchatta", names:[
+        "patharchatta","pathar chatta","bryophyllum","kalanchoe pinnata","miracle leaf","life plant","cathedral bells",
+        "mother of thousands","air plant","wonder of the world","पथरचट्टा","पाषाणभेद","पाथरचट्टा","পাথরকুচি","પથ્થરચટ્ટા","கல்கட்டி","రణపాల","ಸಂಪ್ರಾಣಿ","പനിക്കൂർക്ക","pancawis"], botanical:"Kalanchoe pinnata" },
+    { id:"rose", card:"rose", names:[
+        "rose","rose plant","rosa","rosa spp","rosa damascena","damask rose","garden rose",
+        "गुलाब","गुलाब का फूल","गुलાબ","গোলাপ","গোলাপ ফুল","ரோஜா","ரோஜாப்பூ","గులాబీ","ಗುಲಾಬಿ","റോസ്","rose flower",
+        "rosa de damasco","rosier","rose","rose","rosa","розa","роза","rosas"], botanical:"Rosa spp." }
+];
+
+function normalizePlantSearch(value) {
+    return value
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .trim();
+}
+
+function searchPlantsAndMedicines() {
+    const input = document.getElementById("plant-search-input");
+    const results = document.getElementById("plant-search-results");
+    if (!input || !results) return;
+    const q = normalizePlantSearch(input.value);
+    if (!q) { results.style.display = "none"; results.innerHTML = ""; return; }
+
+    const matches = [];
+    plantSearchData.forEach(plant => {
+        const hit = plant.names.some(name => {
+            const n = normalizePlantSearch(name);
+            return n.includes(q) || q.includes(n);
+        }) || normalizePlantSearch(plant.botanical).includes(q);
+        if (hit) matches.push({type:"plant", plant});
+    });
+
+    // Read every medicine/formulation already present in the page.
+    document.querySelectorAll(".medicine-name").forEach(medicine => {
+        const label = medicine.textContent.trim();
+        const n = normalizePlantSearch(label);
+        if (n && n.includes(q)) {
+            matches.push({type:"medicine", label, id:medicine.id});
+        }
+    });
+
+    results.innerHTML = "";
+    if (!matches.length) {
+        results.innerHTML = '<div class="search-empty">Nothing found in the current website data. Try another plant or medicine name.</div>';
+    } else {
+        const seen = new Set();
+        matches.forEach(item => {
+            const key = item.type + ":" + (item.id || item.plant.id);
+            if (seen.has(key)) return;
+            seen.add(key);
+            const div = document.createElement("div");
+            div.className = "search-result-item";
+            if (item.type === "plant") {
+                div.innerHTML = "🌿 <b>Plant: " + item.plant.names[0] + "</b><br><small>Botanical: " + item.plant.botanical + "</small>";
+                div.onclick = () => { goToPlant(item.plant.card); results.style.display="none"; };
+            } else {
+                div.innerHTML = "💊 <b>Medicine: " + item.label + "</b>";
+                div.onclick = () => { goToMedicine(item.id); results.style.display="none"; };
+            }
+            results.appendChild(div);
+        });
+    }
+    results.style.display = "block";
+}
+
+// Keep the old function name working if anything else in the page calls it.
+function searchPlants() { searchPlantsAndMedicines(); }
+
+function goToPlant(id) {
+    const heading = document.getElementById(id);
+    if (!heading) return;
+    const section = heading.closest(".plant-section");
+    if (section) {
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
+        section.classList.add("plant-search-highlight");
+        setTimeout(() => section.classList.remove("plant-search-highlight"), 1800);
+    }
+}
+
+function goToMedicine(id) {
+    const medicine = document.getElementById(id);
+    if (!medicine) return;
+    const section = medicine.closest(".plant-section") || medicine.closest(".medicine-list");
+    (section || medicine).scrollIntoView({ behavior: "smooth", block: "center" });
+    medicine.classList.add("medicine-search-highlight");
+    setTimeout(() => medicine.classList.remove("medicine-search-highlight"), 2200);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const input = document.getElementById("plant-search-input");
+    if (input) {
+        input.addEventListener("input", searchPlantsAndMedicines);
+        input.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                const first = document.querySelector("#plant-search-results .search-result-item");
+                if (first) first.click();
+            }
+        });
+    }
+});
+
+/* ================= AI PLANTCHAT ================= */
+
+const plantChatKnowledge = {
+    neem:{names:plantSearchData.find(p=>p.id==="neem").names,botanical:"Azadirachta indica",parts:"Leaves, bark and seeds",compounds:"Azadirachtin, nimbin and other phytochemicals",effects:"Antimicrobial and other botanical properties are studied; traditional uses vary by preparation.",uses:"Traditional skin-care, wound-care and herbal applications."},
+    haridra:{names:plantSearchData.find(p=>p.id==="haridra").names,botanical:"Curcuma longa",parts:"Rhizome",compounds:"Curcumin and other curcuminoids",effects:"Antioxidant and anti-inflammatory properties are widely studied.",uses:"Traditional digestive, culinary and skin-care applications."},
+    guduchi:{names:plantSearchData.find(p=>p.id==="guduchi").names,botanical:"Tinospora cordifolia",parts:"Stem and selected plant parts",compounds:"Tinosporin, alkaloids and other phytochemicals",effects:"Antioxidant and immunomodulatory properties are studied.",uses:"Traditional restorative and digestive-supporting use."},
+    chakotra:{names:plantSearchData.find(p=>p.id==="chakotra").names,botanical:"Citrus maxima",parts:"Fruit, peel and leaves",compounds:"Vitamin C, flavonoids and citrus phytochemicals",effects:"Nutritional and antioxidant properties are associated with its constituents.",uses:"Traditional food and botanical use."},
+    sadabahar:{names:plantSearchData.find(p=>p.id==="sadabahar").names,botanical:"Catharanthus roseus",parts:"Leaves, roots and whole plant",compounds:"Indole alkaloids including vincristine and vinblastine",effects:"Pharmacologically important alkaloids are extensively studied.",uses:"Important botanical and pharmaceutical research plant; not for self-treatment."},
+    banana:{names:plantSearchData.find(p=>p.id==="banana").names,botanical:"Musa × paradisiaca",parts:"Fruit, flower, leaf and pseudostem",compounds:"Potassium, resistant starch and phenolic compounds",effects:"Primarily nutritional properties with botanical research interest.",uses:"Food, nutritional and traditional plant uses."},
+    bilva:{names:plantSearchData.find(p=>p.id==="bilva").names,botanical:"Aegle marmelos",parts:"Fruit, leaves, bark and root",compounds:"Tannins, marmelosin, flavonoids and phenolics",effects:"Digestive-supporting and astringent traditional uses are described.",uses:"Traditional digestive and herbal applications."},
+    gulmehndi:{names:plantSearchData.find(p=>p.id==="gulmehndi").names,botanical:"Salvia rosmarinus",parts:"Leaves and flowering tops",compounds:"Rosmarinic acid, carnosic acid and essential oils",effects:"Aromatic, antioxidant and antimicrobial properties are studied.",uses:"Traditional culinary, aromatic and external herbal applications."},
+    hibiscus:{names:plantSearchData.find(p=>p.id==="hibiscus").names,botanical:"Hibiscus rosa-sinensis",parts:"Flowers and leaves",compounds:"Anthocyanins, flavonoids, phenolics and mucilage",effects:"Antioxidant and soothing botanical properties are studied.",uses:"Traditional hair-care, skin-care and ornamental uses."},
+    patharchatta:{names:plantSearchData.find(p=>p.id==="patharchatta").names,botanical:"Kalanchoe pinnata",parts:"Leaves and selected plant parts",compounds:"Flavonoids and other phytochemicals",effects:"Various traditional and botanical uses have been studied.",uses:"Traditional herbal use; specific medical use requires professional guidance."},
+    rose:{names:plantSearchData.find(p=>p.id==="rose").names,botanical:"Rosa spp.",parts:"Flowers and petals",compounds:"Phenolics, flavonoids and aromatic compounds",effects:"Aromatic and antioxidant botanical properties are associated with rose constituents.",uses:"Traditional aromatic, cosmetic and herbal applications."}
+};
+
+function detectChatLanguage(text){
+    const t=text.toLowerCase();
+    const tests=[
+      ["hi",/[\u0900-\u097f]/], ["bn",/[\u0980-\u09ff]/], ["gu",/[\u0a80-\u0aff]/], ["pa",/[\u0a00-\u0a7f]/],
+      ["ta",/[\u0b80-\u0bff]/], ["te",/[\u0c00-\u0c7f]/], ["kn",/[\u0c80-\u0cff]/], ["ml",/[\u0d00-\u0d7f]/],
+      ["th",/[\u0e00-\u0e7f]/], ["ar",/[\u0600-\u06ff]/], ["he",/[\u0590-\u05ff]/],
+      ["zh",/[\u4e00-\u9fff]/], ["ja",/[\u3040-\u30ff]/], ["ko",/[\uac00-\ud7af]/], ["ru",/[\u0400-\u04ff]/],
+      ["el",/[\u0370-\u03ff]/]
+    ];
+    for(const [lang,re] of tests) if(re.test(text)) return lang;
+    if(/\b(hola|que|como|planta|donde|para|salud)\b/.test(t)) return "es";
+    // Roman Hindi / Hinglish detection
+    if(/\b(mai|main|mujhe|mujh|aap|apka|aapka|tum|tumhara|kaise|kya|kyu|kyon|batao|bataye|hai|hain|ho|hota|hoti|iske|iska|iski|isme|plant|paudha|dawa|ilaaj|jankari|jaankari|naam|parts|use|kyun)\b/.test(t)) return "hi";
+    if(/\b(bonjour|plante|comment|sante|santé|merci)\b/.test(t)) return "fr";
+    if(/\b(hallo|pflanze|gesundheit|wie|danke)\b/.test(t)) return "de";
+    if(/\b(ciao|pianta|come|salute|grazie)\b/.test(t)) return "it";
+    if(/\b(olá|ola|planta|como|saúde|obrigado)\b/.test(t)) return "pt";
+    if(/\b(merhaba|bitki|nasıl|saglik|sağlık)\b/.test(t)) return "tr";
+    return "en";
+}
+
+const chatText={
+ en:{hello:"Hello 🌿 I’m AI PlantChat. Ask me about a plant by any known local, common, Ayurvedic or botanical name.",unknown:"I could not find that plant in my current website data. Try a local/common name or the botanical name.",answer:"Here is the information in my plant database:",parts:"Plant parts",compounds:"Important constituents",effects:"Research/traditional effects",uses:"Traditional uses",follow:"You can ask about its parts, constituents, traditional uses or formulations."},
+ hi:{hello:"नमस्ते 🌿 मैं AI PlantChat हूँ। आप पौधे का स्थानीय, सामान्य, आयुर्वेदिक या botanical नाम किसी भी रूप में पूछ सकते हैं।",unknown:"यह पौधा मेरे वर्तमान website data में नहीं मिला। इसका स्थानीय नाम, common name या botanical name लिखकर देखें।",answer:"मेरे plant database में यह जानकारी उपलब्ध है:",parts:"उपयोगी/अध्ययन किए गए पौधे के भाग",compounds:"मुख्य constituents",effects:"Research/पारंपरिक प्रभाव",uses:"पारंपरिक उपयोग",follow:"आप इसके parts, compounds, traditional uses या formulations के बारे में भी पूछ सकते हैं।"},
+ es:{hello:"Hola 🌿 Soy AI PlantChat. Puedes preguntar por una planta usando su nombre local, común, ayurvédico o botánico.",unknown:"No encontré esa planta en los datos actuales del sitio. Prueba con otro nombre local, común o botánico.",answer:"Esta es la información de mi base de datos de plantas:",parts:"Partes de la planta",compounds:"Constituyentes importantes",effects:"Efectos estudiados/tradicionales",uses:"Usos tradicionales",follow:"También puedes preguntar por partes, compuestos, usos tradicionales o formulaciones."},
+ fr:{hello:"Bonjour 🌿 Je suis AI PlantChat. Vous pouvez utiliser un nom local, courant, ayurvédique ou botanique.",unknown:"Cette plante ne figure pas dans les données actuelles du site. Essayez un autre nom local, courant ou botanique.",answer:"Voici les informations de ma base de données végétale :",parts:"Parties de la plante",compounds:"Constituants importants",effects:"Effets étudiés/traditionnels",uses:"Usages traditionnels",follow:"Vous pouvez aussi demander les parties, composés, usages traditionnels ou formulations."},
+ de:{hello:"Hallo 🌿 Ich bin AI PlantChat. Frage nach einer Pflanze mit ihrem lokalen, gebräuchlichen, ayurvedischen oder botanischen Namen.",unknown:"Diese Pflanze wurde in den aktuellen Website-Daten nicht gefunden. Versuche einen anderen lokalen, gebräuchlichen oder botanischen Namen.",answer:"Hier sind die Informationen aus meiner Pflanzendatenbank:",parts:"Pflanzenteile",compounds:"Wichtige Bestandteile",effects:"Erforschte/traditionelle Wirkungen",uses:"Traditionelle Anwendungen",follow:"Du kannst auch nach Pflanzenteilen, Bestandteilen, traditionellen Anwendungen oder Formulierungen fragen."}
+};
+
+const warningText={
+ en:"<b>⚠️ HEALTH WARNING</b><br>I provide educational information only. I cannot diagnose illness, prescribe medicine, or recommend a dose. Please consult a qualified doctor/AYUSH practitioner before taking any medicine. We are not responsible for harm caused by self-medication.",
+ hi:"<b>⚠️ स्वास्थ्य चेतावनी</b><br>मैं केवल शैक्षिक जानकारी देता हूँ। मैं बीमारी का diagnosis, दवा की prescription या dose की सलाह नहीं दे सकता। कोई भी medicine लेने से पहले योग्य doctor/AYUSH practitioner से consult करें। Self-medication से होने वाले नुकसान के लिए हम जिम्मेदार नहीं हैं।",
+ es:"<b>⚠️ ADVERTENCIA DE SALUD</b><br>Solo proporciono información educativa. No puedo diagnosticar, recetar medicamentos ni indicar dosis. Consulte a un médico cualificado o profesional de Ayurveda/AYUSH antes de tomar cualquier medicamento. No nos hacemos responsables de daños por automedicación.",
+ fr:"<b>⚠️ AVERTISSEMENT SANTÉ</b><br>Je fournis uniquement des informations éducatives. Je ne peux pas diagnostiquer, prescrire un médicament ni indiquer une dose. Consultez un médecin qualifié ou un professionnel AYUSH avant de prendre un médicament. Nous ne sommes pas responsables des dommages liés à l’automédication.",
+ de:"<b>⚠️ GESUNDHEITSHINWEIS</b><br>Ich gebe nur Bildungsinformationen. Ich kann keine Krankheit diagnostizieren, Medikamente verschreiben oder Dosierungen empfehlen. Bitte konsultieren Sie vor der Einnahme eines Arzneimittels einen qualifizierten Arzt oder AYUSH-Fachmann. Für Schäden durch Selbstmedikation übernehmen wir keine Verantwortung.",
+ it:"<b>⚠️ AVVERTENZA SANITARIA</b><br>Fornisco solo informazioni educative. Non posso diagnosticare malattie, prescrivere farmaci o indicare dosaggi. Consulta un medico qualificato o un professionista AYUSH prima di assumere qualsiasi medicinale. Non siamo responsabili dei danni causati dall’automedicazione.",
+ pt:"<b>⚠️ AVISO DE SAÚDE</b><br>Forneço apenas informações educativas. Não posso diagnosticar doenças, prescrever medicamentos ou indicar doses. Consulte um médico qualificado ou profissional AYUSH antes de usar qualquer medicamento. Não nos responsabilizamos por danos causados por automedicação.",
+ tr:"<b>⚠️ SAĞLIK UYARISI</b><br>Yalnızca eğitim amaçlı bilgi veriyorum. Hastalık teşhisi koyamam, ilaç yazamam veya doz öneremem. Herhangi bir ilaç kullanmadan önce nitelikli bir doktora veya AYUSH uzmanına danışın. Kendi kendine tedaviden kaynaklanan zararlardan sorumlu değiliz.",
+ bn:"<b>⚠️ স্বাস্থ্য সতর্কতা</b><br>আমি শুধুমাত্র শিক্ষামূলক তথ্য দিই। রোগ নির্ণয়, ওষুধের প্রেসক্রিপশন বা ডোজ দিতে পারি না। কোনো ওষুধ নেওয়ার আগে যোগ্য ডাক্তার/AYUSH বিশেষজ্ঞের পরামর্শ নিন। স্ব-চিকিৎসার ক্ষতির জন্য আমরা দায়ী নই।",
+ gu:"<b>⚠️ આરોગ્ય ચેતવણી</b><br>હું માત્ર શૈક્ષણિક માહિતી આપું છું। હું રોગનું નિદાન, દવાની prescription અથવા dose આપી શકતો નથી। કોઈ દવા લેતા પહેલાં યોગ્ય ડૉક્ટર/AYUSH નિષ્ણાતની સલાહ લો। self-medicationથી થતા નુકસાન માટે અમે જવાબદાર નથી।",
+ ta:"<b>⚠️ சுகாதார எச்சரிக்கை</b><br>நான் கல்வி நோக்கத்திற்கான தகவல் மட்டுமே வழங்குகிறேன். நோயை கண்டறியவும், மருந்து பரிந்துரைக்கவும் அல்லது அளவை கூறவும் முடியாது. எந்த மருந்தையும் எடுத்துக்கொள்வதற்கு முன் தகுதியான மருத்துவர்/AYUSH நிபுணரை அணுகவும். சுயமருத்துவத்தால் ஏற்படும் பாதிப்புகளுக்கு நாங்கள் பொறுப்பல்ல.",
+ te:"<b>⚠️ ఆరోగ్య హెచ్చరిక</b><br>నేను విద్యాపరమైన సమాచారం మాత్రమే అందిస్తాను. వ్యాధిని నిర్ధారించలేను, మందు సూచించలేను లేదా మోతాదు చెప్పలేను. ఏ మందు తీసుకునే ముందు అర్హత కలిగిన వైద్యుడు/AYUSH నిపుణుడిని సంప్రదించండి. స్వయంగా మందులు వాడటం వల్ల కలిగే హానికి మేము బాధ్యులం కాదు.",
+ kn:"<b>⚠️ ಆರೋಗ್ಯ ಎಚ್ಚರಿಕೆ</b><br>ನಾನು ಶೈಕ್ಷಣಿಕ ಮಾಹಿತಿಯನ್ನು ಮಾತ್ರ ನೀಡುತ್ತೇನೆ. ರೋಗನಿರ್ಣಯ, ಔಷಧಿ ಸೂಚನೆ ಅಥವಾ ಡೋಸ್ ಸಲಹೆ ನೀಡಲು ಸಾಧ್ಯವಿಲ್ಲ. ಯಾವುದೇ ಔಷಧಿ ತೆಗೆದುಕೊಳ್ಳುವ ಮೊದಲು ಅರ್ಹ ವೈದ್ಯರು/AYUSH ತಜ್ಞರನ್ನು ಸಂಪರ್ಕಿಸಿ. ಸ್ವಯಂ ಔಷಧೋಪಚಾರದಿಂದ ಉಂಟಾಗುವ ಹಾನಿಗೆ ನಾವು ಜವಾಬ್ದಾರರಲ್ಲ.",
+ ml:"<b>⚠️ ആരോഗ്യ മുന്നറിയിപ്പ്</b><br>ഞാൻ വിദ്യാഭ്യാസ ആവശ്യത്തിനുള്ള വിവരങ്ങൾ മാത്രം നൽകുന്നു. രോഗനിർണയം നടത്താനോ മരുന്ന് നിർദ്ദേശിക്കാനോ ഡോസ് പറയാനോ കഴിയില്ല. ഏതെങ്കിലും മരുന്ന് കഴിക്കുന്നതിന് മുമ്പ് യോഗ്യനായ ഡോക്ടർ/AYUSH വിദഗ്ധനെ സമീപിക്കുക. സ്വയം ചികിത്സ മൂലമുള്ള ഹാനിക്ക് ഞങ്ങൾ ഉത്തരവാദികളല്ല.",
+ ar:"<b>⚠️ تحذير صحي</b><br>أقدم معلومات تعليمية فقط. لا أستطيع تشخيص المرض أو وصف دواء أو تحديد جرعة. استشر طبيبًا مؤهلًا أو مختصًا في AYUSH قبل تناول أي دواء. نحن غير مسؤولين عن الأضرار الناتجة عن العلاج الذاتي.",
+ zh:"<b>⚠️ 健康警告</b><br>我只能提供教育性植物信息，不能诊断疾病、开药或建议剂量。服用任何药物前，请咨询合格医生或 AYUSH 专业人士。自行用药造成的伤害由使用者自行承担，我们不对此负责。",
+ ja:"<b>⚠️ 健康上の注意</b><br>私は教育目的の情報のみを提供します。病気の診断、薬の処方、用量の指示はできません。薬を使用する前に、資格のある医師またはAYUSH専門家に相談してください。自己判断による使用で生じた損害について当サイトは責任を負いません。",
+ ko:"<b>⚠️ 건강 경고</b><br>저는 교육 목적의 정보만 제공합니다. 질병을 진단하거나 약을 처방하거나 용량을 권고할 수 없습니다. 약을 복용하기 전에 자격을 갖춘 의사 또는 AYUSH 전문가와 상담하세요. 자가 치료로 인한 피해에 대해 책임지지 않습니다.",
+ ru:"<b>⚠️ ПРЕДУПРЕЖДЕНИЕ О ЗДОРОВЬЕ</b><br>Я предоставляю только образовательную информацию. Я не могу ставить диагноз, назначать лекарства или рекомендовать дозировку. Перед применением любого лекарства проконсультируйтесь с квалифицированным врачом или специалистом AYUSH. Мы не несём ответственности за вред от самолечения."
+};
+
+function addPlantChatMessage(text,type,warning=false){const box=document.getElementById("plantchat-messages");if(!box)return;const div=document.createElement("div");div.className="chat-message "+(type==="user"?"chat-user":"chat-bot")+(warning?" chat-warning":"");div.innerHTML=text;box.appendChild(div);box.scrollTop=box.scrollHeight;}
+
+function containsMedicalRequest(q){return /\b(symptom|symptoms|disease|illness|medicine|drug|tablet|capsule|dose|dosage|treatment|cure|remedy|prescription|fever|pain|infection|diabetes|bp|blood pressure|doctor|medicine|dawa|इलाज|दवा|लक्षण|रोग|बुखार|दर्द|औषधि|ज्वर|痛|薬|病気|症状|药|疾病|症状|dolor|fiebre|medicina|maladie|douleur|fièvre|medizin|schmerz|fieber)/i.test(q);}
+
+function findPlantFromQuestion(q){const normalized=normalizePlantSearch(q);for(const key in plantChatKnowledge){const plant=plantChatKnowledge[key];if(plant.names.some(name=>normalized.includes(normalizePlantSearch(name))))return plant;}return null;}
+
+let plantChatLastPlant = null;
+
+function escapeChatHTML(text){
+    return text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
+
+function containsMedicalRequest(q){
+    return /\b(symptom|symptoms|disease|illness|medicine|drug|tablet|capsule|dose|dosage|treatment|cure|remedy|prescription|fever|pain|infection|diabetes|bp|blood pressure|dawa|इलाज|दवा|लक्षण|रोग|बुखार|दर्द|औषधि|ज्वर|痛|薬|病気|症状|药|疾病|dolor|fiebre|medicina|maladie|douleur|fièvre|medizin|schmerz|fieber)\b/i.test(q);
+}
+
+function findPlantFromQuestion(q){
+    const normalized=normalizePlantSearch(q);
+    for(const key in plantChatKnowledge){
+        const plant=plantChatKnowledge[key];
+        if(plant.names.some(name=>normalized.includes(normalizePlantSearch(name)))) return plant;
+    }
+    return null;
+}
+
+function conversationalReply(question, lang){
+    const q=normalizePlantSearch(question);
+    const L=chatText[lang]||chatText.en;
+
+    const greetings = /^(hi|hello|hey|namaste|namaskar|good morning|good evening|good afternoon|नमस्ते|नमस्कार|hola|bonjour|hallo|ciao|olá|ola|merhaba|你好|こんにちは|안녕하세요|привет)\b/i;
+    const thanks = /\b(thanks|thank you|thankyou|धन्यवाद|शुक्रिया|shukriya|gracias|merci|danke|obrigado|спасибо)\b/i;
+
+    if(thanks.test(q)){
+        const replies={
+            hi:"बहुत खुशी हुई 🌿 जब चाहें पूछिए। हम किसी plant, उसके नाम, parts, compounds या website में दी formulation पर बात कर सकते हैं।",
+            es:"¡De nada! 🌿 Cuando quieras, podemos seguir hablando de una planta, sus nombres, partes o formulaciones.",
+            fr:"Avec plaisir 🌿 Vous pouvez continuer à me poser vos questions sur les plantes et les formulations.",
+            de:"Gern 🌿 Du kannst mich weiter zu Pflanzen, Bestandteilen oder Formulierungen fragen."
+        };
+        return replies[lang] || "You’re very welcome 🌿 We can keep talking about plants, their names, parts, constituents or formulations.";
+    }
+
+    if(greetings.test(q)) return L.hello;
+
+    if(/who are you|what are you|tum kaun|aap kaun|आप कौन|तुम कौन|quién eres|qui es tu|qui êtes-vous|wer bist du|chi sei|кто ты/i.test(q)){
+        return lang==="hi" ? "मैं AI PlantChat हूँ 🌿 मैं इस website के plant data को समझकर आपको आसान तरीके से जानकारी बताने और खोजने में मदद करता हूँ। आप मुझसे normal conversation की तरह सवाल पूछ सकते हैं।" :
+               lang==="es" ? "Soy AI PlantChat 🌿 Estoy aquí para ayudarte a explorar los datos de plantas de este sitio y puedes hablar conmigo de forma natural." :
+               lang==="fr" ? "Je suis AI PlantChat 🌿 Je peux vous aider à explorer les informations végétales de ce site et vous pouvez me parler naturellement." :
+               lang==="de" ? "Ich bin AI PlantChat 🌿 Ich helfe dir, die Pflanzeninformationen dieser Website zu verstehen, und du kannst ganz natürlich mit mir sprechen." :
+               "I’m AI PlantChat 🌿 I’m here to help you explore the plant information on this website. You can talk to me naturally, just like a normal conversation.";
+    }
+
+    if(/how are you|kaise ho|कैसे हो|कैसा है|como estas|comment ça va|wie geht es dir|come stai/i.test(q)){
+        return lang==="hi" ? "मैं बढ़िया हूँ 🌿 धन्यवाद! आप बताइए, आज किस plant के बारे में बात करें?" :
+               lang==="es" ? "Estoy bien 🌿 ¡Gracias! Dime, ¿de qué planta quieres hablar hoy?" :
+               lang==="fr" ? "Je vais bien 🌿 Merci ! De quelle plante voulez-vous parler aujourd’hui ?" :
+               lang==="de" ? "Mir geht’s gut 🌿 Danke! Über welche Pflanze möchtest du heute sprechen?" :
+               "I’m doing well 🌿 Thanks! What plant would you like to talk about today?";
+    }
+
+    if(/what can you do|what do you do|kya kar sakte|kya kya karte|क्या कर सकते|क्या करते हो|que puedes hacer|que pouvez-vous faire|was kannst du/i.test(q)){
+        return lang==="hi" ? "मैं plant के अलग-अलग नाम, botanical name, parts, constituents, traditional uses और website में मौजूद formulations समझा सकता हूँ। अगर आपने अभी किसी plant के बारे में पूछा है, तो उसके बाद ‘इसके parts?’, ‘और बताओ’ या ‘इसका botanical name?’ जैसे छोटे follow-up भी पूछ सकते हैं।" :
+               "I can help you explore plant names, botanical names, parts, constituents, traditional uses and formulations in this website. You can also ask short follow-up questions like ‘its parts?’, ‘tell me more’, or ‘what is its botanical name?’ and I’ll use the conversation context.";
+    }
+
+    if(/^(ok|okay|yes|yeah|haan|ha|ठीक|ठीक है|अच्छा|theek|thik|sure|great|nice|वाह|wow)\b/i.test(q)){
+        return lang==="hi" ? "बिल्कुल 🌿 अब बताइए, क्या जानना है?" : "Absolutely 🌿 Go ahead—what would you like to know?";
+    }
+
+    if(/tell me more|more about it|aur batao|और बताओ|इसके बारे में और|और जानकारी|continue|go on|explain more|more info/i.test(q) && plantChatLastPlant){
+        const p=plantChatLastPlant;
+        return lang==="hi" ? `ज़रूर 🌿 ${p.names[0]} के बारे में थोड़ा और समझते हैं। इसका botanical name <b>${p.botanical}</b> है। Website data के अनुसार इसके मुख्य parts ${p.parts} हैं और प्रमुख constituents ${p.compounds} हैं। इसके traditional/research-related points preparation और context के अनुसार अलग हो सकते हैं।` :
+               `Sure 🌿 Let’s go a little deeper into <b>${p.names[0]}</b>. Its botanical name is <b>${p.botanical}</b>. In the website data, the main parts are ${p.parts}, with constituents such as ${p.compounds}. Traditional or research-related points can vary with the preparation and context.`;
+    }
+
+    return null;
+}
+
+function questionIntent(q){
+    const t=normalizePlantSearch(q);
+    if(/\b(botanical|scientific|species|binomial|व botanical|वैज्ञानिक|वानस्पतिक|scientific name|नाम क्या|name kya)\b/i.test(t)) return "botanical";
+    if(/\b(part|parts|leaf|leaves|root|roots|stem|bark|flower|flowers|fruit|fruits|rhizome|भाग|पत्ता|पत्ते|जड़|जड़|तना|छाल|फूल|फल)\b/i.test(t)) return "parts";
+    if(/\b(compound|compounds|constituent|constituents|active|chemical|curcumin|azadirachtin|alkaloid|यौगिक|घटक|तत्व)\b/i.test(t)) return "compounds";
+    if(/\b(effect|effects|property|properties|benefit|benefits|traditional use|uses|used for|प्रभाव|गुण|लाभ|उपयोग|काम आता)\b/i.test(t)) return "uses";
+    if(/\b(formulation|formulations|medicine|taila|tailam|churna|kwatha|ghrita|lepa|asava|arishta|satva|औषध|फॉर्मुलेशन|दवा)\b/i.test(t)) return "formulations";
+    if(/\b(what is|what's|kya hai|क्या है|que es|qu'est-ce|was ist|cos'è)\b/i.test(t)) return "overview";
+    return "general";
+}
+
+function answerPlantChat(question){
+    const lang=detectChatLanguage(question); const L=chatText[lang]||chatText.en;
+    const plant=findPlantFromQuestion(question);
+    if(plant) plantChatLastPlant=plant;
+
+    const followUp=/\b(its|this|that|it|iske|iska|iski|isme|is plant|ye plant|यह|इसका|इसके|इसमें|उसका|उसके|parts|part|compound|compounds|effect|effects|use|uses|formulation|medicine|botanical|scientific|more|aur|और|बताओ|जानकारी)\b/i.test(question);
+    const activePlant=plant || (plantChatLastPlant && followUp ? plantChatLastPlant : null);
+
+    if(containsMedicalRequest(question)){
+        let warning=warningText.en;
+        if(lang!=="en") warning += "<hr>" + (warningText[lang] || warningText.hi);
+        return {text:warning,warning:true};
+    }
+
+    const natural=conversationalReply(question,lang);
+    if(natural) return {text:natural};
+
+    if(!activePlant) return {text:L.unknown};
+
+    const intent=questionIntent(question);
+    let answer="";
+
+    if(intent==="botanical"){
+        answer=lang==="hi" ? `हाँ 🌿 <b>${activePlant.names[0]}</b> का botanical/scientific name <b>${activePlant.botanical}</b> है।` : `Yes 🌿 The botanical/scientific name of <b>${activePlant.names[0]}</b> is <b>${activePlant.botanical}</b>.`;
+    } else if(intent==="parts"){
+        answer=lang==="hi" ? `हाँ 🌿 <b>${activePlant.names[0]}</b> में website data के अनुसार मुख्य plant parts हैं: <b>${activePlant.parts}</b>।` : `Sure 🌿 According to the website data, the main plant parts listed for <b>${activePlant.names[0]}</b> are: <b>${activePlant.parts}</b>.`;
+    } else if(intent==="compounds"){
+        answer=lang==="hi" ? `बिल्कुल 🌿 <b>${activePlant.names[0]}</b> के प्रमुख listed constituents हैं: <b>${activePlant.compounds}</b>।` : `Absolutely 🌿 The main listed constituents of <b>${activePlant.names[0]}</b> are: <b>${activePlant.compounds}</b>.`;
+    } else if(intent==="uses"){
+        answer=lang==="hi" ? `हाँ 🌿 इसके traditional/research-related points को context के साथ देखना बेहतर है। Website data में <b>${activePlant.names[0]}</b> के uses इस तरह दिए गए हैं: <b>${activePlant.uses}</b><br><br>इन बातों को medical diagnosis या personal treatment advice न समझें।` : `Yes 🌿 It is best to view traditional or research-related points in context. The website data lists these uses for <b>${activePlant.names[0]}</b>: <b>${activePlant.uses}</b><br><br>This information is not a medical diagnosis or personal treatment advice.`;
+    } else if(intent==="formulations"){
+        const forms=[];
+        document.querySelectorAll(".medicine-name").forEach(m=>{
+            const txt=m.textContent.trim();
+            if(activePlant.names.some(n=>normalizePlantSearch(txt).includes(normalizePlantSearch(n))) || normalizePlantSearch(txt).includes(normalizePlantSearch(activePlant.names[0]))) forms.push(txt.replace(/^\d+\.\s*/,""));
+        });
+        answer=lang==="hi" ? `ज़रूर 🌿 <b>${activePlant.names[0]}</b> से जुड़े website formulations/entries को आप ऊपर Medicinal Formulations और search से देख सकते हैं। मैं यहाँ कोई dose या personal medicine recommendation नहीं दूँगा।` : `Sure 🌿 You can explore the formulations/entries related to <b>${activePlant.names[0]}</b> through the Medicinal Formulations section and the search box above. I won’t give a dose or personal medicine recommendation here.`;
+    } else {
+        answer=L.answer+`<br><br><b>🌿 ${activePlant.names[0]} — ${activePlant.botanical}</b>`;
+        answer += `<br><b>${L.parts}:</b> ${activePlant.parts}`;
+        answer += `<br><b>${L.compounds}:</b> ${activePlant.compounds}`;
+        answer += `<br><b>${L.effects}:</b> ${activePlant.effects}`;
+        answer += `<br><b>${L.uses}:</b> ${activePlant.uses}`;
+        answer += lang==="hi" ? `<br><br>अगर चाहें तो अब आप छोटा सा follow-up पूछ सकते हैं—जैसे <b>“इसके parts?”</b>, <b>“और बताओ”</b> या <b>“इसका botanical name?”</b> 🌿` : `<br><br>You can keep the conversation going with a short follow-up like <b>“its parts?”</b>, <b>“tell me more”</b>, or <b>“what’s its botanical name?”</b> 🌿`;
+    }
+    return {text:answer};
+}
+
+function sendPlantChat() {
+    const input = document.getElementById("plantchat-input");
+    if (!input) return;
+    const question = input.value.trim();
+    if (!question) return;
+
+    addPlantChatMessage(escapeChatHTML(question), "user");
+    input.value = "";
+
+    // Small typing-style pause so the conversation feels natural.
+    addPlantChatMessage("<span class=\"chat-typing\">● ● ●</span>", "bot");
+    const typing = document.querySelectorAll("#plantchat-messages .chat-bot");
+    const typingBox = typing[typing.length - 1];
+
+    setTimeout(function () {
+        if (typingBox) typingBox.remove();
+        const result = answerPlantChat(question);
+        addPlantChatMessage(result.text, "bot", result.warning === true);
+    }, 450);
+}
+
+function togglePlantChat() {
+    const box = document.getElementById("plantchat-box");
+    if (!box) return;
+
+    box.style.display = box.style.display === "block" ? "none" : "block";
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const input = document.getElementById("plantchat-input");
+    if (input) {
+        input.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") sendPlantChat();
+        });
+    }
+});
+
 </script>
 
 </head>
@@ -1053,6 +1664,22 @@ Sadabahar
 
 </div>
 
+</div>
+
+
+<!-- PLANT + MEDICINE SEARCH -->
+<div class="plant-search-area">
+    <div class="search-heading">🌿 SEARCH PLANTS & MEDICINES</div>
+    <div class="plant-search-box">
+        <input
+            id="plant-search-input"
+            type="search"
+            placeholder="Search plant by local, common, Ayurvedic or botanical name..."
+            autocomplete="off">
+        <button onclick="searchPlantsAndMedicines()">SEARCH</button>
+    </div>
+    <div class="search-hint">You can also search a medicine/formulation name, e.g. Nimba Taila, Haridra Khanda, Guduchi Satva.</div>
+    <div id="plant-search-results" class="search-results"></div>
 </div>
 
 <h2 id="plant-information" class="plant-info-title">
@@ -2585,5 +3212,48 @@ onclick="toggleMore('more-data-rose')">
 
 </div>
 
+
+<!-- AI PLANTCHAT -->
+<button id="plantchat-button" onclick="togglePlantChat()">🌿 AI PlantChat</button>
+
+<div id="plantchat-box">
+    <div class="plantchat-header">
+        <span>🌿 AI PlantChat</span>
+        <button class="plantchat-close" onclick="togglePlantChat()">×</button>
+    </div>
+
+    <div id="plantchat-messages">
+        <div class="chat-message chat-bot">
+            Hello / नमस्ते 🌿 <b>AI PlantChat</b> — Ask in your language using a local, common, Ayurvedic or botanical plant name.
+        </div>
+    </div>
+
+    <div class="plantchat-input-area">
+        <input id="plantchat-input" type="text" placeholder="Ask about a plant...">
+        <button id="plantchat-send" onclick="sendPlantChat()">SEND</button>
+    </div>
+</div>
+
+<script>
+async function sendToPlantChat(message) {
+    const response = await fetch("http://127.0.0.1:3000/api/chat", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            message: message
+        })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.error || "AI service unavailable");
+    }
+
+    return data.answer;
+}
+</script>
 </body>
 </html>
