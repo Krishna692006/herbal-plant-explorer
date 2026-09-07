@@ -15,7 +15,7 @@ import rateLimit from "express-rate-limit";
 import { GoogleGenAI } from "@google/genai";
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // --------------------------------------------------
 // BASIC SECURITY
@@ -179,7 +179,7 @@ Reply in the same language/script used by the user whenever possible.
 // START SERVER
 // --------------------------------------------------
 
-app.listen(PORT, "127.0.0.1", () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(
     `Herbal Plant Explorer AI running on http://127.0.0.1:${PORT}`
   );
