@@ -1453,7 +1453,7 @@ async function sendPlantChat() {
         // website knowledge to the AI backend.
         const websiteContext = JSON.stringify(plantChatKnowledge);
 
-        const response = await fetch("http://127.0.0.1:3000/api/chat", {
+        const response = await fetch("https://herbal-plant-explorer.onrender.com/api/chat", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
