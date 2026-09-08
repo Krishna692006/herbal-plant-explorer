@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -1435,25 +1434,63 @@ function answerPlantChat(question){
     return {text:answer};
 }
 
-function sendPlantChat() {
+async function sendPlantChat() {
     const input = document.getElementById("plantchat-input");
     if (!input) return;
+
     const question = input.value.trim();
     if (!question) return;
 
     addPlantChatMessage(escapeChatHTML(question), "user");
     input.value = "";
 
-    // Small typing-style pause so the conversation feels natural.
-    addPlantChatMessage("<span class=\"chat-typing\">● ● ●</span>", "bot");
+    addPlantChatMessage('<span class="chat-typing">● ● ●</span>', "bot");
     const typing = document.querySelectorAll("#plantchat-messages .chat-bot");
     const typingBox = typing[typing.length - 1];
 
-    setTimeout(function () {
+    try {
+        // Send the user's question together with the Herbal Plant Explorer
+        // website knowledge to the AI backend.
+        const websiteContext = JSON.stringify(plantChatKnowledge);
+
+        const response = await fetch("http://127.0.0.1:3000/api/chat", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                message: question,
+                websiteContext: websiteContext
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data?.error || "AI request failed");
+        }
+
+        if (!data?.answer) {
+            throw new Error("AI returned no answer");
+        }
+
         if (typingBox) typingBox.remove();
+
+        // AI output is escaped before being inserted into the chat.
+        const safeAnswer = escapeChatHTML(String(data.answer)).replace(/\n/g, "<br>");
+        const isWarning = /medical safety warning|health warning|स्वास्थ्य चेतावनी|स्वास्थ्य चेतावनी/i.test(String(data.answer));
+
+        addPlantChatMessage(safeAnswer, "bot", isWarning);
+
+    } catch (error) {
+        console.error("PlantChat API error:", error);
+
+        if (typingBox) typingBox.remove();
+
+        // Keep the existing website plant knowledge as a local fallback.
         const result = answerPlantChat(question);
         addPlantChatMessage(result.text, "bot", result.warning === true);
-    }, 450);
+    }
 }
 
 function togglePlantChat() {
@@ -3234,26 +3271,5 @@ onclick="toggleMore('more-data-rose')">
     </div>
 </div>
 
-<script>
-async function sendToPlantChat(message) {
-    const response = await fetch("https://herbal-plant-explorer.onrender.com/api/chat", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            message: message
-        })
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-        throw new Error(data.error || "AI service unavailable");
-    }
-
-    return data.answer;
-}
-</script>
 </body>
 </html>
