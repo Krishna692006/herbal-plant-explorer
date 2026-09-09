@@ -873,6 +873,42 @@
                 line-height: 2;
             }
         }
+
+        /* FEEDBACK & ISSUE FORM - VERTICAL LAYOUT */
+
+        .contact-form-box form {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .contact-form-box label {
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 2px;
+            font-weight: bold;
+        }
+
+        .contact-form-box input,
+        .contact-form-box textarea {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 8px;
+        }
+
+        .contact-form-box textarea {
+            min-height: 160px;
+            resize: vertical;
+        }
+
+        .contact-form-box input[type="file"] {
+            padding: 5px;
+        }
+
+        .contact-form-box button {
+            margin-top: 12px;
+        }
     </style>
 
     <script>
@@ -3554,7 +3590,7 @@
         <div id="feedback-form" class="contact-form-box" style="display:none;">
             <h2>Send Feedback</h2>
 
-            <form action="https://formspree.io/f/xnpqlvjw" method="POST">
+            <form action="https://formspree.io/f/xnpqlvjw" method="POST" enctype="multipart/form-data">
 
                 <label>Name</label>
                 <input type="text" name="name" required>
@@ -3563,18 +3599,27 @@
                 <input type="email" name="email" required>
 
                 <label>Feedback</label>
-                <textarea name="message" rows="5" required></textarea>
+                <textarea name="message" rows="8" placeholder="Write your feedback here..." required></textarea>
+
+                <label>Upload Photo</label>
+                <input type="file" name="photo" accept="image/*">
+
+                <label>Upload File</label>
+                <input type="file" name="attachment">
 
                 <button type="submit">SEND FEEDBACK</button>
 
             </form>
         </div>
+        ```
+
+
 
 
         <div id="issue-form" class="contact-form-box" style="display:none;">
             <h2>Report an Issue</h2>
 
-            <form action="https://formspree.io/f/xnpqlvjw" method="POST">
+            <form action="https://formspree.io/f/xnpqlvjw" method="POST" enctype="multipart/form-data">
 
                 <label>Name</label>
                 <input type="text" name="name" required>
@@ -3582,13 +3627,21 @@
                 <label>Email</label>
                 <input type="email" name="email" required>
 
-                <label>Issue</label>
-                <textarea name="message" rows="5" required></textarea>
+                <label>Describe the Issue</label>
+                <textarea name="message" rows="8" placeholder="Describe the problem here..." required></textarea>
+
+                <label>Upload Screenshot / Photo</label>
+                <input type="file" name="screenshot" accept="image/*">
+
+                <label>Upload File</label>
+                <input type="file" name="attachment">
 
                 <button type="submit">REPORT ISSUE</button>
 
             </form>
         </div>
+        ```
+
 
     </footer>
 
@@ -3610,6 +3663,9 @@
                 behavior: "smooth"
             });
         }
+
+
+
     </script>
 
 
