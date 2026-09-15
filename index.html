@@ -1720,8 +1720,8 @@
             }
 
             .category-scene>img {
-                width: 100%;
-                height: 100%;
+                width: 92%;
+                height: 92%;
                 object-fit: contain;
                 object-position: center bottom
             }
@@ -1750,6 +1750,21 @@
 
         .medicine-name:hover {
             background: #f2f8e9
+        }
+
+        /* ===== MOBILE: TREE / SHRUB / HERB SLIGHTLY SMALLER ===== */
+        @media (max-width: 700px) {
+            .category-scene>img {
+                width: 92% !important;
+                height: 92% !important;
+                object-fit: contain;
+                object-position: center bottom;
+            }
+
+            .herb-widget-image {
+                width: 98vw !important;
+                max-height: 72% !important;
+            }
         }
     </style>
     <script>
