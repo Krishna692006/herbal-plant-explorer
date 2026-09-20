@@ -1764,6 +1764,30 @@
             .herb-widget-image {
                 width: 98vw !important;
                 max-height: 72% !important;
+                object-fit: contain;
+                object-position: center bottom;
+            }
+
+            /* Mobile: show plant names immediately instead of waiting for the
+               floating animation to make them appear/settle. */
+            .category-plant-button,
+            .herb-plant-label {
+                animation: none !important;
+                transition: none !important;
+                will-change: auto;
+            }
+
+            .category-plant-button:hover,
+            .herb-plant-label:hover,
+            .category-plant-button:active,
+            .herb-plant-label:active {
+                transform: translate(-50%, -50%);
+            }
+
+            .category-branches-svg,
+            .herb-branches-svg {
+                z-index: 10;
+                overflow: visible;
             }
         }
     </style>
@@ -5435,28 +5459,86 @@
                     wrap.appendChild(b);
                 });
             }
+            function getRenderedImageRect(img) {
+                const r = img.getBoundingClientRect();
+                const nw = img.naturalWidth || r.width;
+                const nh = img.naturalHeight || r.height;
+                if (!nw || !nh) return r;
+
+                // The CSS uses object-fit: contain. The element's box can therefore
+                // be larger than the actual photo. Connectors must use the real
+                // rendered photo area, not the full <img> box.
+                const boxRatio = r.width / Math.max(1, r.height);
+                const imageRatio = nw / Math.max(1, nh);
+                let width = r.width;
+                let height = r.height;
+
+                if (imageRatio > boxRatio) {
+                    height = r.width / imageRatio;
+                } else {
+                    width = r.height * imageRatio;
+                }
+
+                return {
+                    left: r.left + (r.width - width) / 2,
+                    top: r.top + (r.height - height) / 2,
+                    width,
+                    height
+                };
+            }
+
             function drawConnectors(cat) {
                 const sec = document.getElementById('category-' + cat); if (!sec) return;
                 const scene = sec.querySelector('.category-scene,.herb-widget-scene');
                 const svg = sec.querySelector('.category-branches-svg,.herb-branches-svg');
-                const img = scene && scene.querySelector('img'); if (!scene || !svg || !img) return;
-                const sr = scene.getBoundingClientRect(), ir = img.getBoundingClientRect();
-                svg.setAttribute('viewBox', '0 0 ' + Math.max(1, sr.width) + ' ' + Math.max(1, sr.height));
+                const img = scene && scene.querySelector('img');
+                if (!scene || !svg || !img) return;
+
+                const sr = scene.getBoundingClientRect();
+                const ir = getRenderedImageRect(img);
+                const sceneWidth = Math.max(1, sr.width);
+                const sceneHeight = Math.max(1, sr.height);
+                svg.setAttribute('viewBox', '0 0 ' + sceneWidth + ' ' + sceneHeight);
                 while (svg.firstChild) svg.removeChild(svg.firstChild);
+
                 const anchors = anchorMap[cat] || {};
                 sec.querySelectorAll('.category-plant-button,.herb-plant-label').forEach(btn => {
-                    const pid = btn.dataset.plantId, a = anchors[pid]; if (!a) return;
-                    const ax = (ir.left - sr.left) + (ir.width * a[0] / 100), ay = (ir.top - sr.top) + (ir.height * a[1] / 100);
+                    const pid = btn.dataset.plantId;
+                    const a = anchors[pid];
+                    if (!a) return;
+
+                    // Anchor percentages are relative to the visible photo itself.
+                    // This keeps the branch attached to the plant even on mobile,
+                    // where object-fit: contain creates empty space around the image.
+                    const ax = (ir.left - sr.left) + (ir.width * a[0] / 100);
+                    const ay = (ir.top - sr.top) + (ir.height * a[1] / 100);
+
                     const br = btn.getBoundingClientRect();
-                    const bx = br.left + br.width / 2 - sr.left, by = br.top + br.height / 2 - sr.top;
-                    const dx = bx - ax, dy = by - ay, dist = Math.hypot(dx, dy) || 1;
-                    const gap = Math.min(br.width * .46, dist * .35);
-                    const ex = bx - dx / dist * gap, ey = by - dy / dist * Math.min(br.height * .22, dist * .12);
+                    const bx = br.left + br.width / 2 - sr.left;
+                    const by = br.top + br.height / 2 - sr.top;
+                    const dx = bx - ax;
+                    const dy = by - ay;
+                    const dist = Math.hypot(dx, dy) || 1;
+
+                    // Stop the connector just inside the label edge so it does not
+                    // visually run through the plant name.
+                    const edgeX = Math.min(br.width * 0.48, dist * 0.30);
+                    const edgeY = Math.min(br.height * 0.30, dist * 0.16);
+                    const ex = bx - (dx / dist) * edgeX;
+                    const ey = by - (dy / dist) * edgeY;
+
                     const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-                    line.setAttribute('x1', ax); line.setAttribute('y1', ay); line.setAttribute('x2', ex); line.setAttribute('y2', ey);
+                    line.setAttribute('x1', ax);
+                    line.setAttribute('y1', ay);
+                    line.setAttribute('x2', ex);
+                    line.setAttribute('y2', ey);
                     svg.appendChild(line);
+
                     const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                    circle.setAttribute('cx', ax); circle.setAttribute('cy', ay); circle.setAttribute('r', '7'); svg.appendChild(circle);
+                    circle.setAttribute('cx', ax);
+                    circle.setAttribute('cy', ay);
+                    circle.setAttribute('r', window.innerWidth <= 700 ? '5' : '7');
+                    svg.appendChild(circle);
                 });
             }
             function positionLabels(cat) {
@@ -5497,6 +5579,8 @@
                     if (!img.complete) img.addEventListener('load', () => positionLabels(img.closest('.plant-category').dataset.category), { once: true });
                 });
                 window.addEventListener('resize', () => ['tree', 'shrub', 'herb'].forEach(positionLabels));
+                window.addEventListener('orientationchange', () => setTimeout(() => ['tree', 'shrub', 'herb'].forEach(positionLabels), 120));
+                window.addEventListener('load', () => setTimeout(() => ['tree', 'shrub', 'herb'].forEach(positionLabels), 80));
                 document.addEventListener('click', e => {
                     const btn = e.target.closest('.category-plant-button,.herb-plant-label');
                     if (btn) {
