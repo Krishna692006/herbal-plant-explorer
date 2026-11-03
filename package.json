@@ -1,16 +1,17 @@
 {
-  "name": "herbal-plant-explorer-ai",
-  "version": "1.0.0",
+  "name": "herbal-plant-explorer-knowledge-hub",
+  "version": "2.0.0",
   "private": true,
   "type": "module",
-  "scripts": {
-    "start": "node server.mjs"
-  },
+  "scripts": { "start": "node server.mjs" },
   "dependencies": {
     "@google/genai": "2.19.0",
     "cors": "2.8.5",
     "dotenv": "^17.4.2",
     "express": "5.1.0",
-    "express-rate-limit": "^8.7.0"
+    "express-rate-limit": "^8.7.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.2",
+    "nodemailer": "^7.0.10"
   }
 }
