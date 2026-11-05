@@ -1845,7 +1845,39 @@
         .re-status.show { display:block; background:#eaf7ec; color:#175b25; }
         @media(max-width:600px) { .re-directory { padding:17px; margin:24px 0; } .re-head { align-items:flex-start; } .re-actions { width:100%; } .re-btn { flex:1; } .re-form-grid { grid-template-columns:1fr; } .re-field.full { grid-column:auto; } .re-card { flex-basis:235px; } }
 
-    </style>
+    
+
+/* HERBAL WORLD HOMEPAGE REFRESH — layout-only; existing knowledge sections/scripts remain intact */
+html{scroll-behavior:smooth}
+body{margin:0!important;padding:0 24px 112px!important;background:#f4f7ee!important;color:#243b2d;overflow-x:hidden}
+#hpe-mobile-bar{position:sticky!important;top:0!important;margin:0 -24px!important;padding:13px 24px!important;min-height:48px;box-sizing:border-box;backdrop-filter:blur(12px);background:rgba(13,54,34,.97)!important}
+.hero-header{margin:0 -24px!important;min-height:390px;box-sizing:border-box;padding:34px 24px 38px!important;display:flex;flex-direction:column;justify-content:center;isolation:isolate;background:linear-gradient(90deg,rgba(5,34,21,.88),rgba(10,57,34,.63)),url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=2000&q=85') center 48%/cover no-repeat!important}
+.hero-header:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(4,28,17,.52),transparent 55%);pointer-events:none}
+.hero-header .cloud{display:none!important}
+.hero-title-row{max-width:1050px!important;grid-template-columns:80px minmax(0,1fr) 80px!important;gap:18px!important}
+.hero-title-row h1{color:#fff!important;text-shadow:0 3px 18px #001d0d!important;font-size:clamp(34px,5vw,62px)!important;letter-spacing:2px!important;line-height:1.12!important;margin:15px 0 20px!important}
+.hero-title-row .title-leaf{filter:drop-shadow(0 3px 8px #001d0d);width:75px!important;max-height:90px!important}
+.hero-header .subtitle{color:#e7f3c9!important;font-size:14px!important;letter-spacing:3px!important;font-weight:800;margin:0 auto 16px!important}
+.hpe-hero-copy{width:min(760px,100%);margin:8px auto 0;text-align:center;color:#fff}
+.hpe-hero-kicker{display:inline-block;color:#e3efb5;font-size:11px;font-weight:800;letter-spacing:2.5px;margin:0 0 9px}
+.hpe-hero-copy>p{font-size:clamp(16px,2vw,21px);line-height:1.55;margin:0 auto 20px;color:#f3f7e9;max-width:680px}
+.hpe-hero-search{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #e4edda;border-radius:999px;padding:7px 8px 7px 18px;max-width:590px;margin:0 auto;box-shadow:0 12px 35px #001c0c55}
+.hpe-hero-search>span{font-size:25px;color:#47754b}.hpe-hero-search input{min-width:0;flex:1;border:0!important;outline:0!important;background:transparent!important;padding:11px 3px!important;font-size:15px!important;color:#25412d!important;box-shadow:none!important}
+.hpe-hero-search button{border:0;border-radius:999px;background:#d4e8a3;color:#173d24;font-weight:800;padding:12px 23px;cursor:pointer;min-height:44px}
+.hpe-hero-tags{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:18px}.hpe-hero-tags span{font-size:12px;color:#f4f8e9;background:#ffffff18;border:1px solid #ffffff40;border-radius:30px;padding:7px 12px;backdrop-filter:blur(5px)}
+.hpe-home{margin:28px 0 34px!important;padding:28px!important;border-radius:24px!important;border:1px solid #dce8d3!important;background:linear-gradient(135deg,#f7faed,#fffdf5 55%,#edf5e7)!important;box-shadow:0 14px 40px #173c2410}
+.hpe-home-heading{text-align:center;max-width:760px;margin:0 auto 24px}.hpe-home-heading>span{font-size:10px;letter-spacing:2.5px;font-weight:900;color:#789348}.hpe-home-heading h2{font-family:Georgia,serif!important;font-size:clamp(27px,3vw,38px)!important;margin:7px 0 8px!important;color:#17472c!important}.hpe-home-heading p{font-size:15px;line-height:1.6;margin:0!important;color:#61705f!important}
+.hpe-home-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:14px!important}
+.hpe-home-card{position:relative;overflow:hidden;border:1px solid #e0e9d8!important;border-radius:18px!important;padding:19px!important;min-height:145px!important;background:rgba(255,255,255,.92)!important;box-shadow:0 5px 18px #244c2810;transition:transform .2s,box-shadow .2s,border-color .2s!important}
+.hpe-home-card:after{content:"";position:absolute;width:90px;height:90px;border-radius:50%;right:-42px;bottom:-48px;background:#eaf3df;pointer-events:none}.hpe-home-card:hover{transform:translateY(-5px)!important;border-color:#9dbb82!important;box-shadow:0 13px 26px #244c2820!important}.hpe-home-card .icon{font-size:30px!important}.hpe-home-card strong{font-size:16px;color:#17472c!important}.hpe-home-card small{font-size:13px;line-height:1.5;color:#687765!important}
+.hpe-home-ribbon{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:22px;padding-top:20px;border-top:1px solid #dce7d3}.hpe-home-ribbon>div{display:grid;grid-template-columns:38px 1fr;column-gap:9px;align-items:center}.hpe-home-ribbon span{grid-row:span 2;font-size:25px}.hpe-home-ribbon strong{font-size:13px;color:#315b38}.hpe-home-ribbon small{font-size:11px;color:#7a8875}
+.menu-container{margin-left:0!important;margin-right:0!important;border-radius:14px}
+#plant-information,#researcher-educator,#hpe-chat,#hpe-disease,#hpe-organs,#hpe-research,#hpe-account,#hpe-admin{scroll-margin-top:80px}
+@media(max-width:900px){body{padding:0 14px calc(105px + env(safe-area-inset-bottom))!important}.hero-header{margin:0 -14px!important;min-height:370px;padding:28px 16px 32px!important}.hpe-home{padding:21px!important}.hpe-home-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:560px){body{padding:0 10px calc(105px + env(safe-area-inset-bottom))!important}#hpe-mobile-bar{margin:0 -10px!important;padding:12px 15px!important}.hero-header{margin:0 -10px!important;min-height:410px;padding:30px 13px!important;background-position:56% center!important}.hero-title-row{grid-template-columns:35px minmax(0,1fr) 35px!important;gap:5px!important}.hero-title-row .title-leaf{width:34px!important;height:44px!important}.hero-title-row h1{font-size:clamp(21px,7vw,31px)!important;letter-spacing:.6px!important;margin:10px 0 14px!important}.hero-header .subtitle{font-size:10px!important;letter-spacing:1.2px!important}.hpe-hero-kicker{font-size:9px;letter-spacing:1.4px}.hpe-hero-copy>p{font-size:15px;line-height:1.45;margin-bottom:16px}.hpe-hero-search{padding:5px 6px 5px 13px;gap:5px}.hpe-hero-search input{font-size:13px!important;padding:9px 2px!important}.hpe-hero-search button{padding:10px 15px;font-size:12px}.hpe-hero-tags{gap:6px;margin-top:13px}.hpe-hero-tags span{font-size:10px;padding:6px 8px}.hpe-home{padding:17px!important;margin:18px 0 25px!important;border-radius:18px!important}.hpe-home-heading{margin-bottom:17px}.hpe-home-heading h2{font-size:25px!important}.hpe-home-heading p{font-size:13px}.hpe-home-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}.hpe-home-card{padding:13px!important;min-height:130px!important;border-radius:14px!important;gap:6px!important}.hpe-home-card .icon{font-size:25px!important}.hpe-home-card strong{font-size:13px}.hpe-home-card small{font-size:11px;line-height:1.4}.hpe-home-ribbon{grid-template-columns:1fr;gap:13px;margin-top:17px;padding-top:16px}.hpe-home-ribbon>div{grid-template-columns:34px 1fr}.hpe-home-ribbon span{font-size:22px}}
+@media(max-width:360px){.hpe-home-grid{grid-template-columns:1fr!important}.hero-header{min-height:390px}}
+
+</style>
     <script>
 
         function toggleDetail(id) {
@@ -2760,34 +2792,65 @@ body{padding-bottom:105px!important}
  <div class="side-note">Learn • Contribute • Verify<br>Public contributions appear only after approval.</div>
 </aside>
 
-    <div class="hero-header">
-        <div class="cloud cloud1">☁</div>
-        <div class="cloud cloud2">☁</div>
-        <div class="cloud cloud3">☁</div>
-        <div class="cloud cloud4">☁</div>
-        <div class="hero-title-row">
-            <img class="title-leaf hero-leaf-left" src="leaftransparent.png" alt="Medicinal plant illustration" />
-            <h1>HERBAL PLANT EXPLORER</h1>
-            <img class="title-leaf hero-leaf-right" src="leaftransparent.png" alt="Medicinal plant illustration" />
-        </div>
-        <p class="subtitle">EXPLORE MEDICINAL AND HERBAL PLANTS</p>
+    
+<header class="hpe-world-hero" id="hpe-world-top">
+  <div class="hpe-topbar">
+    <a class="hpe-brand" href="#hpe-world-top"><span class="brand-mark">🌿</span><span>HERBAL PLANT EXPLORER<small>HERBAL KNOWLEDGE HUB</small></span></a>
+    <nav class="hpe-top-links" aria-label="Main navigation">
+      <a href="#hpe-world-top">⌂ Home</a><a href="#plant-information">🌱 Plant Explorer</a>
+      <a href="#hpe-research">⚗ Research</a><a href="#researcher-educator">👩‍🔬 Professor</a>
+      <a href="#hpe-chat">● AI Chat</a><a href="#hpe-account">♙ Account</a>
+    </nav>
+    <a class="hpe-lang" href="#plant-information">🌿 आयुर्वेद</a>
+    <button class="hpe-mobile-menu-btn" type="button" aria-expanded="false" aria-controls="hpe-mobile-menu" onclick="hpeToggleMobileMenu()">☰</button>
+  </div>
+  <nav class="hpe-mobile-menu" id="hpe-mobile-menu">
+    <a href="#plant-information">🌿 Plant Explorer</a><a href="#hpe-research">🔬 Research</a>
+    <a href="#researcher-educator">👩‍🔬 Professor</a><a href="#hpe-chat">💬 AI Chat</a>
+    <a href="#hpe-disease">🩺 Diseases</a><a href="#hpe-account">👤 Account</a>
+  </nav>
+  <div class="hpe-hero-scene">
+    <div class="hpe-scene-glow"></div>
+    <div class="hpe-scene-copy">
+      <span class="hpe-eyebrow">ANCIENT AYURVEDA · MODERN PLANT SCIENCE</span>
+      <h1>HERBAL <em>PLANT</em> EXPLORER</h1>
+      <p>Discover the Ancient Wisdom of Ayurveda &amp; Modern Plant Science.</p>
+      <div class="hpe-hero-search"><span>⌕</span><input aria-label="Search herbal knowledge" id="hpe-home-search" placeholder="Search medicinal plants, diseases, remedies..." type="search"/><button onclick="hpeRunHomeSearch()" type="button">🌿 Search</button></div>
+      <div class="hpe-hero-tags"><span>🌱 Nature</span><span>📜 Ayurveda</span><span>🔬 Research</span></div>
     </div>
+    <div class="hpe-scene-note">“आयुर्वेदः अमृतानां”<small>Knowledge • Nature • Wellness</small></div>
+  </div>
+  <div class="hpe-category-ribbon">
+    <a href="#plant-information"><span>🌿</span><b>Medicinal<br>Plants</b><i>›</i></a>
+    <a href="#plant-information"><span>🌳</span><b>Trees &amp;<br>Shrubs</b><i>›</i></a>
+    <a href="#hpe-organs"><span>🫀</span><b>Human<br>Anatomy</b><i>›</i></a>
+    <a href="#hpe-disease"><span>🦠</span><b>Diseases &amp;<br>Remedies</b><i>›</i></a>
+    <a href="#hpe-research"><span>🔬</span><b>Scientific<br>Research</b><i>›</i></a>
+    <a href="#researcher-educator"><span>👩‍🔬</span><b>Researchers &amp;<br>Professors</b><i>›</i></a>
+  </div>
+</header>
 
-<section class="hpe-home" id="hpe-home">
- <h2>Explore the Herbal Knowledge Hub</h2>
- <p>Plants, people, diseases, human organs and scientific research — connected in one learning platform.</p>
- <div class="hpe-home-grid">
-  <a class="hpe-home-card" href="#plant-information"><span class="icon">🌿</span><strong>Plant Explorer</strong><small>Explore Tree, Shrub, Herb and plant details.</small></a>
-  <a class="hpe-home-card" href="#researcher-educator"><span class="icon">👩‍🏫</span><strong>Professor / Other</strong><small>Discover educator, researcher and contributor profiles.</small></a>
-  <a class="hpe-home-card" href="#hpe-chat"><span class="icon">💬</span><strong>Chat</strong><small>Open the knowledge chat and community conversations.</small></a>
-  <a class="hpe-home-card" href="#hpe-disease"><span class="icon">🩺</span><strong>Disease Explorer</strong><small>Browse educational disease information.</small></a>
-  <a class="hpe-home-card" href="#hpe-organs"><span class="icon">🫀</span><strong>Human Organs</strong><small>Learn about organs and their functions.</small></a>
-  <a class="hpe-home-card" href="#hpe-research"><span class="icon">🧬</span><strong>Research Field</strong><small>Explore scientific topics, papers and findings.</small></a>
-  <a class="hpe-home-card" href="#hpe-account"><span class="icon">👤</span><strong>Create Account</strong><small>Submit suggestions, articles and documents for review.</small></a>
-  <a class="hpe-home-card" href="#hpe-admin"><span class="icon">🛡️</span><strong>Verification</strong><small>Admin review before public publication.</small></a>
- </div>
- <div id="hpe-approved-home"></div>
+
+
+<section class="hpe-world-home" id="hpe-home">
+  <div class="hpe-home-columns">
+    <div class="hpe-featured-plants">
+      <div class="hpe-section-title"><div><span>EXPLORE NATURE</span><h2>Featured Medicinal Plants</h2></div><a href="#plant-information">View all plants →</a></div>
+      <div class="hpe-plant-teasers">
+        <a href="#plant-information"><img src="haldi.jpg" alt="Turmeric plant"><b>Haridra</b><small>Traditional herbal knowledge</small></a>
+        <a href="#plant-information"><img src="sadabahar.jpg" alt="Sadabahar plant"><b>Sadabahar</b><small>Explore plant details</small></a>
+        <a href="#plant-information"><img src="gloe.jpg" alt="Medicinal leaves"><b>Medicinal Herbs</b><small>Discover nature's diversity</small></a>
+        <a href="#plant-information"><img src="shrub image.jpg" alt="Shrub plant"><b>Trees &amp; Shrubs</b><small>Explore useful parts</small></a>
+      </div>
+    </div>
+    <div class="hpe-wisdom-card"><span>📜 AYURVEDIC WISDOM</span><div class="hpe-sanskrit">सर्वे भवन्तु सुखिनः।<br>सर्वे सन्तु निरामयाः॥</div><p>May all be happy.<br>May all be free from illness.</p><small>— Traditional Sanskrit prayer</small></div>
+    <div class="hpe-science-card"><span>⚗ MODERN DISCOVERIES</span><div class="hpe-science-art">🧪</div><b>Ayurveda + Modern Science</b><p>Explore how traditional knowledge connects with botanical and scientific research.</p><a href="#hpe-research">Explore Research →</a></div>
+  </div>
+  <div class="hpe-ai-strip"><div class="hpe-ai-icon">🤖</div><div><b>Ask Our AI Herbal Assistant</b><small>Get instant answers about medicinal plants, Ayurveda and more.</small></div><a href="#hpe-chat">💬 Chat Now</a><span class="hpe-community">🌱 Join the Herbal Knowledge Community</span><a class="hpe-start" href="#hpe-account">Get Started →</a></div>
+  <div id="hpe-approved-home"></div>
+  <div class="hpe-continue"><span>YOUR KNOWLEDGE JOURNEY CONTINUES BELOW</span><b>Explore detailed plant profiles, research, people and more ↓</b></div>
 </section>
+
 
     <div class="menu-container">
         <button class="menu-button" onclick="toggleSection('main-menu')">
@@ -5542,24 +5605,69 @@ body{padding-bottom:105px!important}
  <p class="hpe-muted">Please do not share private medical records or sensitive personal information in chat.</p>
 </section>
 <section class="hpe-extra-section" id="hpe-account">
- <h2>👤 Member Account & Contribution</h2><p class="hpe-lead">Members can send a suggestion, article, profile information or supporting document. Submissions remain pending and are not shown publicly until an administrator approves them.</p>
- <div class="hpe-profile-row"><span class="hpe-pill" id="hpe-auth-state">Not signed in</span><button class="hpe-btn secondary" type="button" id="hpe-request-otp">Sign in with email OTP</button><button class="hpe-btn secondary" type="button" id="hpe-signout" hidden>Sign out</button></div>
- <div class="hpe-form-grid" id="hpe-otp-panel">
-  <div class="hpe-field"><label for="hpe-email">Email address</label><input id="hpe-email" type="email" maxlength="180" autocomplete="email" placeholder="you@example.com"></div>
-  <div class="hpe-field"><label for="hpe-otp">6-digit email OTP</label><input id="hpe-otp" inputmode="numeric" maxlength="6" placeholder="Enter OTP"></div>
-  <div class="hpe-field full"><div><button class="hpe-btn" type="button" id="hpe-verify-otp">Verify OTP / Create account</button></div></div>
- </div><div class="hpe-status" id="hpe-auth-status" role="status"></div>
- <hr style="border:0;border-top:1px solid #e0e9df;margin:20px 0">
- <form id="hpe-contribution-form">
-  <div class="hpe-form-grid">
-   <div class="hpe-field"><label for="hpe-contrib-category">Section *</label><select id="hpe-contrib-category" required><option value="">Choose section</option><option>Plant</option><option>Professor / Other</option><option>Disease</option><option>Human Organs</option><option>Research Field</option><option>General Suggestion</option></select></div>
-   <div class="hpe-field"><label for="hpe-contrib-title">Title / Topic *</label><input id="hpe-contrib-title" required maxlength="140" placeholder="Topic or contribution title"></div>
-   <div class="hpe-field full"><label for="hpe-contrib-content">Your information / suggestion *</label><textarea id="hpe-contrib-content" required maxlength="12000" placeholder="Write your contribution with sources where possible..."></textarea></div>
-   <div class="hpe-field full"><label for="hpe-contrib-file">Attach document or image (optional)</label><input id="hpe-contrib-file" type="file" accept=".pdf,.doc,.docx,.txt,.png,.jpg,.jpeg,.webp"><span class="hpe-muted">Maximum 8 MB. Do not upload identity documents, private medical records or copyrighted material you do not have permission to share.</span></div>
-   <div class="hpe-field full"><button class="hpe-btn" type="submit">Submit for Admin Verification</button></div>
+ <h2>👤 Herbal Knowledge Community Account</h2>
+ <p class="hpe-lead">Create your member profile, connect with students, professors and researchers, and choose exactly which profile details other people can see.</p>
+ <div class="hpe-profile-row"><span class="hpe-pill" id="hpe-auth-state">Not signed in</span><button class="hpe-btn secondary" type="button" id="hpe-signout" hidden>Sign out</button></div>
+ <div id="hpe-auth-choices" class="hpe-auth-tabs"><button class="hpe-btn" type="button" id="hpe-show-signup">Create New Account</button><button class="hpe-btn secondary" type="button" id="hpe-show-login">Login</button></div>
+ <div id="hpe-signup-panel" class="hpe-account-panel">
+  <h3>🌱 Create your account</h3><p class="hpe-muted">Enter your details. Verification codes will be sent to both your email and mobile number. Password is used for future logins.</p>
+  <form id="hpe-signup-form"><div class="hpe-form-grid">
+   <div class="hpe-field"><label for="hpe-reg-name">Full name *</label><input id="hpe-reg-name" required maxlength="100" autocomplete="name"></div>
+   <div class="hpe-field"><label for="hpe-reg-role">I am a / My role *</label><select id="hpe-reg-role" required><option value="">Choose profile type</option><option>Student</option><option>Professor / Educator</option><option>Researcher</option><option>Herbal Expert</option><option>Independent Contributor</option><option>Other</option></select></div>
+   <div class="hpe-field"><label for="hpe-reg-email">Email address *</label><input id="hpe-reg-email" type="email" required maxlength="180" autocomplete="email"></div>
+   <div class="hpe-field"><label for="hpe-reg-phone">Mobile number with country code *</label><input id="hpe-reg-phone" type="tel" required maxlength="20" placeholder="+919876543210" autocomplete="tel"><small>Use international format, e.g. +91...</small></div>
+   <div class="hpe-field"><label for="hpe-reg-password">Create password *</label><input id="hpe-reg-password" type="password" required minlength="8" maxlength="100" autocomplete="new-password"></div>
+   <div class="hpe-field"><label for="hpe-reg-confirm">Confirm password *</label><input id="hpe-reg-confirm" type="password" required minlength="8" maxlength="100" autocomplete="new-password"></div>
+   <div class="hpe-field full"><label><input id="hpe-reg-consent" type="checkbox" required> I agree to the privacy notice and understand that my profile fields are private by default.</label></div>
+   <div class="hpe-field full"><button class="hpe-btn" type="submit" id="hpe-send-reg-otp">Send email + mobile OTP</button></div>
+  </div></form>
+  <div id="hpe-reg-verify" class="hpe-form-grid" hidden>
+   <div class="hpe-field"><label for="hpe-reg-email-otp">Email OTP</label><input id="hpe-reg-email-otp" inputmode="numeric" maxlength="6" autocomplete="one-time-code"></div>
+   <div class="hpe-field"><label for="hpe-reg-phone-otp">Mobile SMS OTP</label><input id="hpe-reg-phone-otp" inputmode="numeric" maxlength="6" autocomplete="one-time-code"></div>
+   <div class="hpe-field full"><button class="hpe-btn" type="button" id="hpe-verify-reg-otp">Verify both & create account</button></div>
+  </div><div class="hpe-status" id="hpe-signup-status" role="status"></div>
+ </div>
+ <div id="hpe-login-panel" class="hpe-account-panel" hidden><h3>🔐 Login to your account</h3><form id="hpe-login-form"><div class="hpe-form-grid">
+  <div class="hpe-field full"><label for="hpe-login-identifier">Registered email or mobile number</label><input id="hpe-login-identifier" required autocomplete="username"></div>
+  <div class="hpe-field full"><label for="hpe-login-password">Password</label><input id="hpe-login-password" type="password" required autocomplete="current-password"></div>
+  <div class="hpe-field full"><button class="hpe-btn" type="submit">Login</button></div>
+ </div></form><div class="hpe-status" id="hpe-login-status" role="status"></div></div>
+ <div id="hpe-member-dashboard" class="hpe-account-panel" hidden>
+  <h3>My Profile & Personal Information</h3><p class="hpe-muted">All profile fields start as Private. Change a field to Public or Members Only only when you want to share it. Phone and email stay private by default.</p>
+  <form id="hpe-profile-form"><div class="hpe-form-grid">
+   <div class="hpe-field"><label for="hpe-prof-name">Full name</label><input id="hpe-prof-name" maxlength="100"></div>
+   <div class="hpe-field"><label for="hpe-prof-role">Professional category</label><select id="hpe-prof-role"><option>Student</option><option>Professor / Educator</option><option>Researcher</option><option>Herbal Expert</option><option>Independent Contributor</option><option>Other</option></select></div>
+   <div class="hpe-field"><label for="hpe-prof-email">Email (verified)</label><input id="hpe-prof-email" type="email" disabled></div>
+   <div class="hpe-field"><label for="hpe-prof-phone">Mobile (verified)</label><input id="hpe-prof-phone" type="tel" disabled></div>
+   <div class="hpe-field"><label for="hpe-prof-country">Country</label><input id="hpe-prof-country" maxlength="80"></div>
+   <div class="hpe-field"><label for="hpe-prof-state">State</label><input id="hpe-prof-state" maxlength="80"></div>
+   <div class="hpe-field"><label for="hpe-prof-city">City</label><input id="hpe-prof-city" maxlength="80"></div>
+   <div class="hpe-field"><label for="hpe-prof-course">Course / Qualification</label><input id="hpe-prof-course" maxlength="120" placeholder="BAMS, MSc Botany, PhD..."></div>
+   <div class="hpe-field"><label for="hpe-prof-institution">College / Institution</label><input id="hpe-prof-institution" maxlength="160"></div>
+   <div class="hpe-field"><label for="hpe-prof-designation">Designation / Study year</label><input id="hpe-prof-designation" maxlength="120"></div>
+   <div class="hpe-field"><label for="hpe-prof-department">Department</label><input id="hpe-prof-department" maxlength="120"></div>
+   <div class="hpe-field"><label for="hpe-prof-experience">Experience (optional)</label><input id="hpe-prof-experience" maxlength="80" placeholder="e.g. 3 years"></div>
+   <div class="hpe-field full"><label for="hpe-prof-research">Research interests / expertise</label><textarea id="hpe-prof-research" maxlength="1200"></textarea></div>
+   <div class="hpe-field full"><label for="hpe-prof-skills">Skills and areas of interest</label><textarea id="hpe-prof-skills" maxlength="1000"></textarea></div>
+   <div class="hpe-field full"><label for="hpe-prof-bio">About me</label><textarea id="hpe-prof-bio" maxlength="1200"></textarea></div>
+   <div class="hpe-field"><label for="hpe-prof-languages">Languages known</label><input id="hpe-prof-languages" maxlength="160"></div>
+   <div class="hpe-field"><label for="hpe-prof-link">Website / ORCID / Portfolio</label><input id="hpe-prof-link" type="url" maxlength="300" placeholder="https://..."></div>
   </div>
- </form><div class="hpe-status" id="hpe-contrib-status" role="status"></div>
+  <h3>🔒 Privacy for each field</h3><p class="hpe-muted">Public = visible to everyone; Members Only = visible to signed-in members; Private = only you can see it.</p>
+  <div id="hpe-privacy-grid" class="hpe-privacy-grid"></div>
+  <button class="hpe-btn" type="submit">Save Profile & Privacy Settings</button>
+ </form><div class="hpe-status" id="hpe-profile-status" role="status"></div>
  <div id="hpe-my-submissions" class="hpe-admin-list"></div>
+ </div>
+ <hr style="border:0;border-top:1px solid #e0e9df;margin:20px 0">
+ <h3>🌿 Submit a Contribution</h3><p class="hpe-muted">You must be logged in. Submissions remain private until administrator approval.</p>
+ <form id="hpe-contribution-form"><div class="hpe-form-grid">
+  <div class="hpe-field"><label for="hpe-contrib-category">Section *</label><select id="hpe-contrib-category" required><option value="">Choose section</option><option>Plant</option><option>Professor / Other</option><option>Disease</option><option>Human Organs</option><option>Research Field</option><option>General Suggestion</option></select></div>
+  <div class="hpe-field"><label for="hpe-contrib-title">Title / Topic *</label><input id="hpe-contrib-title" required maxlength="140"></div>
+  <div class="hpe-field full"><label for="hpe-contrib-content">Your information / suggestion *</label><textarea id="hpe-contrib-content" required maxlength="12000"></textarea></div>
+  <div class="hpe-field full"><label for="hpe-contrib-file">Attach document or image (optional)</label><input id="hpe-contrib-file" type="file" accept=".pdf,.doc,.docx,.txt,.png,.jpg,.jpeg,.webp"><span class="hpe-muted">Maximum 8 MB. Do not upload identity documents or private medical records.</span></div>
+  <div class="hpe-field full"><button class="hpe-btn" type="submit">Submit for Admin Verification</button></div>
+ </div></form><div class="hpe-status" id="hpe-contrib-status" role="status"></div>
 </section>
 <section class="hpe-extra-section" id="hpe-admin">
  <h2>🛡️ Admin Verification Dashboard</h2><p class="hpe-lead">Only the authorised site administrator can review submissions. Pending content is private; only approved contributions are published.</p>
@@ -6074,11 +6182,19 @@ body{padding-bottom:105px!important}
  document.querySelectorAll('[data-hpe-nav]').forEach(a=>a.addEventListener('click',()=>{document.querySelectorAll('[data-hpe-nav]').forEach(x=>x.classList.remove('active'));a.classList.add('active');$('hpe-sidebar')?.classList.remove('open')}));
  document.querySelectorAll('[data-hpe-bottom]').forEach(a=>a.addEventListener('click',()=>{document.querySelectorAll('[data-hpe-bottom]').forEach(x=>x.classList.remove('active'));a.classList.add('active');}));
  document.querySelectorAll('[data-detail]').forEach(btn=>btn.addEventListener('click',()=>{const target=$(btn.dataset.detail);if(!target)return;document.querySelectorAll('.hpe-topic-detail').forEach(x=>x.classList.remove('open'));target.classList.add('open');target.scrollIntoView({behavior:'smooth',block:'nearest'})}));
- function authUI(){ $('hpe-auth-state').textContent=memberToken?'Signed in':'Not signed in';$('hpe-signout').hidden=!memberToken; }
- authUI();
- $('hpe-request-otp')?.addEventListener('click',async()=>{const email=$('hpe-email').value.trim();if(!email){status('hpe-auth-status','Enter your email address first.',true);return}try{const r=await fetch(API+'/api/auth/request-otp',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})});const d=await r.json();if(!r.ok)throw Error(d.error||'Could not send OTP');status('hpe-auth-status',d.message||'OTP sent. Check your email.')}catch(e){status('hpe-auth-status',e.message+' — confirm the backend and email SMTP settings are configured.',true)}});
- $('hpe-verify-otp')?.addEventListener('click',async()=>{const email=$('hpe-email').value.trim(),otp=$('hpe-otp').value.trim();if(!email||!/^\d{6}$/.test(otp)){status('hpe-auth-status','Enter email and the 6-digit OTP.',true);return}try{const r=await fetch(API+'/api/auth/verify-otp',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,otp})});const d=await r.json();if(!r.ok)throw Error(d.error||'Verification failed');memberToken=d.token;localStorage.setItem('hpe_member_token',memberToken);authUI();status('hpe-auth-status','Email verified. You can now submit contributions.')}catch(e){status('hpe-auth-status',e.message,true)}});
- $('hpe-signout')?.addEventListener('click',()=>{memberToken='';localStorage.removeItem('hpe_member_token');authUI();status('hpe-auth-status','Signed out.')});
+ function authUI(){ $('hpe-auth-state').textContent=memberToken?'Signed in':'Not signed in';$('hpe-signout').hidden=!memberToken;$('hpe-auth-choices').hidden=!!memberToken;$('hpe-signup-panel').hidden=!!memberToken;$('hpe-login-panel').hidden=!!memberToken;$('hpe-member-dashboard').hidden=!memberToken;if(memberToken){loadProfile();loadMine();} }
+ function showAuth(which){$('hpe-signup-panel').hidden=which!=='signup';$('hpe-login-panel').hidden=which!=='login';$('hpe-show-signup').classList.toggle('secondary',which!=='signup');$('hpe-show-login').classList.toggle('secondary',which!=='login')}
+ $('hpe-show-signup')?.addEventListener('click',()=>showAuth('signup'));$('hpe-show-login')?.addEventListener('click',()=>showAuth('login'));
+ const profileFields={name:'Full name',role:'Professional category',country:'Country',state:'State',city:'City',course:'Course / Qualification',institution:'College / Institution',designation:'Designation / Study year',department:'Department',experience:'Experience',research:'Research interests',skills:'Skills & interests',bio:'About me',languages:'Languages known',link:'Website / ORCID'};
+ const privacyBox=$('hpe-privacy-grid');if(privacyBox)privacyBox.innerHTML=Object.entries(profileFields).map(([k,label])=>`<label class="hpe-privacy-item"><span>${esc(label)}</span><select data-privacy="${k}" aria-label="Privacy for ${esc(label)}"><option value="private">🔒 Private</option><option value="members">👥 Members Only</option><option value="public">🌍 Public</option></select></label>`).join('');
+ async function apiJSON(url,opts={}){const r=await fetch(API+url,{...opts,headers:{'Content-Type':'application/json',...(opts.headers||{})}});const d=await r.json().catch(()=>({}));if(!r.ok)throw Error(d.error||'Request failed');return d}
+ $('hpe-signup-form')?.addEventListener('submit',async e=>{e.preventDefault();const password=$('hpe-reg-password').value;if(password!==$('hpe-reg-confirm').value){status('hpe-signup-status','Passwords do not match.',true);return}const payload={fullName:$('hpe-reg-name').value.trim(),role:$('hpe-reg-role').value,email:$('hpe-reg-email').value.trim(),phone:$('hpe-reg-phone').value.trim(),password};try{const d=await apiJSON('/api/auth/register/request-otp',{method:'POST',body:JSON.stringify(payload)});$('hpe-reg-verify').hidden=false;status('hpe-signup-status',d.message||'Verification codes sent to email and mobile.')}catch(err){status('hpe-signup-status',err.message,true)}});
+ $('hpe-verify-reg-otp')?.addEventListener('click',async()=>{const payload={email:$('hpe-reg-email').value.trim(),phone:$('hpe-reg-phone').value.trim(),emailOtp:$('hpe-reg-email-otp').value.trim(),phoneOtp:$('hpe-reg-phone-otp').value.trim()};try{const d=await apiJSON('/api/auth/register/verify-otp',{method:'POST',body:JSON.stringify(payload)});memberToken=d.token;localStorage.setItem('hpe_member_token',memberToken);$('hpe-signup-form').reset();$('hpe-reg-verify').hidden=true;authUI();status('hpe-profile-status','Account created and both contact methods verified. Complete your profile below.')}catch(err){status('hpe-signup-status',err.message,true)}});
+ $('hpe-login-form')?.addEventListener('submit',async e=>{e.preventDefault();try{const d=await apiJSON('/api/auth/login',{method:'POST',body:JSON.stringify({identifier:$('hpe-login-identifier').value.trim(),password:$('hpe-login-password').value})});memberToken=d.token;localStorage.setItem('hpe_member_token',memberToken);$('hpe-login-form').reset();authUI();status('hpe-profile-status','Login successful. Welcome back!')}catch(err){status('hpe-login-status',err.message,true)}});
+ async function loadProfile(){try{const d=await apiJSON('/api/me/profile',{headers:{Authorization:'Bearer '+memberToken}});const p=d.profile||{};const map={name:'name',role:'role',country:'country',state:'state',city:'city',course:'course',institution:'institution',designation:'designation',department:'department',experience:'experience',research:'research',skills:'skills',bio:'bio',languages:'languages',link:'link'};for(const [key,id] of Object.entries(map)){const el=$('hpe-prof-'+key);if(el)el.value=p[key]||''} $('hpe-prof-email').value=d.email||'';$('hpe-prof-phone').value=d.phone||'';document.querySelectorAll('[data-privacy]').forEach(el=>el.value=(p.privacy||{})[el.dataset.privacy]||'private')}catch(e){status('hpe-profile-status',e.message,true)}}
+ $('hpe-profile-form')?.addEventListener('submit',async e=>{e.preventDefault();const profile={};for(const key of Object.keys(profileFields)){const el=$('hpe-prof-'+key);profile[key]=el?.value?.trim()||''}profile.privacy={};document.querySelectorAll('[data-privacy]').forEach(el=>profile.privacy[el.dataset.privacy]=el.value);try{await apiJSON('/api/me/profile',{method:'PUT',headers:{Authorization:'Bearer '+memberToken},body:JSON.stringify({profile})});status('hpe-profile-status','Profile and privacy settings saved securely.')}catch(err){status('hpe-profile-status',err.message,true)}});
+ $('hpe-signout')?.addEventListener('click',()=>{memberToken='';localStorage.removeItem('hpe_member_token');authUI();showAuth('login');status('hpe-login-status','You have signed out.')});
+ authUI();showAuth('signup');
  $('hpe-contribution-form')?.addEventListener('submit',async e=>{e.preventDefault();if(!memberToken){status('hpe-contrib-status','Please sign in with email OTP before submitting.',true);return}const fd=new FormData();fd.append('category',$('hpe-contrib-category').value);fd.append('title',$('hpe-contrib-title').value.trim());fd.append('content',$('hpe-contrib-content').value.trim());const file=$('hpe-contrib-file').files[0];if(file)fd.append('attachment',file);try{const r=await fetch(API+'/api/contributions',{method:'POST',headers:{Authorization:'Bearer '+memberToken},body:fd});const d=await r.json();if(!r.ok)throw Error(d.error||'Submission failed');status('hpe-contrib-status','Submitted successfully. Reference: '+d.id+'. It will remain private until admin approval.');e.target.reset();loadMine()}catch(err){status('hpe-contrib-status',err.message+' — make sure the backend is deployed.',true)}});
  async function loadMine(){if(!memberToken)return;try{const r=await fetch(API+'/api/my/contributions',{headers:{Authorization:'Bearer '+memberToken}});const d=await r.json();if(!r.ok)throw Error(d.error);$('hpe-my-submissions').innerHTML='<h3>Your submissions</h3>'+((d.items||[]).map(x=>`<div class="hpe-admin-item"><b>${esc(x.title)}</b><p>${esc(x.category)} · <strong>${esc(x.status)}</strong></p><small>${esc(x.createdAt||'')}</small></div>`).join('')||'<p class="hpe-muted">No submissions yet.</p>')}catch(e){$('hpe-my-submissions').textContent=e.message}}
  $('hpe-admin-login')?.addEventListener('click',async()=>{try{const r=await fetch(API+'/api/admin/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:$('hpe-admin-email').value.trim(),password:$('hpe-admin-password').value})});const d=await r.json();if(!r.ok)throw Error(d.error||'Admin login failed');adminToken=d.token;sessionStorage.setItem('hpe_admin_token',adminToken);status('hpe-admin-status','Admin authenticated. Load pending submissions.')}catch(e){status('hpe-admin-status',e.message,true)}});
@@ -6092,62 +6208,191 @@ body{padding-bottom:105px!important}
 </script>
 
 
-<style>
-/* Section navigation: each menu choice becomes its own page, not a long page of stacked sections. */
-.hpe-page-hidden{display:none!important}
-.hpe-chat-quick-prompts{display:flex;gap:7px;flex-wrap:wrap;padding:9px 12px;border-bottom:1px solid #e4ece5;background:#f7faf6}
-.hpe-chat-quick-prompts button{border:1px solid #d5e4d7;background:#fff;color:#205b36;border-radius:18px;padding:8px 11px;font-size:12px;font-weight:650;cursor:pointer;min-height:38px}
-.hpe-chat-quick-prompts button:focus-visible{outline:3px solid #8bc49a;outline-offset:2px}
-#plantchat-box{max-height:min(78vh,720px)}
-#plantchat-messages{overflow-y:auto;overscroll-behavior:contain}
-@media(max-width:700px){#plantchat-box{left:10px!important;right:10px!important;bottom:82px!important;width:auto!important;max-height:72vh!important}.hpe-chat-quick-prompts{gap:6px}.hpe-chat-quick-prompts button{font-size:11px;padding:7px 9px}}
+
+<style id="hpe-world-redesign">
+:root{--forest:#073b25;--leaf:#17643b;--gold:#e2bd55;--cream:#fff8df;--ink:#193b2a}
+html{scroll-behavior:smooth;scroll-padding-top:20px}
+body{margin:0!important;padding:0 0 72px!important;background:#f4f6ec!important;color:var(--ink);font-family:Arial,sans-serif}
+#hpe-mobile-bar,#hpe-sidebar,.menu-container{display:none!important}
+.hero-header{display:none!important}
+.hpe-world-hero{margin:0;background:#073b25;color:#fff;overflow:hidden}
+.hpe-topbar{min-height:66px;padding:9px clamp(16px,3vw,46px);display:flex;align-items:center;justify-content:space-between;gap:18px;background:linear-gradient(90deg,#06351f,#14552e);border-bottom:1px solid #d7b54b66}
+.hpe-brand{display:flex;align-items:center;gap:9px;color:#fff;text-decoration:none;font-weight:900;font-size:17px;white-space:nowrap}
+.hpe-brand .brand-mark{font-size:29px}.hpe-brand small{display:block;font-size:9px;letter-spacing:1.5px;color:#e5d28a;margin-top:3px}
+.hpe-top-links{display:flex;align-items:center;justify-content:center;gap:clamp(9px,1.5vw,24px);flex-wrap:wrap}
+.hpe-top-links a,.hpe-lang{color:#f8f4df;text-decoration:none;font-size:12px;font-weight:700;white-space:nowrap}
+.hpe-top-links a:hover{color:#f4d66d}.hpe-lang{border:1px solid #c8a849;border-radius:18px;padding:8px 12px}
+.hpe-hero-scene{min-height:300px;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;padding:36px 20px 30px;isolation:isolate;background:
+linear-gradient(90deg,rgba(3,40,23,.62),rgba(4,48,26,.18) 48%,rgba(3,40,23,.55)),
+linear-gradient(0deg,rgba(2,35,20,.76),rgba(5,63,32,.10)),
+url('tree-base.png.jpg') center 48%/cover no-repeat,
+radial-gradient(ellipse at 50% 35%,#a9c76d,#1c6339 55%,#073b25)}
+.hpe-scene-glow{position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 50% 35%,#fff6bd33,transparent 48%)}
+.hpe-scene-copy{max-width:850px;text-shadow:0 2px 10px #001d0f}
+.hpe-eyebrow{display:inline-block;color:#f3d978;font-size:11px;font-weight:800;letter-spacing:3px;margin-bottom:12px}
+.hpe-scene-copy h1{margin:0;color:#fff;font-family:Georgia,serif;font-size:clamp(34px,5.4vw,66px);line-height:1.02;letter-spacing:1px;text-align:center;text-shadow:0 3px 8px #002b17}
+.hpe-scene-copy h1 em{font-style:normal;color:#f5d65f}
+.hpe-scene-copy p{margin:12px 0 19px;color:#fff9e6;font-family:Georgia,serif;font-style:italic;font-size:clamp(14px,1.8vw,19px)}
+.hpe-hero-search{display:flex;align-items:center;gap:8px;max-width:560px;margin:0 auto;background:#fff9e8;border:2px solid #e4c45d;border-radius:30px;padding:5px 6px 5px 15px;box-shadow:0 5px 20px #001d0f55;text-shadow:none}
+.hpe-hero-search>span{font-size:22px;color:#285d38}.hpe-hero-search input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:#23432d;font-size:13px;padding:9px 2px}
+.hpe-hero-search button{border:0;border-radius:22px;padding:10px 18px;background:#1b693a;color:#fff;font-weight:800;cursor:pointer}
+.hpe-hero-tags{display:flex;justify-content:center;gap:18px;margin-top:15px;color:#fff4ca;font-size:11px;font-weight:700}
+.hpe-scene-note{position:absolute;right:clamp(14px,4vw,55px);bottom:18px;padding:10px 13px;background:#f8edc9e8;color:#654a18;border:1px solid #c9a84c;border-radius:5px;font-family:Georgia,serif;font-weight:bold;transform:rotate(2deg);font-size:13px;text-shadow:none}
+.hpe-scene-note small{display:block;font:10px Arial,sans-serif;margin-top:4px}
+.hpe-category-ribbon{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;padding:13px clamp(12px,3vw,42px);background:#073b25}
+.hpe-category-ribbon a{min-height:60px;display:flex;align-items:center;gap:9px;padding:9px 11px;border:1px solid #c9a64d;border-radius:13px;background:linear-gradient(145deg,#1b693b,#0b482b);color:#fff4d0;text-decoration:none;box-shadow:inset 0 1px #ffffff22;transition:.18s}
+.hpe-category-ribbon a:hover{transform:translateY(-2px);background:#287744}
+.hpe-category-ribbon span{font-size:26px}.hpe-category-ribbon b{font-size:11px;line-height:1.25;flex:1}.hpe-category-ribbon i{font-style:normal;color:#f5d56d;font-size:21px}
+.hpe-world-home{padding:17px clamp(12px,3vw,42px) 10px;background:linear-gradient(180deg,#f5f4df,#edf3e6)}
+.hpe-home-columns{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(190px,.85fr) minmax(190px,.85fr);gap:12px;align-items:stretch}
+.hpe-featured-plants,.hpe-wisdom-card,.hpe-science-card{border:1px solid #d6dcb7;border-radius:13px;background:#fffdf1;overflow:hidden;box-shadow:0 3px 12px #1b452014}
+.hpe-featured-plants{padding:12px}
+.hpe-section-title{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
+.hpe-section-title span,.hpe-wisdom-card>span,.hpe-science-card>span{font-size:10px;letter-spacing:1px;font-weight:900;color:#98701d}
+.hpe-section-title h2{font:700 18px Georgia,serif;color:#164d2d;margin:3px 0 0}
+.hpe-section-title>a{font-size:10px;color:#28643b;text-decoration:none;font-weight:bold;white-space:nowrap}
+.hpe-plant-teasers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.hpe-plant-teasers a{display:flex;flex-direction:column;gap:4px;padding:6px;border:1px solid #dce5ce;border-radius:9px;background:#fff;color:#1c472b;text-decoration:none;min-width:0}
+.hpe-plant-teasers img{width:100%;height:78px;object-fit:cover;border-radius:6px;background:#e7eedc}
+.hpe-plant-teasers b{font-size:12px}.hpe-plant-teasers small{font-size:9px;color:#6b7968;line-height:1.25}
+.hpe-wisdom-card,.hpe-science-card{padding:13px;position:relative}
+.hpe-sanskrit{font:700 19px/1.7 Georgia,serif;text-align:center;color:#285b34;margin:13px 0 5px}
+.hpe-wisdom-card p{text-align:center;font:italic 12px Georgia,serif;color:#56664e;margin:5px 0}
+.hpe-wisdom-card>small{display:block;text-align:center;color:#8b7b54;font-size:9px}
+.hpe-science-art{float:right;font-size:44px;margin:8px 5px 4px 10px}
+.hpe-science-card>b{display:block;color:#245b35;font-size:13px;margin-top:13px}
+.hpe-science-card p{font-size:11px;line-height:1.45;color:#5c6c5d}
+.hpe-science-card>a{display:inline-block;background:#28643b;color:white;text-decoration:none;padding:7px 11px;border-radius:15px;font-size:10px;font-weight:bold}
+.hpe-ai-strip{margin-top:12px;padding:11px 15px;border-radius:12px;background:linear-gradient(90deg,#063b24,#176239);color:#fff5cf;display:flex;align-items:center;gap:13px;box-shadow:0 4px 12px #123b251c}
+.hpe-ai-icon{font-size:32px}.hpe-ai-strip>div:nth-child(2){flex:1}.hpe-ai-strip b{display:block;font-size:13px;color:#f7d96d}.hpe-ai-strip small{display:block;font-size:10px;color:#e5efda;margin-top:3px}
+.hpe-ai-strip>a{white-space:nowrap;color:#123d25;background:#f3d45e;text-decoration:none;padding:9px 13px;border-radius:18px;font-size:10px;font-weight:900}
+.hpe-ai-strip .hpe-community{border-left:1px solid #ffffff55;padding-left:13px;font-size:11px;font-weight:bold}
+.hpe-ai-strip>a.hpe-start{background:#fff3c6}
+.hpe-continue{text-align:center;padding:20px 8px 8px;color:#315c39}
+.hpe-continue span{display:block;color:#9a7929;font-size:9px;letter-spacing:2px;font-weight:900}
+.hpe-continue b{display:block;font:italic 15px Georgia,serif;margin-top:5px}
+#plant-information,#researcher-educator,#hpe-disease,#hpe-organs,#hpe-research,#hpe-chat,#hpe-account,#hpe-admin{scroll-margin-top:16px}
+#hpe-bottom-nav{display:none!important}
+.hpe-mobile-menu-btn{display:none;border:1px solid #c9a64d;background:#12532f;color:#fff;border-radius:8px;padding:7px 10px;font-size:18px}
+.hpe-mobile-menu{display:none}
+@media(max-width:900px){
+ .hpe-topbar{flex-wrap:wrap;justify-content:center;padding:10px 12px}.hpe-top-links{order:3;width:100%;gap:12px}
+ .hpe-category-ribbon{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .hpe-home-columns{grid-template-columns:1fr 1fr}.hpe-featured-plants{grid-column:1/-1}
+ .hpe-ai-strip .hpe-community{display:none}
+}
+@media(max-width:600px){
+ body{padding-bottom:72px!important}
+ .hpe-topbar{position:relative;justify-content:space-between;gap:8px;padding:9px 12px}
+ .hpe-brand{font-size:13px}.hpe-brand .brand-mark{font-size:24px}.hpe-brand small{font-size:8px}
+ .hpe-top-links{display:none}
+ .hpe-lang{font-size:10px;padding:7px 9px}
+ .hpe-mobile-menu-btn{display:block}
+ .hpe-mobile-menu{display:none;position:absolute;z-index:6000;top:55px;right:10px;min-width:190px;padding:8px;background:#0d482b;border:1px solid #c9a64d;border-radius:10px;box-shadow:0 8px 20px #001d0f66}
+ .hpe-mobile-menu.open{display:grid}
+ .hpe-mobile-menu a{padding:10px;color:#fff3cf;text-decoration:none;font-size:12px;border-bottom:1px solid #ffffff22}
+ #hpe-bottom-nav{display:grid!important;position:fixed;left:0;right:0;bottom:0;z-index:99999;grid-template-columns:repeat(6,minmax(0,1fr));gap:2px;padding:6px 5px calc(6px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid #dce6dc;box-shadow:0 -3px 16px #0002}
+ #hpe-bottom-nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:5px 2px;color:#536257;text-decoration:none;font-size:9px;font-weight:700}
+ #hpe-bottom-nav a .nav-icon{font-size:19px;line-height:1.1}
+ #hpe-bottom-nav a.active{color:#176033;background:#edf5eb;border-radius:9px}
+ .hpe-hero-scene{min-height:310px;padding:30px 13px 25px;background-position:center;background-size:cover}
+ .hpe-scene-copy h1{font-size:35px;line-height:1.04}
+ .hpe-eyebrow{font-size:8px;letter-spacing:1.7px}
+ .hpe-scene-copy p{font-size:13px;line-height:1.4;margin:10px 0 15px}
+ .hpe-hero-search{padding:4px 5px 4px 11px}.hpe-hero-search input{font-size:11px}.hpe-hero-search button{font-size:10px;padding:9px 11px}
+ .hpe-hero-tags{gap:9px;font-size:9px;flex-wrap:wrap}
+ .hpe-scene-note{right:8px;bottom:8px;font-size:9px;padding:6px 8px}.hpe-scene-note small{font-size:8px}
+ .hpe-category-ribbon{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;padding:9px 8px}
+ .hpe-category-ribbon a{min-height:62px;padding:7px 6px;gap:5px;border-radius:10px}
+ .hpe-category-ribbon span{font-size:21px}.hpe-category-ribbon b{font-size:9px}.hpe-category-ribbon i{font-size:16px}
+ .hpe-world-home{padding:10px 9px 5px}
+ .hpe-home-columns{grid-template-columns:1fr;gap:9px}
+ .hpe-featured-plants{grid-column:auto;padding:9px}
+ .hpe-section-title h2{font-size:16px}.hpe-plant-teasers{gap:6px}
+ .hpe-plant-teasers a{padding:4px}.hpe-plant-teasers img{height:70px}.hpe-plant-teasers b{font-size:10px}.hpe-plant-teasers small{font-size:8px}
+ .hpe-wisdom-card,.hpe-science-card{padding:11px}
+ .hpe-sanskrit{font-size:18px;margin:8px 0 3px}
+ .hpe-science-art{font-size:36px}
+ .hpe-ai-strip{gap:8px;padding:9px}.hpe-ai-icon{font-size:25px}
+ .hpe-ai-strip b{font-size:11px}.hpe-ai-strip small{font-size:9px}
+ .hpe-ai-strip>a{font-size:9px;padding:8px 9px}
+ .hpe-ai-strip>a.hpe-start{display:none}
+ .hpe-continue{padding:15px 5px 7px}
+}
+
+/* Member account and privacy controls */
+.hpe-auth-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.hpe-account-panel{background:#fff;border:1px solid #dce8d9;border-radius:18px;padding:20px;margin:14px 0;box-shadow:0 8px 24px rgba(10,55,32,.06)}
+.hpe-account-panel[hidden],#hpe-reg-verify[hidden]{display:none!important}.hpe-account-panel h3{color:#0b4a2d;margin:4px 0 12px}.hpe-privacy-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:12px 0 20px}.hpe-privacy-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;border:1px solid #dce8d9;border-radius:12px;background:#f8fbf4;font-size:13px}.hpe-privacy-item select{max-width:145px;border:1px solid #c8d9c8;border-radius:8px;padding:7px;background:#fff;color:#173e29}.hpe-field small{display:block;color:#64786a;margin-top:4px}.hpe-field input[type=checkbox]{width:auto;min-height:0;margin-right:8px}
+@media(max-width:650px){.hpe-privacy-grid{grid-template-columns:1fr}.hpe-account-panel{padding:14px}.hpe-privacy-item{font-size:12px}}
 </style>
 <script>
+function hpeToggleMobileMenu(){
+ const menu=document.getElementById('hpe-mobile-menu');
+ const button=document.querySelector('.hpe-mobile-menu-btn');
+ if(!menu||!button)return;
+ const open=menu.classList.toggle('open');
+ button.setAttribute('aria-expanded',String(open));
+}
 (function(){
-  if (!window.HPE_API_BASE) { window.HPE_API_BASE = (location.protocol === 'file:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1') ? 'http://localhost:3000' : 'https://herbal-plant-explorer.onrender.com'; }
-  const pageNodes = [
-    document.querySelector('.hero-header'), document.getElementById('hpe-home'),
-    document.querySelector('.menu-container'), document.querySelector('.plant-search-area'),
-    document.getElementById('plant-information'), document.getElementById('plant-categories'),
-    document.querySelector('.category-swipe-hint'), document.getElementById('hpe-approved-plant'),
-    document.getElementById('researcher-educator'), document.getElementById('hpe-disease'),
-    document.getElementById('hpe-organs'), document.getElementById('hpe-research'),
-    document.getElementById('hpe-chat'), document.getElementById('hpe-account'),
-    document.getElementById('hpe-admin')
-  ].filter(Boolean);
-  const pages = {
-    home: ['.hero-header','#hpe-home'],
-    plant: ['.hero-header','.menu-container','.plant-search-area','#plant-information','#plant-categories','.category-swipe-hint','#hpe-approved-plant'],
-    professor: ['#researcher-educator'], explore: ['.plant-search-area','#hpe-research','#hpe-disease','#hpe-organs'],
-    chat: ['#hpe-chat'], account: ['#hpe-account'], disease: ['#hpe-disease'],
-    organs: ['#hpe-organs'], research: ['#hpe-research'], admin: ['#hpe-admin']
-  };
-  const selectorMap = new Map();
-  pageNodes.forEach(n=>selectorMap.set(n, false));
-  function showPage(name, updateHash=true){
-    const selectors=pages[name]||pages.home;
-    const visible=new Set();
-    selectors.forEach(sel=>document.querySelectorAll(sel).forEach(n=>visible.add(n)));
-    pageNodes.forEach(n=>n.classList.toggle('hpe-page-hidden',!visible.has(n)));
-    document.querySelectorAll('[data-hpe-bottom]').forEach(a=>a.classList.toggle('active', (a.getAttribute('href')||'').replace('#','')===({home:'hpe-home',plant:'plant-information',professor:'researcher-educator',explore:'hpe-research',chat:'hpe-chat',account:'hpe-account'}[name]||name)));
-    document.querySelectorAll('[data-hpe-nav]').forEach(a=>a.classList.toggle('active',(a.getAttribute('href')||'').slice(1)===(selectors.find(x=>x.startsWith('#'))||'').slice(1)));
-    if(updateHash){const id={home:'hpe-home',plant:'plant-information',professor:'researcher-educator',explore:'hpe-research',chat:'hpe-chat',account:'hpe-account',disease:'hpe-disease',organs:'hpe-organs',research:'hpe-research',admin:'hpe-admin'}[name]||'hpe-home';history.replaceState(null,'','#'+id);}
-    window.scrollTo({top:0,behavior:'instant'});
-    document.body.dataset.hpePage=name;
+ const targets={
+  'hpe-world-top':'hpe-world-top','hpe-home':'hpe-world-top','plant-information':'plant-information',
+  'researcher-educator':'researcher-educator','hpe-research':'hpe-research','hpe-chat':'hpe-chat',
+  'hpe-account':'hpe-account','hpe-disease':'hpe-disease','hpe-organs':'hpe-organs','hpe-admin':'hpe-admin'
+ };
+ const getTargetId = id => targets[id] || id;
+ const scrollToId = (id, behavior='smooth') => {
+  const target=document.getElementById(getTargetId(id));
+  if(target) target.scrollIntoView({behavior,block:'start'});
+ };
+ // Keep an in-app starting point so the first browser Back returns within the site.
+ const initialId=(location.hash||'#hpe-world-top').slice(1);
+ history.replaceState({hpeNavigation:true, id:initialId},'',location.pathname+location.search+'#'+initialId);
+ document.addEventListener('click',function(e){
+  const a=e.target.closest('a[href^="#"]'); if(!a)return;
+  const id=(a.getAttribute('href')||'').slice(1);
+  if(!document.getElementById(getTargetId(id)))return;
+  e.preventDefault();
+  // Save each in-site destination as a real history entry (not replaceState).
+  if(location.hash !== '#'+id || !history.state || history.state.id !== id){
+   history.pushState({hpeNavigation:true,id},'',location.pathname+location.search+'#'+id);
   }
-  function pageFromHref(href){const id=(href||'').replace(/^#/,'');return ({'hpe-home':'home','plant-information':'plant','researcher-educator':'professor','hpe-research':'explore','hpe-chat':'chat','hpe-account':'account','hpe-disease':'disease','hpe-organs':'organs','hpe-admin':'admin'})[id]||null;}
-  document.addEventListener('click',e=>{
-    const a=e.target.closest('a[data-hpe-bottom],a[data-hpe-nav],.hpe-home-card');
-    if(!a)return;const page=pageFromHref(a.getAttribute('href'));if(!page)return;
-    e.preventDefault();showPage(page);
-  },true);
-  window.addEventListener('hashchange',()=>{const p=pageFromHref(location.hash);if(p)showPage(p,false)});
-  document.querySelectorAll('[data-chat-prompt]').forEach(btn=>btn.addEventListener('click',()=>{
-    const input=document.getElementById('plantchat-input');if(!input)return;input.value=btn.dataset.chatPrompt||'';input.focus();
-  }));
-  const initial=pageFromHref(location.hash)||'home';showPage(initial,false);
-  window.hpeShowPage=showPage;
+  scrollToId(id,'smooth');
+  document.querySelectorAll('[data-hpe-bottom],[data-hpe-nav]').forEach(link=>{
+   link.classList.toggle('active',link.getAttribute('href')==='#'+id || (id==='hpe-home' && link.getAttribute('href')==='#hpe-world-top'));
+  });
+  document.getElementById('hpe-mobile-menu')?.classList.remove('open');
+  document.querySelector('.hpe-mobile-menu-btn')?.setAttribute('aria-expanded','false');
+ });
+ window.addEventListener('popstate',function(event){
+  const id=(event.state && event.state.hpeNavigation && event.state.id) ? event.state.id : (location.hash||'#hpe-world-top').slice(1);
+  requestAnimationFrame(()=>scrollToId(id,'smooth'));
+  document.querySelectorAll('[data-hpe-bottom],[data-hpe-nav]').forEach(link=>{
+   link.classList.toggle('active',link.getAttribute('href')==='#'+id || (id==='hpe-home' && link.getAttribute('href')==='#hpe-world-top'));
+  });
+  document.getElementById('hpe-mobile-menu')?.classList.remove('open');
+  document.querySelector('.hpe-mobile-menu-btn')?.setAttribute('aria-expanded','false');
+ });
+ // Restore the selected section when the page is opened directly with a hash.
+ if(location.hash) window.addEventListener('load',()=>scrollToId(initialId,'auto'),{once:true});
 })();
+</script>
+
+
+
+<script>
+function hpeRunHomeSearch(){
+ const home=document.getElementById('hpe-home-search');
+ const main=document.getElementById('plant-search-input');
+ if(!home||!main)return;
+ main.value=home.value.trim();
+ main.dispatchEvent(new Event('input',{bubbles:true}));
+ main.scrollIntoView({behavior:'smooth',block:'center'});
+ main.focus({preventScroll:true});
+}
+document.addEventListener('DOMContentLoaded',()=>{
+ const home=document.getElementById('hpe-home-search');
+ if(home)home.addEventListener('keydown',e=>{if(e.key==='Enter')hpeRunHomeSearch()});
+});
 </script>
 
 </body>
